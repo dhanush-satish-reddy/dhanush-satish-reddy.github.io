@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dhanush Satish Reddy – Engineering and Management, THI</title>
+<meta name="description" content="Dhanush Satish Reddy – Student Engineering and Management an der Technischen Hochschule Ingolstadt. Werdegang, Ausbildung und Kontakt.">
+<meta property="og:title" content="Dhanush Satish Reddy">
+<meta property="og:description" content="Engineering and Management student at Technische Hochschule Ingolstadt.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231F3A6B'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' fill='%23FBF9F4' text-anchor='middle'%3EDR%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FBF9F4;
+    --card: #FFFFFF;
+    --ink: #172036;
+    --navy: #1F3A6B;
+    --navy-deep: #13254A;
+    --navy-wash: #EDF0F6;
+    --rule: #E4DED2;
+    --muted: #5D6476;
+    --serif: "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --sans: "Hanken Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --wrap: 1080px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(80px + env(safe-area-inset-top, 0px)); -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1.0625rem/1.65 var(--sans);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--navy); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { color: var(--navy-deep); }
+  :focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
+  [hidden] { display: none !important; }
+
+  /* Header */
+  .top {
+    position: sticky; top: 0; z-index: 10;
+    padding-top: env(safe-area-inset-top, 0px);
+    background: rgba(251, 249, 244, .92);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s;
+  }
+  .top.scrolled { border-bottom-color: var(--rule); }
+  .top .wrap { display: flex; align-items: center; gap: 28px; height: 64px; }
+  .mark { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; color: var(--ink); text-decoration: none; margin-right: auto; }
+  .nav { display: flex; gap: 24px; }
+  .nav a { color: var(--muted); text-decoration: none; font-size: .95rem; }
+  .nav a:hover { color: var(--ink); }
+  .lang { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; background: var(--card); }
+  .lang button {
+    font: 500 .85rem/1 var(--sans); color: var(--muted);
+    border: 0; background: none; padding: 7px 12px; border-radius: 999px; cursor: pointer;
+  }
+  .lang button[aria-pressed="true"] { background: var(--navy); color: #fff; }
+
+  /* Hero */
+  .hero { padding: clamp(48px, 9vw, 104px) 0 clamp(40px, 6vw, 72px); }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, .75fr); gap: clamp(32px, 6vw, 80px); align-items: end; }
+  .name {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(3rem, 8.4vw, 6rem); line-height: .95; letter-spacing: -0.025em;
+    margin: 0 0 28px; font-variation-settings: "opsz" 72;
+  }
+  .name .mid { font-weight: 300; }
+  .lede { font-family: var(--serif); font-size: clamp(1.2rem, 2.1vw, 1.45rem); line-height: 1.5; max-width: 34ch; margin: 0 0 18px; color: var(--ink); }
+  .status { display: inline-flex; align-items: center; gap: 10px; font-size: .95rem; color: var(--muted); margin: 0; }
+  .status::before { content: ""; flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: #3E8E5E; box-shadow: 0 0 0 4px rgba(62,142,94,.15); }
+  .portrait {
+    position: relative; aspect-ratio: 4 / 5; width: 100%; max-width: 320px; justify-self: end;
+  }
+  .portrait::before {
+    content: ""; position: absolute; inset: 14px -14px -14px 14px; border: 1px solid var(--navy); border-radius: 4px;
+  }
+  .portrait img, .portrait .ph {
+    position: relative; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; background: var(--navy-wash);
+  }
+  .portrait .ph { display: grid; place-items: center; font-family: var(--serif); font-size: 4rem; color: var(--navy); }
+
+  /* Route: the one memorable element */
+  .route { margin-top: clamp(48px, 7vw, 80px); }
+  .route ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); position: relative; }
+  .route ol::before {
+    content: ""; position: absolute; left: 6px; right: 0; top: 6px; height: 1px; background: linear-gradient(90deg, var(--navy) 80%, rgba(31,58,107,0));
+    transform-origin: left; animation: draw 1.4s cubic-bezier(.6,.05,.25,1) .2s both;
+  }
+  .route li { position: relative; padding-top: 28px; }
+  .route li::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 13px; height: 13px; border-radius: 50%;
+    background: var(--paper); border: 1px solid var(--navy);
+  }
+  .route li:last-child::before { background: var(--navy); }
+  .route .city { font-family: var(--serif); font-size: clamp(1.25rem, 2.6vw, 1.75rem); display: block; line-height: 1.2; }
+  .route .when { font-size: .9rem; color: var(--muted); }
+  @keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  /* Sections */
+  .section { border-top: 1px solid var(--rule); }
+  .section .wrap { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 48px; padding-top: 64px; padding-bottom: 64px; }
+  .section h2 { font-family: var(--serif); font-weight: 400; font-size: 1.75rem; line-height: 1.2; margin: 0; position: sticky; top: 92px; align-self: start; }
+  .prose { font-family: var(--serif); font-size: 1.2rem; line-height: 1.65; max-width: 60ch; margin: 0; }
+
+  .entries { list-style: none; margin: 0; padding: 0; display: grid; gap: 34px; }
+  .entry { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 24px; align-items: start; }
+  .entry h3 { font-family: var(--serif); font-weight: 500; font-size: 1.25rem; line-height: 1.3; margin: 2px 0 2px; }
+  .entry .org { color: var(--muted); font-size: .98rem; margin: 0; }
+  .entry .desc { margin: 10px 0 0; max-width: 62ch; }
+  .entry .when { font-size: .9rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; padding-top: 6px; }
+  .entry .note { margin: 6px 0 0; font-size: .95rem; color: var(--muted); }
+
+  .certs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 36px; }
+  .certs .entry { grid-template-columns: minmax(0, 1fr); }
+  .certs h3 { font-size: 1.08rem; }
+
+  .awards { list-style: none; margin: 0; padding: 0; }
+  .awards li { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  .awards li:first-child { padding-top: 0; }
+  .awards li:last-child { border-bottom: 0; }
+  .awards .yr { font-family: var(--serif); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .awards .what { font-weight: 500; }
+  .awards .where { color: var(--muted); }
+
+  .split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
+  .split h3 { font-family: var(--serif); font-weight: 400; font-size: 1.3rem; margin: 0 0 18px; }
+  .langs { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .langs li { display: grid; grid-template-columns: 110px minmax(0, 1fr); align-items: center; gap: 16px; }
+  .meter { height: 3px; background: var(--rule); border-radius: 2px; position: relative; }
+  .meter span { position: absolute; inset: 0 auto 0 0; background: var(--navy); border-radius: 2px; }
+  .tiers { display: grid; gap: 18px; }
+  .tiers p { margin: 0; }
+  .tiers .lvl { display: block; color: var(--muted); font-size: .92rem; }
+
+  .contact .lead { font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.3; margin: 0 0 28px; max-width: 26ch; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 999px;
+    font: 500 1rem/1 var(--sans); text-decoration: none; border: 1px solid var(--navy);
+  }
+  .btn.primary { background: var(--navy); color: #fff; }
+  .btn.primary:hover { background: var(--navy-deep); color: #fff; }
+  .btn.ghost { color: var(--navy); background: transparent; }
+  .btn.ghost:hover { background: var(--navy-wash); }
+  .btn svg { width: 18px; height: 18px; }
+
+  footer { border-top: 1px solid var(--rule); padding: 28px 0 40px; color: var(--muted); font-size: .9rem; }
+
+  @media (max-width: 860px) {
+    .nav { display: none; }
+    .hero .wrap { grid-template-columns: 1fr; }
+    .portrait { order: -1; justify-self: start; max-width: 200px; }
+    .section .wrap { grid-template-columns: 1fr; gap: 28px; padding-top: 48px; padding-bottom: 48px; }
+    .section h2 { position: static; }
+    .split, .certs { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .entry { grid-template-columns: minmax(0, 1fr); }
+    .entry .when { grid-row: 1; padding-top: 0; }
+    .route ol { grid-template-columns: 1fr; gap: 22px; }
+    .route ol::before { left: 6px; right: auto; top: 6px; bottom: 6px; width: 1px; height: auto; background: linear-gradient(180deg, var(--navy) 80%, rgba(31,58,107,0)); transform-origin: top; animation-name: drawY; }
+    .route li { padding-top: 0; padding-left: 30px; }
+    @keyframes drawY { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .route ol::before { animation: none; }
+  }
+  @media print {
+    .top, .lang { display: none; }
+    body { background: #fff; }
+    .section h2 { position: static; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="mark" href="#">D. S. Reddy</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#experience" data-i18n="nav.experience">Erfahrung</a>
+      <a href="#education" data-i18n="nav.education">Ausbildung</a>
+      <a href="#certificates" data-i18n="nav.certificates">Zertifikate</a>
+      <a href="#contact" data-i18n="nav.contact">Kontakt</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Sprache / Language">
+      <button type="button" data-lang="de" aria-pressed="true">DE</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1 class="name">Dhanush <span class="mid">Satish</span><br>Reddy</h1>
+        <p class="lede" data-i18n="hero.lede">Student im Studiengang Engineering and Management an der Technischen Hochschule Ingolstadt.</p>
+        <p class="status" data-i18n="hero.status">Offen für Werkstudenten- und Praktikumsstellen</p>
+      </div>
+      <figure class="portrait" style="margin:0">
+        <img src="assets/photo.jpg" alt="Dhanush Satish Reddy" width="640" height="800" onerror="this.outerHTML='&lt;div class=&quot;ph&quot; aria-hidden=&quot;true&quot;&gt;DR&lt;/div&gt;'">
+      </figure>
+    </div>
+    <div class="wrap route" aria-label="Werdegang">
+      <ol>
+        <li><span class="city">Bangalore</span><span class="when" data-i18n="route.blr">bis 2019</span></li>
+        <li><span class="city">Kempten</span><span class="when">2019–2025</span></li>
+        <li><span class="city">Ingolstadt</span><span class="when" data-i18n="route.in">seit 2025</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="profile">
+    <div class="wrap">
+      <h2 data-i18n="h.profile">Profil</h2>
+      <p class="prose" data-i18n="profile">…</p>
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="wrap">
+      <h2 data-i18n="h.experience">Berufserfahrung</h2>
+      <ul class="entries" data-list="experience"></ul>
+    </div>
+  </section>
+
+  <section class="section" id="education">
+    <div class="wrap">
+      <h2 data-i18n="h.education">Bildungslaufbahn</h2>
+      <ul class="entries" data-list="education"></ul>
+    </div>
+  </section>
+
+  <section class="section" id="internships">
+    <div class="wrap">
+      <h2 data-i18n="h.internships">Praktika</h2>
+      <ul class="entries" data-list="internships"></ul>
+    </div>
+  </section>
+
+  <section class="section" id="certificates">
+    <div class="wrap">
+      <h2 data-i18n="h.certificates">Zertifikate</h2>
+      <ul class="entries certs" data-list="certificates"></ul>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="wrap">
+      <h2 data-i18n="h.skills">Sprachen &amp; Kenntnisse</h2>
+      <div class="split">
+        <div>
+          <h3 data-i18n="h.languages">Sprachen</h3>
+          <ul class="langs" data-list="languages"></ul>
+        </div>
+        <div>
+          <h3 data-i18n="h.digital">Digitalkompetenz</h3>
+          <div class="tiers" data-list="digital"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="awards">
+    <div class="wrap">
+      <h2 data-i18n="h.awards">Auszeichnungen</h2>
+      <ul class="awards" data-list="awards"></ul>
+    </div>
+  </section>
+
+  <section class="section" id="beyond">
+    <div class="wrap">
+      <h2 data-i18n="h.beyond">Außerhalb des Studiums</h2>
+      <div class="split">
+        <div>
+          <h3 data-i18n="h.activities">Engagement</h3>
+          <p data-i18n="activities">…</p>
+        </div>
+        <div>
+          <h3 data-i18n="h.hobbies">Hobbys</h3>
+          <p data-i18n="hobbies">…</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <h2 data-i18n="h.contact">Kontakt</h2>
+      <div>
+        <p class="lead" data-i18n="contact.lead">Am schnellsten erreichen Sie mich per E-Mail oder über LinkedIn.</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:dhanushreddy05@icloud.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+            <span data-i18n="contact.mail">E-Mail schreiben</span>
+          </a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/dhanushreddy05" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1v5.45h-4v-4.84c0-1.15-.02-2.64-1.6-2.64-1.62 0-1.86 1.26-1.86 2.56v4.92h-4v-11Z"/></svg>
+            <span data-i18n="contact.linkedin">LinkedIn-Profil</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year">2026</span> Dhanush Satish Reddy</div>
+</footer>
+
+<script>
+/* =========================================================
+   CONTENT — edit everything here. Each text has a DE and EN version.
+   ========================================================= */
+const CONTENT = {
+  experience: [
+    { start: "2026-08", end: null,
+      title: { de: "Mentor für Studierende", en: "Student Mentor" },
+      org: "Technische Hochschule Ingolstadt, Ingolstadt",
+      desc: { de: "Begleitung von drei Studierenden bei Studienorganisation, Prüfungsvorbereitung und dem Ankommen an der Hochschule.",
+              en: "Mentoring three students on study organisation, exam preparation and settling in at university." } },
+    { start: "2026-04", end: null,
+      title: { de: "Vertrieb, KI & Prozessoptimierung", en: "Sales, AI & Process Optimisation" },
+      org: "FDI Digital Business, Kempten",
+      desc: { de: "Unterstützung von Vertrieb und Marketing für GÉNIE, eine B2B-SaaS-Lösung für Industriekunden in der DACH-Region. Einsatz von KI-Werkzeugen, um Vertriebs- und Content-Prozesse zu beschleunigen, einschließlich LinkedIn-Beiträgen.",
+              en: "Supporting sales and marketing for GÉNIE, a B2B SaaS product for industrial clients in the DACH region. Using AI tools to speed up sales and content workflows, including LinkedIn content." } },
+    { start: "2026-03", end: null,
+      title: { de: "Datenmanagement", en: "Data Management" },
+      org: "Technische Hochschule Ingolstadt, Ingolstadt",
+      desc: { de: "Pflege und Dokumentation von Daten in Excel, Organisation von Hochschulveranstaltungen und Mitarbeit am Career Track für Studierende.",
+              en: "Maintaining and documenting data in Excel, organising university events and helping update the student career track." } },
+    { start: "2025-11", end: "2026-10",
+      title: { de: "Business Analyst", en: "Business Analyst" },
+      org: "Schanzer Racing Electric, Ingolstadt",
+      desc: { de: "Business-Analyse im Formula-Student-Elektroteam der THI, mit Schwerpunkt auf Kostenplanung und Business-Plan-Themen für die Wettbewerbe.",
+              en: "Business analysis in THI's Formula Student electric racing team, focusing on cost planning and business plan topics for the competitions." } },
+    { start: "2023-03", end: "2025-03",
+      title: { de: "Verkaufsberater", en: "Sales Advisor" },
+      org: "Christ Juweliere und Uhrmacher, Kempten",
+      desc: { de: "Beratung und Verkauf von Schmuck und Uhren sowie Betreuung von Stammkundinnen und -kunden.",
+              en: "Advising customers and selling jewellery and watches, and looking after regular clients." } },
+    { start: "2024-06", end: "2024-09",
+      title: { de: "Service und Lagerist", en: "Service and Warehouse Assistant" },
+      org: "HPCHO GmbH und Ace Micromatic, Nesselwang",
+      desc: { de: "Wareneingang, Lagerorganisation und Kommissionierung sowie Unterstützung im Service.",
+              en: "Goods receipt, warehouse organisation and order picking, plus support in service." } },
+    { start: "2021-03", end: "2022-08",
+      title: { de: "Online-Dienstleister", en: "Online Order Fulfilment" },
+      org: "tePAS Allround Service / Zara, Kempten",
+      desc: { de: "Bearbeitung von Online-Bestellungen: Kommissionierung, Verpackung und Retourenabwicklung.",
+              en: "Processing online orders: picking, packing and handling returns." } }
+  ],
+
+  education: [
+    { start: "2025-10", end: null,
+      title: { de: "Bachelor of Engineering, Engineering and Management", en: "Bachelor of Engineering, Engineering and Management" },
+      org: "Technische Hochschule Ingolstadt, Ingolstadt",
+      note: { de: "Fakultät Wirtschaftsingenieurwesen", en: "Faculty of Industrial Engineering" } },
+    { start: "2022-09", end: "2025-07",
+      title: { de: "Fachabitur, Fachrichtung Technik", en: "Fachabitur (Advanced Technical College Entrance Qualification), Technology" },
+      org: "Staatliche Fachoberschule Kempten, Kempten" },
+    { start: "2021-09", end: "2022-07",
+      title: { de: "Mittlerer Schulabschluss", en: "Intermediate School Certificate (Mittlerer Schulabschluss)" },
+      org: "Staatliche Fachoberschule Kempten, Kempten",
+      note: { de: "Grund- und Mittelschule Durach", en: "Grund- und Mittelschule Durach" } },
+    { start: "2020-08", end: "2021-08",
+      title: { de: "Deutsch B1 und B2, freiwillig erlernt", en: "German B1 and B2, learned voluntarily" },
+      org: "Kempten" },
+    { start: "2019-09", end: "2020-07",
+      title: { de: "Gastschüler", en: "Guest Student" },
+      org: "Hildegardis-Gymnasium, Kempten" },
+    { start: "2006-06", end: "2018-03",
+      title: { de: "Secondary School Leaving Certificate (SSLC), ICSE Board", en: "Secondary School Leaving Certificate (SSLC), ICSE Board" },
+      org: "Sarvodaya National Public School, Bangalore",
+      note: { de: "Grund- und Mittelschulausbildung", en: "Primary and secondary education" } }
+  ],
+
+  internships: [
+    { start: "2025-04", end: "2025-04",
+      title: { de: "Praktikum", en: "Internship" },
+      org: "Bayerische Polizei, Königsbrunn" },
+    { start: "2023-05", end: "2023-06",
+      title: { de: "Praktikum", en: "Internship" },
+      org: "Institut für Fahrerassistenz und vernetzte Mobilität, Benningen",
+      desc: { de: "Einblicke in Forschung zu Fahrerassistenzsystemen und vernetzter Mobilität.",
+              en: "Insight into research on driver assistance systems and connected mobility." } },
+    { start: "2023-02", end: "2023-07",
+      title: { de: "Fachpraktische Ausbildung Elektro", en: "Practical Training, Electrical Engineering" },
+      org: "Werkstatt der Staatlichen Fachoberschule Kempten" },
+    { start: "2022-09", end: "2023-02",
+      title: { de: "Fachpraktische Ausbildung Metall", en: "Practical Training, Metalworking" },
+      org: "Werkstatt der Staatlichen Fachoberschule Kempten" }
+  ],
+
+  certificates: [
+    { start: "2026-03",
+      title: { de: "Claude AI Fluency for Students", en: "Claude AI Fluency for Students" }, org: "Anthropic" },
+    { start: "2026-01",
+      title: { de: "Generative AI Mastermind", en: "Generative AI Mastermind" }, org: "Outskill" },
+    { start: "2025-10",
+      title: { de: "OCI 2025 AI Foundations Associate", en: "OCI 2025 AI Foundations Associate" }, org: "Oracle" },
+    { start: "2025-10",
+      title: { de: "OCI 2025 Foundations Associate", en: "OCI 2025 Foundations Associate" }, org: "Oracle" },
+    { start: "2025-10",
+      title: { de: "Introduction to SQL", en: "Introduction to SQL" }, org: "DataCamp" },
+    { start: "2025-02",
+      title: { de: "Pkw-Training Young Drivers", en: "Car Training for Young Drivers" }, org: "ADAC" }
+  ],
+
+  languages: [
+    { de: "Kannada", en: "Kannada", level: 100 },
+    { de: "Telugu", en: "Telugu", level: 100 },
+    { de: "Englisch", en: "English", level: 100 },
+    { de: "Deutsch", en: "German", level: 88 },
+    { de: "Hindi", en: "Hindi", level: 65 },
+    { de: "Tamil", en: "Tamil", level: 42 },
+    { de: "Spanisch", en: "Spanish", level: 20 }
+  ],
+
+  digital: [
+    { lvl: { de: "Sehr gute Kenntnisse", en: "Advanced" }, items: { de: "Microsoft Office, KI-Anwendungen, Social Media", en: "Microsoft Office, AI tools, social media" } },
+    { lvl: { de: "Gute Kenntnisse", en: "Proficient" }, items: { de: "Foto- und Videobearbeitung", en: "Photo and video editing" } },
+    { lvl: { de: "Grundkenntnisse", en: "Basic" }, items: { de: "CAD (Autodesk Inventor), Programmierung", en: "CAD (Autodesk Inventor), programming" } }
+  ],
+
+  awards: [
+    { year: 2016, what: { de: "2. Platz, Basketball U15", en: "2nd place, Basketball U15" }, where: "Bangalore" },
+    { year: 2013, what: { de: "Schwarzer Gürtel, Shodan (Karate)", en: "Black belt, Shodan (karate)" }, where: "Bangalore" },
+    { year: 2013, what: { de: "Teilnahme, International Top Talents Awards", en: "Participant, International Top Talents Awards" }, where: "Bangalore" },
+    { year: 2011, what: { de: "Teilnahme, All India Kumite and Kata Championship", en: "Participant, All India Kumite and Kata Championship" }, where: "Bangalore" },
+    { year: 2011, what: { de: "2. Platz, Kata-Meisterschaft auf Bezirksebene", en: "2nd place, district-level Kata Championship" }, where: "Bangalore" },
+    { year: 2010, what: { de: "Teilnahme, Kumite-Meisterschaft auf Landesebene", en: "Participant, state-level Kumite Championship" }, where: "Bangalore" }
+  ]
+};
+
+const TEXT = {
+  de: {
+    "nav.experience": "Erfahrung", "nav.education": "Ausbildung", "nav.certificates": "Zertifikate", "nav.contact": "Kontakt",
+    "hero.lede": "Student im Studiengang Engineering and Management an der Technischen Hochschule Ingolstadt.",
+    "hero.status": "Offen für Werkstudenten- und Praktikumsstellen",
+    "route.blr": "bis 2019", "route.in": "seit 2025",
+    "h.profile": "Profil", "h.experience": "Berufserfahrung", "h.education": "Bildungslaufbahn", "h.internships": "Praktika",
+    "h.certificates": "Zertifikate", "h.skills": "Sprachen & Kenntnisse", "h.languages": "Sprachen", "h.digital": "Digitalkompetenz",
+    "h.awards": "Auszeichnungen", "h.beyond": "Außerhalb des Studiums", "h.activities": "Engagement", "h.hobbies": "Hobbys", "h.contact": "Kontakt",
+    "profile": "Ich verbinde technisches Verständnis mit betriebswirtschaftlichem Denken und setze beides gern direkt in der Praxis ein: derzeit im B2B-SaaS-Vertrieb bei FDI Digital Business und im Datenmanagement der THI. Aufgewachsen bin ich in Bangalore, seit 2019 lebe ich in Deutschland, und ich spreche sieben Sprachen.",
+    "activities": "Mitglied der Film-AG und der Social-Media-AG an der Fachoberschule Kempten.",
+    "hobbies": "Reisen, Fotografie, Wandern, Fahren, Musik, Kochen und Kunst.",
+    "contact.lead": "Am schnellsten erreichen Sie mich per E-Mail oder über LinkedIn.",
+    "contact.mail": "E-Mail schreiben", "contact.linkedin": "LinkedIn-Profil",
+    present: "heute", since: "seit",
+    title: "Dhanush Satish Reddy – Engineering and Management, THI"
+  },
+  en: {
+    "nav.experience": "Experience", "nav.education": "Education", "nav.certificates": "Certificates", "nav.contact": "Contact",
+    "hero.lede": "Engineering and Management student at Technische Hochschule Ingolstadt.",
+    "hero.status": "Open to working student roles and internships",
+    "route.blr": "until 2019", "route.in": "since 2025",
+    "h.profile": "Profile", "h.experience": "Experience", "h.education": "Education", "h.internships": "Internships",
+    "h.certificates": "Certificates", "h.skills": "Languages & Skills", "h.languages": "Languages", "h.digital": "Digital skills",
+    "h.awards": "Awards", "h.beyond": "Beyond university", "h.activities": "Activities", "h.hobbies": "Hobbies", "h.contact": "Contact",
+    "profile": "I combine technical understanding with business thinking and like putting both to work in practice: currently in B2B SaaS sales at FDI Digital Business and in data management at THI. I grew up in Bangalore, have lived in Germany since 2019, and speak seven languages.",
+    "activities": "Member of the film club and the social media club at Fachoberschule Kempten.",
+    "hobbies": "Travel, photography, hiking, driving, music, cooking and art.",
+    "contact.lead": "The quickest way to reach me is by email or on LinkedIn.",
+    "contact.mail": "Send an email", "contact.linkedin": "LinkedIn profile",
+    present: "present", since: "since",
+    title: "Dhanush Satish Reddy – Engineering and Management, THI"
+  }
+};
+
+/* ===================== Rendering ===================== */
+function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+
+function fmtMonth(ym, lang) {
+  const [y, m] = ym.split("-").map(Number);
+  return new Intl.DateTimeFormat(lang === "de" ? "de-DE" : "en-GB", { month: "short", year: "numeric" })
+    .format(new Date(y, m - 1, 1));
+}
+
+function fmtRange(item, lang) {
+  const t = TEXT[lang];
+  if (!("end" in item)) return fmtMonth(item.start, lang);
+  if (item.end === null) return `${t.since} ${fmtMonth(item.start, lang)}`;
+  if (item.end === item.start) return fmtMonth(item.start, lang);
+  return `${fmtMonth(item.start, lang)} – ${fmtMonth(item.end, lang)}`;
+}
+
+function renderEntries(listEl, items, lang) {
+  listEl.replaceChildren(...items.map(item => {
+    const li = el("li", "entry");
+    const body = el("div", "body");
+    body.append(el("h3", null, item.title[lang]));
+    body.append(el("p", "org", item.org));
+    if (item.note) body.append(el("p", "note", item.note[lang]));
+    if (item.desc) body.append(el("p", "desc", item.desc[lang]));
+    li.append(body);
+    if (!listEl.classList.contains("certs")) li.append(el("span", "when", fmtRange(item, lang)));
+    else body.append(el("p", "note", fmtRange(item, lang)));
+    return li;
+  }));
+}
+
+function render(lang) {
+  const t = TEXT[lang];
+  document.documentElement.lang = lang;
+  document.title = t.title;
+  document.querySelectorAll("[data-i18n]").forEach(n => { const k = n.dataset.i18n; if (t[k]) n.textContent = t[k]; });
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+
+  ["experience", "education", "internships", "certificates"].forEach(key =>
+    renderEntries(document.querySelector(`[data-list="${key}"]`), CONTENT[key], lang));
+
+  document.querySelector('[data-list="languages"]').replaceChildren(...CONTENT.languages.map(l => {
+    const li = el("li");
+    li.append(el("span", null, l[lang]));
+    const m = el("div", "meter");
+    m.setAttribute("role", "img");
+    m.setAttribute("aria-label", `${l[lang]}: ${l.level}%`);
+    const fill = el("span"); fill.style.width = l.level + "%";
+    m.append(fill); li.append(m);
+    return li;
+  }));
+
+  document.querySelector('[data-list="digital"]').replaceChildren(...CONTENT.digital.map(d => {
+    const p = el("p");
+    p.append(el("span", "lvl", d.lvl[lang]), document.createTextNode(d.items[lang]));
+    return p;
+  }));
+
+  document.querySelector('[data-list="awards"]').replaceChildren(...CONTENT.awards.map(a => {
+    const li = el("li");
+    li.append(el("span", "yr", a.year));
+    const w = el("div");
+    w.append(el("span", "what", a.what[lang]));
+    li.append(w);
+    return li;
+  }));
+}
+
+function pickLang() {
+  const q = new URLSearchParams(location.search).get("lang");
+  if (q === "de" || q === "en") return q;
+  try { const s = localStorage.getItem("lang"); if (s === "de" || s === "en") return s; } catch (e) {}
+  return "de";
+}
+
+let current = pickLang();
+render(current);
+
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => {
+  current = b.dataset.lang;
+  try { localStorage.setItem("lang", current); } catch (e) {}
+  const url = new URL(location.href); url.searchParams.set("lang", current);
+  history.replaceState(null, "", url);
+  render(current);
+}));
+
+const header = document.getElementById("top");
+addEventListener("scroll", () => header.classList.toggle("scrolled", scrollY > 8), { passive: true });
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
