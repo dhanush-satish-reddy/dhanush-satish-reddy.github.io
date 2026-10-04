@@ -154,20 +154,6 @@
   .btn svg { width: 18px; height: 18px; }
 
   .hero-cta { margin-top: 26px; }
-  .docs { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
-  .doc { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--rule); }
-  .doc .ico { width: 40px; height: 48px; border: 1px solid var(--rule); border-radius: 4px 12px 4px 4px; background: var(--card);
-    display: grid; place-items: end center; padding-bottom: 7px; font: 600 .62rem/1 var(--sans); color: var(--navy); letter-spacing: .04em; }
-  .doc h3 { font-family: var(--serif); font-weight: 500; font-size: 1.15rem; margin: 0; line-height: 1.3; }
-  .doc .meta { color: var(--muted); font-size: .9rem; margin: 2px 0 0; }
-  .doc .btn { padding: 10px 16px; font-size: .92rem; }
-  .group-label { font-family: var(--serif); font-weight: 400; font-size: 1.3rem; margin: 0 0 14px; }
-  .group-label + .docs { margin-bottom: 40px; }
-  .docs-hint { color: var(--muted); font-size: .95rem; margin: 0; }
-  @media (max-width: 560px) {
-    .doc { grid-template-columns: 40px minmax(0, 1fr); }
-    .doc .btn { grid-column: 2; justify-self: start; }
-  }
 
   footer { border-top: 1px solid var(--rule); padding: 28px 0 40px; color: var(--muted); font-size: .9rem; }
 
@@ -202,12 +188,11 @@
 
 <header class="top" id="top">
   <div class="wrap">
-    <a class="mark" href="#">Dhanush Reddy</a>
+    <a class="mark" href="#">D. S. Reddy</a>
     <nav class="nav" aria-label="Sections">
       <a href="#experience" data-i18n="nav.experience">Erfahrung</a>
       <a href="#education" data-i18n="nav.education">Ausbildung</a>
       <a href="#certificates" data-i18n="nav.certificates">Zertifikate</a>
-      <a href="#downloads" data-i18n="nav.downloads">Downloads</a>
       <a href="#contact" data-i18n="nav.contact">Kontakt</a>
     </nav>
     <div class="lang" role="group" aria-label="Sprache / Language">
@@ -232,9 +217,9 @@
     </div>
     <div class="wrap route" aria-label="Werdegang">
       <ol>
-        <li><span class="city">Bangalore, IN</span><span class="when" data-i18n="route.blr">bis 2019</span></li>
-        <li><span class="city">Kempten, DE</span><span class="when">2019–2025</span></li>
-        <li><span class="city">Ingolstadt, DE</span><span class="when" data-i18n="route.in">seit 2025</span></li>
+        <li><span class="city">Bangalore</span><span class="when" data-i18n="route.blr">bis 2019</span></li>
+        <li><span class="city">Kempten</span><span class="when">2019–2025</span></li>
+        <li><span class="city">Ingolstadt</span><span class="when" data-i18n="route.in">seit 2025</span></li>
       </ol>
     </div>
   </section>
@@ -313,13 +298,6 @@
     </div>
   </section>
 
-  <section class="section" id="downloads">
-    <div class="wrap">
-      <h2 data-i18n="h.downloads">Downloads</h2>
-      <div data-list="downloads"></div>
-    </div>
-  </section>
-
   <section class="section contact" id="contact">
     <div class="wrap">
       <h2 data-i18n="h.contact">Kontakt</h2>
@@ -350,7 +328,7 @@
    ========================================================= */
 const CONTENT = {
   experience: [
-    { start: "2026-10", end: null,
+    { start: "2026-08", end: null,
       title: { de: "Mentor für Studierende", en: "Student Mentor" },
       org: "Technische Hochschule Ingolstadt, Ingolstadt",
       desc: { de: "Begleitung von drei Studierenden bei Studienorganisation, Prüfungsvorbereitung und dem Ankommen an der Hochschule.",
@@ -358,8 +336,8 @@ const CONTENT = {
     { start: "2026-04", end: null,
       title: { de: "Vertrieb, KI & Prozessoptimierung", en: "Sales, AI & Process Optimisation" },
       org: "FDI Digital Business, Kempten",
-      desc: { de: "Unterstützung von Vertrieb und Marketing für GÉNIE, eine B2B-SaaS-Lösung für Industriekunden in der DACH-Region. Einsatz von KI-Werkzeugen, um Vertriebs- und Content-Prozesse zu beschleunigen.",
-              en: "Supporting sales and marketing for GÉNIE, a B2B SaaS product for industrial clients in the DACH region. Using AI tools to speed up sales and content workflows." } },
+      desc: { de: "Unterstützung von Vertrieb und Marketing für GÉNIE, eine B2B-SaaS-Lösung für Industriekunden in der DACH-Region. Einsatz von KI-Werkzeugen, um Vertriebs- und Content-Prozesse zu beschleunigen, einschließlich LinkedIn-Beiträgen.",
+              en: "Supporting sales and marketing for GÉNIE, a B2B SaaS product for industrial clients in the DACH region. Using AI tools to speed up sales and content workflows, including LinkedIn content." } },
     { start: "2026-03", end: null,
       title: { de: "Datenmanagement", en: "Data Management" },
       org: "Technische Hochschule Ingolstadt, Ingolstadt",
@@ -443,14 +421,6 @@ const CONTENT = {
       title: { de: "Pkw-Training Young Drivers", en: "Car Training for Young Drivers" }, org: "ADAC" }
   ],
 
-  // Downloads: put the PDF in the repo (same folder as index.html) and list it here.
-  // Certificates above get a download as soon as you add  file: "name.pdf"  to them.
-  downloads: [
-    { file: "Dhanush_Satish_Reddy_Lebenslauf.pdf", size: "781 KB",
-      title: { de: "Lebenslauf", en: "CV (German)" },
-      meta: { de: "Deutsch, Stand Oktober 2026", en: "In German, as of October 2026" } }
-  ],
-
   languages: [
     { de: "Kannada", en: "Kannada", level: 100 },
     { de: "Telugu", en: "Telugu", level: 100 },
@@ -480,6 +450,7 @@ const CONTENT = {
 const TEXT = {
   de: {
     "nav.experience": "Erfahrung", "nav.education": "Ausbildung", "nav.certificates": "Zertifikate", "nav.contact": "Kontakt",
+    "hero.cv": "Lebenslauf herunterladen (PDF)",
     "hero.lede": "Student im Studiengang Engineering and Management an der Technischen Hochschule Ingolstadt.",
     "hero.status": "Offen für Werkstudenten- und Praktikumsstellen",
     "route.blr": "bis 2019", "route.in": "seit 2025",
@@ -496,6 +467,7 @@ const TEXT = {
   },
   en: {
     "nav.experience": "Experience", "nav.education": "Education", "nav.certificates": "Certificates", "nav.contact": "Contact",
+    "hero.cv": "Download CV (PDF)",
     "hero.lede": "Engineering and Management student at Technische Hochschule Ingolstadt.",
     "hero.status": "Open to working student roles and internships",
     "route.blr": "until 2019", "route.in": "since 2025",
@@ -575,29 +547,6 @@ function render(lang) {
     p.append(el("span", "lvl", d.lvl[lang]), document.createTextNode(d.items[lang]));
     return p;
   }));
-
-  const dl = document.querySelector('[data-list="downloads"]');
-  const docRow = (file, title, meta) => {
-    const li = el("li", "doc");
-    li.append(el("span", "ico", "PDF"));
-    const b = el("div"); b.append(el("h3", null, title), el("p", "meta", meta)); li.append(b);
-    const a = el("a", "btn ghost"); a.href = file; a.setAttribute("download", "");
-    a.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>'; a.append(el("span", null, t["dl.btn"]));
-    a.setAttribute("aria-label", `${t["dl.btn"]}: ${title}`);
-    li.append(a); return li;
-  };
-  const groups = [];
-  const cvList = el("ul", "docs");
-  CONTENT.downloads.forEach(d => cvList.append(docRow(d.file, d.title[lang], `PDF, ${d.size}, ${d.meta[lang]}`)));
-  groups.push(el("h3", "group-label", t["dl.cv"]), cvList);
-  const certFiles = CONTENT.certificates.filter(c => c.file);
-  if (certFiles.length) {
-    const cl = el("ul", "docs");
-    certFiles.forEach(c => cl.append(docRow(c.file, c.title[lang], `PDF, ${c.org}, ${fmtMonth(c.start, lang)}`)));
-    groups.push(el("h3", "group-label", t["dl.certs"]), cl);
-  }
-  groups.push(el("p", "docs-hint", t["dl.more"]));
-  dl.replaceChildren(...groups);
 
   document.querySelector('[data-list="awards"]').replaceChildren(...CONTENT.awards.map(a => {
     const li = el("li");
