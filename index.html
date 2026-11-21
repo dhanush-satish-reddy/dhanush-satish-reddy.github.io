@@ -46,7 +46,7 @@
     --wrap: 1120px;
   }
   *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px)); -webkit-text-size-adjust: 100%; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(140px + env(safe-area-inset-top, 0px)); -webkit-text-size-adjust: 100%; }
   body { margin: 0; background: var(--paper); color: var(--text); font: 400 1.0625rem/1.65 var(--sans); }
   img { max-width: 100%; display: block; }
   a { color: var(--accent-ink); text-underline-offset: 3px; text-decoration-thickness: 1px; }
@@ -73,12 +73,15 @@
 
   /* Hero */
   .hero { padding: clamp(56px, 9vw, 112px) 0 clamp(64px, 9vw, 112px); overflow: hidden; }
-  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, .7fr); gap: clamp(32px, 6vw, 80px); align-items: end; }
-  .cycle-cap { min-height: 1.2em; }
-  .cycle-cap .replay { margin-left: 4px; display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--ink-rule); background: none; color: var(--on-ink-muted); cursor: pointer; padding: 0; opacity: 0; transition: opacity .4s, color .2s, border-color .2s; }
-  .cycle-cap .replay.ready { opacity: 1; }
-  .cycle-cap .replay:hover { color: var(--accent); border-color: var(--accent); }
-  .cycle-cap .replay svg { width: 13px; height: 13px; }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, .8fr); gap: clamp(40px, 6vw, 80px); align-items: center; }
+  .scripts { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; margin: 0 0 22px; }
+  .chips { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--ink-rule); border-radius: 999px; background: rgba(246, 242, 234, .04); }
+  .chip { width: 38px; height: 38px; border: 0; border-radius: 50%; padding: 0; display: grid; place-items: center; background: none; color: var(--on-ink-muted); font: 700 1.05rem/1 var(--display); cursor: pointer; transition: background .3s, color .3s, transform .2s; }
+  .chip.kn { font-family: var(--kn); } .chip.te { font-family: var(--te); } .chip.hi { font-family: var(--hi); } .chip.ta { font-family: var(--ta); }
+  .chip:hover { color: var(--on-ink); transform: translateY(-1px); }
+  .chip.on { background: var(--accent); color: var(--ink); }
+  .scripts .cap { font: 500 .98rem/1.3 var(--sans); color: var(--on-ink-muted); min-width: 12ch; }
+  .scripts .cap b { color: var(--on-ink); font-weight: 600; }
   .name { font-family: var(--display); margin: 0 0 32px; line-height: 1; letter-spacing: -.035em; font-variation-settings: "opsz" 96; }
   .name .first { display: grid; font-weight: 800; font-size: clamp(3.6rem, 12.5vw, 9.5rem); line-height: 1.12; }
   .name .first .w { grid-area: 1 / 1; align-self: end; white-space: nowrap; transition: opacity .45s ease, transform .55s cubic-bezier(.2,.7,.2,1), filter .45s ease; }
@@ -87,17 +90,18 @@
   .name .w.te { font-family: var(--te); font-weight: 700; }
   .name .w.hi { font-family: var(--hi); font-weight: 700; }
   .name .w.ta { font-family: var(--ta); font-weight: 700; }
-  .name .w.lat { color: var(--on-ink); }
+  .name .w.lat { color: var(--accent); }
   .name .w.ind { color: var(--accent); }
   .js .name .first .w { opacity: 0; transform: translateY(.18em); filter: blur(8px); }
   .js .name .first .w.on { opacity: 1; transform: none; filter: none; }
   .js .name .first .w.off { opacity: 0; transform: translateY(-.14em); filter: blur(8px); }
+  .name .rest b { font-weight: 800; }
   .name .rest { display: block; font-weight: 300; font-size: clamp(2.2rem, 6.4vw, 4.6rem); line-height: 1.05; color: var(--on-ink); margin-top: .08em; }
   .lede { font-size: clamp(1.15rem, 1.9vw, 1.35rem); line-height: 1.5; max-width: 38ch; margin: 0 0 18px; color: var(--on-ink); }
   .status { display: inline-flex; align-items: center; gap: 10px; font-size: .95rem; color: var(--on-ink-muted); margin: 0; }
   .status::before { content: ""; flex-shrink: 0; width: 8px; height: 8px; border-radius: 50%; background: #4CC38A; box-shadow: 0 0 0 4px rgba(76,195,138,.18); }
   .hero-cta { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
-  .portrait { position: relative; aspect-ratio: 4 / 5; width: 100%; max-width: 300px; justify-self: end; margin: 0 14px 14px 0; }
+  .portrait { position: relative; aspect-ratio: 4 / 5; width: 100%; max-width: 330px; justify-self: end; margin: 0 14px 14px 0; }
   .portrait::before { content: ""; position: absolute; inset: 14px -14px -14px 14px; border: 2px solid var(--accent); border-radius: 6px; }
   .portrait img, .portrait .ph { position: relative; width: 100%; height: 100%; object-fit: cover; border-radius: 6px; background: var(--ink-2); }
   .portrait .ph { display: grid; place-items: center; font: 800 4rem/1 var(--display); color: var(--accent); }
@@ -116,45 +120,57 @@
   .section h2 { font: 700 1.7rem/1.15 var(--display); letter-spacing: -.02em; margin: 0; position: sticky; top: 96px; align-self: start; }
   .prose { font-size: 1.25rem; line-height: 1.6; max-width: 58ch; margin: 0; }
 
-  /* Journey map */
-  .mapband { overflow: clip; padding: clamp(64px, 8vw, 104px) 0 clamp(40px, 5vw, 64px); }
-  .mapband h2 { font: 700 clamp(2rem, 4.6vw, 3.4rem)/1.05 var(--display); letter-spacing: -.03em; margin: 0 0 clamp(28px, 4vw, 48px); max-width: 18ch; }
-  .mapband h2 em { font-style: normal; color: var(--accent); }
-  .map { position: relative; aspect-ratio: 780 / 540; width: 100%; }
-  .map svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-  .map .land { stroke: rgba(246, 242, 234, .2); stroke-width: 3.4; stroke-linecap: round; fill: none; }
-  .map .arc-glow { stroke: var(--accent); stroke-width: 9; opacity: .14; fill: none; stroke-linecap: round; }
-  .map .arc { stroke: var(--accent); stroke-width: 2.6; fill: none; stroke-linecap: round; }
-  .map .lead { stroke: rgba(246, 242, 234, .45); stroke-width: 1.2; stroke-dasharray: 3 4; fill: none; }
-  .map .inset-bg { fill: var(--ink); stroke: rgba(246, 242, 234, .35); stroke-width: 1.2; }
-  .map .pin { fill: var(--ink); stroke: var(--accent); stroke-width: 2.4; }
-  .map .pin.now { fill: var(--accent); }
-  .map .ring { fill: none; stroke: var(--accent); stroke-width: 1.6; }
-  .map .pulse { fill: none; stroke: var(--accent); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; }
-  .js .map .arc, .js .map .arc-glow { stroke-dasharray: 1 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2s cubic-bezier(.6,.05,.25,1); }
-  .js .map .arc.short, .js .map .arc-glow.short { transition-delay: 1.9s; transition-duration: .9s; }
-  .js .map .fade { opacity: 0; transition: opacity .5s ease; }
-  .js .map.drawn .arc, .js .map.drawn .arc-glow { stroke-dashoffset: 0; }
-  .js .map.drawn .fade { opacity: 1; }
-  .js .map.drawn .fade.d1 { transition-delay: 0s; }
-  .js .map.drawn .fade.d2 { transition-delay: 1.6s; }
-  .js .map.drawn .fade.d3 { transition-delay: 2.6s; }
-  .js .map.drawn .pulse { animation: pulse 2.4s ease-out 3s infinite; }
-  @keyframes pulse { from { transform: scale(1); opacity: .9; } to { transform: scale(3.2); opacity: 0; } }
-  .lbl { position: absolute; left: var(--x); top: var(--y); transform: translate(0, -50%); text-shadow: 0 0 4px var(--ink), 0 0 10px var(--ink), 0 0 2px var(--ink); font-size: .95rem; line-height: 1.25; white-space: nowrap; color: var(--on-ink); }
-  .lbl b { display: block; font: 700 1.15rem/1.1 var(--display); letter-spacing: -.01em; }
-  .lbl b .n { color: var(--accent); margin-right: 6px; font-size: .8em; }
-  .lbl span { color: var(--on-ink-muted); font-size: .85rem; }
-  .lbl.left { transform: translate(-100%, -50%); text-align: right; }
-  .lbl.km { font: 600 .85rem/1 var(--sans); letter-spacing: .04em; color: var(--accent); background: var(--ink); padding: 6px 10px; border: 1px solid rgba(232,163,61,.45); border-radius: 999px; transform: translate(-50%, -50%); }
-  .lbl.cap { transform: translate(-50%, 0); text-align: center; font-size: .82rem; color: var(--on-ink-muted); background: var(--ink); padding: 4px 10px; border-radius: 999px; }
-  .lbl.cap .sm { display: none; }
-  .lbl.cap strong { color: var(--accent); font-weight: 600; }
-  .js .lbl { opacity: 0; transition: opacity .6s ease; }
-  .js .map.drawn .lbl { opacity: 1; }
-  .js .map.drawn .lbl.t1 { transition-delay: .2s; }
-  .js .map.drawn .lbl.t2 { transition-delay: 1.2s; }
-  .js .map.drawn .lbl.t3 { transition-delay: 2.4s; }
+  /* Journey intro: the city list is the route, map on the side */
+  .jhead { border-top: 1px solid var(--rule); }
+  .jhead > .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 64px); align-items: center; padding-top: 80px; padding-bottom: 56px; }
+  .jhead h2 { font: 700 1.25rem/1.2 var(--display); letter-spacing: -.01em; color: var(--muted); margin: 0 0 18px; text-wrap: balance; }
+  .route { display: grid; }
+  .stop { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: baseline; column-gap: 12px; row-gap: 4px; padding: 6px 0; color: var(--text); text-decoration: none; }
+  .stop .n { grid-column: 1; grid-row: 2; align-self: center; justify-self: center; width: 14px; height: 14px; border-radius: 50%; border: 2px solid #C9781A; background: var(--paper); }
+  .stop.now .n { background: #C9781A; box-shadow: 0 0 0 5px rgba(232, 163, 61, .22); }
+  .stop .k { grid-column: 2; grid-row: 1; font: 700 .9rem/1.2 var(--sans); letter-spacing: .1em; color: var(--accent-ink); }
+  .stop .c { grid-column: 2; grid-row: 2; font: 800 clamp(2.5rem, 4.6vw, 4rem)/1.02 var(--display); letter-spacing: -.04em; transition: color .25s, transform .3s cubic-bezier(.2,.7,.2,1); }
+  .stop .m { grid-column: 2; grid-row: 3; font-size: .95rem; line-height: 1.35; color: var(--muted); }
+  .stop .m b { color: var(--text); font-weight: 600; margin-right: 8px; }
+  .stop:hover .c, .stop:focus-visible .c { color: var(--accent-ink); transform: translateX(8px); }
+  .stop:focus-visible { outline-offset: 6px; }
+  .leg { margin-left: 21px; border-left: 2px dashed var(--accent); height: 34px; }
+  .leg .pill { display: inline-block; font: 600 .8rem/1 var(--sans); letter-spacing: .03em; color: var(--accent-ink); background: var(--accent-wash); padding: 5px 9px; border-radius: 999px; }
+  /* Passport page with ink stamps */
+  .passport { position: relative; aspect-ratio: 520 / 600; border: 1px solid var(--rule); border-radius: 6px 16px 16px 6px; overflow: hidden;
+    background-color: #FBF6EA;
+    background-image: radial-gradient(60% 50% at 70% 35%, rgba(232, 163, 61, .10), transparent 70%),
+                      repeating-radial-gradient(circle at 78% 62%, rgba(20, 22, 31, .04) 0 1px, transparent 1px 10px),
+                      repeating-linear-gradient(115deg, rgba(184, 101, 15, .035) 0 1px, transparent 1px 14px);
+    box-shadow: 0 30px 60px -34px rgba(20, 22, 31, .4); }
+  .passport::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 26px; background: linear-gradient(90deg, rgba(20, 22, 31, .12), transparent); pointer-events: none; }
+  .pp-head-unused { position: absolute; left: 40px; right: 22px; display: flex; justify-content: space-between; font: 600 .7rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+  .pp-head { top: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(20, 22, 31, .1); }
+  .stamp { position: absolute; left: var(--x); top: var(--y); width: var(--w); transform: rotate(var(--r)); opacity: 1; filter: drop-shadow(0 6px 10px rgba(20, 22, 31, .16)); text-decoration: none; transition: transform .3s ease, opacity .3s ease, filter .3s ease; }
+  .stamp svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .stamp text { font-family: var(--display); font-weight: 800; }
+  .stamp .pm { opacity: .62; }
+  .stamp text.s { font-family: var(--sans); font-weight: 700; }
+  .js .stamp { opacity: 0; transform: rotate(var(--r)) scale(1.5); }
+  .js .passport.stamped .stamp { opacity: 1; transform: rotate(var(--r)) scale(1); transition: transform .32s cubic-bezier(.3, 1.5, .5, 1) var(--d), opacity .12s linear var(--d); }
+  .js .passport.stamped .stamp.hot, .js .passport.stamped .stamp:hover { opacity: 1; transform: rotate(calc(var(--r) * .4)) scale(1.07); transition-delay: 0s; filter: drop-shadow(0 14px 18px rgba(20, 22, 31, .22)); }
+
+  /* Tabs: story view or everything of one kind */
+  .tabbar { position: sticky; top: calc(64px + env(safe-area-inset-top, 0px)); z-index: 15; background: rgba(246, 242, 234, .92); backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 12px 0; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { flex: none; display: inline-flex; align-items: center; gap: 8px; font: 600 .92rem/1 var(--sans); color: var(--muted); background: transparent; border: 1px solid var(--rule); border-radius: 999px; padding: 10px 16px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+  .tab:hover { color: var(--text); border-color: #CDBFA6; }
+  .tab .ct { font-size: .75rem; color: var(--accent-ink); background: var(--accent-wash); border-radius: 999px; padding: 3px 7px; }
+  .tab[aria-selected="true"] { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+  .tab[aria-selected="true"] .ct { background: var(--accent); color: var(--ink); }
+  .collection > .wrap { padding-top: 56px; padding-bottom: 72px; display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 48px; }
+  .c-head { position: sticky; top: 150px; align-self: start; }
+  .c-head h3 { font: 800 clamp(2rem, 3.6vw, 2.8rem)/1 var(--display); letter-spacing: -.03em; margin: 0 0 8px; }
+  .c-head p { color: var(--muted); margin: 0; }
+  .entry .city { display: inline-block; margin-left: 6px; font: 600 .72rem/1 var(--sans); letter-spacing: .06em; color: var(--muted); border: 1px solid var(--rule); border-radius: 4px; padding: 4px 7px; }
+  .js .collection .entry { animation: rise .35s ease both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
 
   /* Journey chapters */
   .chapter { border-top: 1px solid var(--rule); }
@@ -164,16 +180,26 @@
   .place .num { font: 700 .9rem/1 var(--sans); letter-spacing: .12em; color: var(--accent-ink); display: block; margin-bottom: 10px; }
   .place h3 { font: 800 clamp(2rem, 3.6vw, 2.8rem)/1 var(--display); letter-spacing: -.03em; margin: 0 0 8px; }
   .place .meta { color: var(--muted); margin: 0 0 16px; font-size: .98rem; }
-  .place .intro { margin: 0; font-size: 1.02rem; max-width: 30ch; }
+  .story { font-size: 1.22rem; line-height: 1.65; max-width: 60ch; margin: 0 0 36px; }
+  .story::first-line { font-family: var(--display); font-weight: 400; letter-spacing: -.005em; color: var(--text); }
+  .story { border-left: 2px solid var(--accent); padding-left: 22px; }
+  .facts { display: flex; align-items: center; gap: 12px; font: 600 .78rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 22px; }
+  .facts::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+  .intro-text { font-size: 1.1rem; margin: 0 0 24px; max-width: 58ch; }
   .entries { list-style: none; margin: 0; padding: 0; display: grid; gap: 30px; }
-  .entry { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 24px; align-items: start; }
+  .entry { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; column-gap: 18px; align-items: start; }
+  .badge { align-self: center; width: 52px; height: 52px; border-radius: 12px; background: var(--card); border: 1px solid var(--rule); display: grid; place-items: center; font: 700 .9rem/1 var(--display); letter-spacing: -.01em; color: var(--accent-ink); box-shadow: 0 6px 14px -10px rgba(20, 22, 31, .35); overflow: hidden; }
+  .badge[data-len="3"] { font-size: .78rem; } .badge[data-len="4"] { font-size: .66rem; }
+  .badge img { width: 84%; height: 76%; object-fit: contain; }
+  .badge.empty { background: transparent; border: 0; box-shadow: none; }
+  .badge.empty::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); opacity: .55; }
   .tag { display: inline-block; font: 600 .72rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); background: var(--accent-wash); padding: 5px 8px; border-radius: 4px; margin-bottom: 8px; }
   .entry h4 { font: 600 1.22rem/1.3 var(--display); letter-spacing: -.01em; margin: 0 0 2px; }
   .entry .org { color: var(--muted); font-size: .98rem; margin: 0; }
   .entry .desc { margin: 8px 0 0; max-width: 62ch; }
   .entry .note { margin: 6px 0 0; font-size: .95rem; color: var(--muted); }
   .entry .when { font-size: .9rem; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; padding-top: 4px; }
-  .entry.minor { grid-template-columns: 1fr; border-top: 1px dashed var(--rule); padding-top: 18px; }
+  .entry.minor { grid-template-columns: 1fr; margin-left: 70px; border-top: 1px dashed var(--rule); padding-top: 18px; }
   .entry.minor + .entry.minor { border-top: 0; padding-top: 0; }
   .entry.minor p { margin: 0; color: var(--muted); font-size: .98rem; }
   .entry.minor p b { color: var(--text); font-weight: 600; margin-right: 6px; }
@@ -206,7 +232,7 @@
 
   /* Contact */
   .contact { padding: clamp(72px, 9vw, 120px) 0; }
-  .contact .lead { font: 700 clamp(2rem, 4.6vw, 3.4rem)/1.08 var(--display); letter-spacing: -.03em; margin: 0 0 32px; max-width: 20ch; }
+  .contact .lead { font: 700 clamp(1.7rem, 3.4vw, 2.6rem)/1.15 var(--display); letter-spacing: -.025em; margin: 0 0 32px; max-width: 30ch; text-wrap: balance; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; }
   footer { border-top: 1px solid var(--ink-rule); padding: 28px 0 calc(36px + env(safe-area-inset-bottom, 0px)); color: var(--on-ink-muted); font-size: .9rem; }
 
@@ -215,35 +241,31 @@
     .hero .wrap { grid-template-columns: 1fr; }
     .portrait { order: -1; justify-self: start; max-width: 180px; }
     .section > .wrap, .chapter > .wrap { grid-template-columns: 1fr; gap: 28px; padding-top: 52px; padding-bottom: 52px; }
-    .section h2, .place { position: static; }
+    .section h2, .place, .c-head { position: static; }
+    .collection > .wrap { grid-template-columns: 1fr; gap: 24px; padding-top: 40px; }
     .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .jhead > .wrap { grid-template-columns: 1fr; padding-top: 52px; }
     .digital, .certs { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
-    .entry { grid-template-columns: minmax(0, 1fr); }
-    .entry .when { grid-row: 1; padding: 0 0 6px; }
-    .lbl { font-size: .78rem; }
-    .lbl b { font-size: .92rem; }
-    .lbl span { font-size: .72rem; }
-    .lbl.km { font-size: .72rem; padding: 4px 7px; }
-    .lbl.hide-sm { display: none; }
-    .lbl.cap { font-size: .72rem; }
-    .lbl.cap .lg { display: none; }
-    .lbl.cap .sm { display: inline; }
-    .lbl.cap { left: 0; top: calc(100% + 6px); transform: none; }
-    .mapband { padding-bottom: 72px; }
+    .stop { grid-template-columns: 32px minmax(0, 1fr); }
+    .leg { margin-left: 15px; }
+    .entry { grid-template-columns: 46px minmax(0, 1fr); column-gap: 14px; }
+    .badge { width: 46px; height: 46px; grid-row: 1 / span 2; }
+    .entry .when { grid-column: 2; grid-row: 1; padding: 0 0 6px; }
+    .entry > div { grid-column: 2; }
+    .entry.minor { margin-left: 60px; }
     .tile { padding: 16px 14px; }
     .tile .lvl { font-size: .85rem; }
-    .lbl.blr { left: var(--xs); top: var(--ys); transform: translate(-100%, 0); text-align: right; }
     .tile .hello { font-size: 1.35rem; }
     .tile .hello.kn, .tile .hello.te, .tile .hello.hi, .tile .hello.ta { font-size: 1.15rem; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .name .first .w, .map *, .lbl { transition: none !important; animation: none !important; }
+    .name .first .w, .stamp, .collection .entry { transition: none !important; animation: none !important; }
   }
   @media print {
-    .top, .lang, .replay, .mapband .map { display: none; }
+    .top, .lang, .scripts, .passport, .tabbar { display: none; }
     .dark { background: #fff; color: var(--text); }
     .name .w.lat, .name .rest, .lede { color: var(--text); }
     .section h2, .place { position: static; }
@@ -256,7 +278,7 @@
   <div class="wrap">
     <a class="mark" href="#">Dhanush Reddy<b>.</b></a>
     <nav class="nav" aria-label="Sections">
-      <a href="#journey" data-i18n="nav.journey">Werdegang</a>
+      <a href="#journey" data-i18n="nav.journey">Geschichte</a>
       <a href="#languages" data-i18n="nav.languages">Sprachen</a>
       <a href="#certificates" data-i18n="nav.certificates">Zertifikate</a>
       <a href="#contact" data-i18n="nav.contact">Kontakt</a>
@@ -273,7 +295,16 @@
   <section class="hero dark">
     <div class="wrap">
       <div>
-        <p class="eyebrow cycle-cap" aria-hidden="true"><span id="cycle-label">Sieben Sprachen, ein Name</span><button type="button" class="replay" id="replay" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button></p>
+        <div class="scripts" role="group" aria-label="Mein Name in fünf Schriften" data-i18n-aria="scripts.aria">
+          <div class="chips">
+            <button type="button" class="chip kn" data-i="0" lang="kn" aria-label="Kannada">ಧ</button>
+            <button type="button" class="chip te" data-i="1" lang="te" aria-label="Telugu">ధ</button>
+            <button type="button" class="chip hi" data-i="2" lang="hi" aria-label="Hindi">ध</button>
+            <button type="button" class="chip ta" data-i="3" lang="ta" aria-label="Tamil">த</button>
+            <button type="button" class="chip lat on" data-i="4" aria-label="Latin">D</button>
+          </div>
+          <span class="cap" id="cycle-label" aria-hidden="true"></span>
+        </div>
         <h1 class="name">
           <span class="sr-only">Dhanush Satish Reddy</span>
           <span class="first" aria-hidden="true">
@@ -283,13 +314,11 @@
             <span class="w ind ta" lang="ta">தனுஷ்</span>
             <span class="w lat on">Dhanush</span>
           </span>
-          <span class="rest" aria-hidden="true">Satish Reddy</span>
+          <span class="rest" aria-hidden="true">Satish <b>Reddy</b></span>
         </h1>
         <p class="lede" data-i18n="hero.lede">Student im Studiengang Engineering and Management an der Technischen Hochschule Ingolstadt.</p>
-        <p class="status" data-i18n="hero.status">Offen für Praktikumsstellen</p>
         <div class="hero-cta">
-          <a class="btn primary" href="Dhanush_Reddy_CV_GH.pdf" download="Dhanush_Satish_Reddy_Lebenslauf.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg><span data-i18n="hero.cv">Lebenslauf herunterladen (PDF)</span></a>
-          <a class="btn ghost" href="#contact" data-i18n="hero.contact">Kontakt aufnehmen</a>
+          <a class="btn primary" href="#contact" data-i18n="hero.contact">Kontakt aufnehmen</a>
         </div>
       </div>
       <figure class="portrait" style="margin-top:0;margin-left:0">
@@ -298,47 +327,257 @@
     </div>
   </section>
 
-  <!-- ============ PROFILE ============ -->
+  <!-- ============ PROLOGUE ============ -->
   <section class="section" id="profile" style="border-top:0">
     <div class="wrap">
-      <h2 data-i18n="h.profile">Profil</h2>
+      <h2 data-i18n="h.profile">Prolog</h2>
       <p class="prose" data-i18n="profile">…</p>
     </div>
   </section>
 
   <!-- ============ JOURNEY ============ -->
   <section id="journey">
-    <div class="mapband dark">
+    <div class="jhead">
       <div class="wrap">
-        <p class="eyebrow" data-i18n="nav.journey">Werdegang</p>
-        <h2 data-i18n-html="journey.title">Drei Stationen, <em>rund 7.400 km</em>.</h2>
-        <div class="map" id="map" role="img" aria-label="Karte: Bangalore (bis 2019), Kempten (2019–2025), Ingolstadt (seit 2025)" data-i18n-aria="map.aria">
-          <svg viewBox="0 0 780 540" aria-hidden="true" focusable="false">
-            <path class="land" d="M130.5 4.5h0M139.5 4.5h0M148.5 4.5h0M157.5 4.5h0M166.5 4.5h0M175.5 4.5h0M184.5 4.5h0M193.5 4.5h0M202.5 4.5h0M211.5 4.5h0M256.5 4.5h0M265.5 4.5h0M274.5 4.5h0M283.5 4.5h0M292.5 4.5h0M301.5 4.5h0M310.5 4.5h0M319.5 4.5h0M328.5 4.5h0M337.5 4.5h0M346.5 4.5h0M355.5 4.5h0M364.5 4.5h0M373.5 4.5h0M382.5 4.5h0M391.5 4.5h0M400.5 4.5h0M409.5 4.5h0M418.5 4.5h0M427.5 4.5h0M436.5 4.5h0M445.5 4.5h0M454.5 4.5h0M463.5 4.5h0M472.5 4.5h0M481.5 4.5h0M490.5 4.5h0M499.5 4.5h0M508.5 4.5h0M517.5 4.5h0M526.5 4.5h0M535.5 4.5h0M544.5 4.5h0M553.5 4.5h0M562.5 4.5h0M571.5 4.5h0M580.5 4.5h0M589.5 4.5h0M598.5 4.5h0M607.5 4.5h0M616.5 4.5h0M625.5 4.5h0M634.5 4.5h0M643.5 4.5h0M652.5 4.5h0M661.5 4.5h0M670.5 4.5h0M679.5 4.5h0M688.5 4.5h0M697.5 4.5h0M706.5 4.5h0M715.5 4.5h0M724.5 4.5h0M733.5 4.5h0M742.5 4.5h0M751.5 4.5h0M760.5 4.5h0M769.5 4.5h0M778.5 4.5h0M130.5 13.5h0M139.5 13.5h0M148.5 13.5h0M157.5 13.5h0M166.5 13.5h0M175.5 13.5h0M184.5 13.5h0M193.5 13.5h0M202.5 13.5h0M211.5 13.5h0M220.5 13.5h0M256.5 13.5h0M265.5 13.5h0M274.5 13.5h0M283.5 13.5h0M292.5 13.5h0M301.5 13.5h0M310.5 13.5h0M319.5 13.5h0M328.5 13.5h0M337.5 13.5h0M346.5 13.5h0M355.5 13.5h0M364.5 13.5h0M373.5 13.5h0M382.5 13.5h0M391.5 13.5h0M400.5 13.5h0M409.5 13.5h0M418.5 13.5h0M427.5 13.5h0M436.5 13.5h0M445.5 13.5h0M454.5 13.5h0M463.5 13.5h0M472.5 13.5h0M481.5 13.5h0M490.5 13.5h0M499.5 13.5h0M508.5 13.5h0M517.5 13.5h0M526.5 13.5h0M535.5 13.5h0M544.5 13.5h0M553.5 13.5h0M562.5 13.5h0M571.5 13.5h0M580.5 13.5h0M589.5 13.5h0M598.5 13.5h0M607.5 13.5h0M616.5 13.5h0M625.5 13.5h0M634.5 13.5h0M643.5 13.5h0M652.5 13.5h0M661.5 13.5h0M670.5 13.5h0M679.5 13.5h0M688.5 13.5h0M697.5 13.5h0M706.5 13.5h0M715.5 13.5h0M724.5 13.5h0M733.5 13.5h0M742.5 13.5h0M751.5 13.5h0M760.5 13.5h0M769.5 13.5h0M778.5 13.5h0M130.5 22.5h0M139.5 22.5h0M148.5 22.5h0M157.5 22.5h0M166.5 22.5h0M175.5 22.5h0M184.5 22.5h0M193.5 22.5h0M202.5 22.5h0M211.5 22.5h0M220.5 22.5h0M283.5 22.5h0M301.5 22.5h0M310.5 22.5h0M319.5 22.5h0M328.5 22.5h0M337.5 22.5h0M346.5 22.5h0M355.5 22.5h0M364.5 22.5h0M373.5 22.5h0M382.5 22.5h0M391.5 22.5h0M400.5 22.5h0M409.5 22.5h0M418.5 22.5h0M427.5 22.5h0M436.5 22.5h0M445.5 22.5h0M454.5 22.5h0M463.5 22.5h0M472.5 22.5h0M481.5 22.5h0M490.5 22.5h0M499.5 22.5h0M508.5 22.5h0M517.5 22.5h0M526.5 22.5h0M535.5 22.5h0M544.5 22.5h0M553.5 22.5h0M562.5 22.5h0M571.5 22.5h0M580.5 22.5h0M589.5 22.5h0M598.5 22.5h0M607.5 22.5h0M616.5 22.5h0M625.5 22.5h0M634.5 22.5h0M643.5 22.5h0M652.5 22.5h0M661.5 22.5h0M670.5 22.5h0M679.5 22.5h0M688.5 22.5h0M697.5 22.5h0M706.5 22.5h0M715.5 22.5h0M724.5 22.5h0M733.5 22.5h0M742.5 22.5h0M751.5 22.5h0M760.5 22.5h0M769.5 22.5h0M778.5 22.5h0M58.5 31.5h0M139.5 31.5h0M148.5 31.5h0M175.5 31.5h0M184.5 31.5h0M193.5 31.5h0M202.5 31.5h0M211.5 31.5h0M274.5 31.5h0M283.5 31.5h0M292.5 31.5h0M301.5 31.5h0M310.5 31.5h0M319.5 31.5h0M328.5 31.5h0M337.5 31.5h0M346.5 31.5h0M355.5 31.5h0M364.5 31.5h0M373.5 31.5h0M382.5 31.5h0M391.5 31.5h0M400.5 31.5h0M409.5 31.5h0M418.5 31.5h0M427.5 31.5h0M436.5 31.5h0M445.5 31.5h0M454.5 31.5h0M463.5 31.5h0M472.5 31.5h0M481.5 31.5h0M490.5 31.5h0M499.5 31.5h0M508.5 31.5h0M517.5 31.5h0M526.5 31.5h0M535.5 31.5h0M544.5 31.5h0M553.5 31.5h0M562.5 31.5h0M571.5 31.5h0M580.5 31.5h0M589.5 31.5h0M598.5 31.5h0M607.5 31.5h0M616.5 31.5h0M625.5 31.5h0M634.5 31.5h0M643.5 31.5h0M652.5 31.5h0M661.5 31.5h0M670.5 31.5h0M679.5 31.5h0M688.5 31.5h0M697.5 31.5h0M706.5 31.5h0M715.5 31.5h0M724.5 31.5h0M733.5 31.5h0M742.5 31.5h0M751.5 31.5h0M760.5 31.5h0M769.5 31.5h0M778.5 31.5h0M49.5 40.5h0M58.5 40.5h0M67.5 40.5h0M166.5 40.5h0M184.5 40.5h0M193.5 40.5h0M202.5 40.5h0M211.5 40.5h0M256.5 40.5h0M274.5 40.5h0M283.5 40.5h0M292.5 40.5h0M301.5 40.5h0M310.5 40.5h0M319.5 40.5h0M328.5 40.5h0M337.5 40.5h0M346.5 40.5h0M355.5 40.5h0M364.5 40.5h0M373.5 40.5h0M382.5 40.5h0M391.5 40.5h0M400.5 40.5h0M409.5 40.5h0M418.5 40.5h0M427.5 40.5h0M436.5 40.5h0M445.5 40.5h0M454.5 40.5h0M463.5 40.5h0M472.5 40.5h0M481.5 40.5h0M490.5 40.5h0M499.5 40.5h0M508.5 40.5h0M517.5 40.5h0M526.5 40.5h0M535.5 40.5h0M544.5 40.5h0M553.5 40.5h0M562.5 40.5h0M571.5 40.5h0M580.5 40.5h0M589.5 40.5h0M598.5 40.5h0M607.5 40.5h0M616.5 40.5h0M625.5 40.5h0M634.5 40.5h0M643.5 40.5h0M652.5 40.5h0M661.5 40.5h0M670.5 40.5h0M679.5 40.5h0M688.5 40.5h0M697.5 40.5h0M706.5 40.5h0M715.5 40.5h0M724.5 40.5h0M733.5 40.5h0M742.5 40.5h0M751.5 40.5h0M760.5 40.5h0M769.5 40.5h0M778.5 40.5h0M49.5 49.5h0M58.5 49.5h0M67.5 49.5h0M157.5 49.5h0M166.5 49.5h0M184.5 49.5h0M193.5 49.5h0M202.5 49.5h0M256.5 49.5h0M265.5 49.5h0M274.5 49.5h0M283.5 49.5h0M292.5 49.5h0M301.5 49.5h0M310.5 49.5h0M319.5 49.5h0M328.5 49.5h0M337.5 49.5h0M346.5 49.5h0M355.5 49.5h0M364.5 49.5h0M373.5 49.5h0M382.5 49.5h0M391.5 49.5h0M400.5 49.5h0M409.5 49.5h0M418.5 49.5h0M427.5 49.5h0M436.5 49.5h0M445.5 49.5h0M454.5 49.5h0M463.5 49.5h0M472.5 49.5h0M481.5 49.5h0M490.5 49.5h0M499.5 49.5h0M508.5 49.5h0M517.5 49.5h0M526.5 49.5h0M535.5 49.5h0M544.5 49.5h0M553.5 49.5h0M562.5 49.5h0M571.5 49.5h0M580.5 49.5h0M589.5 49.5h0M598.5 49.5h0M607.5 49.5h0M616.5 49.5h0M625.5 49.5h0M634.5 49.5h0M643.5 49.5h0M652.5 49.5h0M661.5 49.5h0M670.5 49.5h0M679.5 49.5h0M688.5 49.5h0M697.5 49.5h0M706.5 49.5h0M715.5 49.5h0M724.5 49.5h0M733.5 49.5h0M742.5 49.5h0M751.5 49.5h0M760.5 49.5h0M769.5 49.5h0M778.5 49.5h0M49.5 58.5h0M58.5 58.5h0M67.5 58.5h0M76.5 58.5h0M157.5 58.5h0M175.5 58.5h0M184.5 58.5h0M193.5 58.5h0M256.5 58.5h0M265.5 58.5h0M274.5 58.5h0M283.5 58.5h0M292.5 58.5h0M301.5 58.5h0M310.5 58.5h0M319.5 58.5h0M328.5 58.5h0M337.5 58.5h0M346.5 58.5h0M355.5 58.5h0M364.5 58.5h0M373.5 58.5h0M382.5 58.5h0M391.5 58.5h0M400.5 58.5h0M409.5 58.5h0M418.5 58.5h0M427.5 58.5h0M436.5 58.5h0M445.5 58.5h0M454.5 58.5h0M463.5 58.5h0M472.5 58.5h0M481.5 58.5h0M490.5 58.5h0M499.5 58.5h0M508.5 58.5h0M517.5 58.5h0M526.5 58.5h0M535.5 58.5h0M544.5 58.5h0M553.5 58.5h0M562.5 58.5h0M571.5 58.5h0M580.5 58.5h0M589.5 58.5h0M598.5 58.5h0M607.5 58.5h0M616.5 58.5h0M625.5 58.5h0M634.5 58.5h0M643.5 58.5h0M652.5 58.5h0M661.5 58.5h0M670.5 58.5h0M679.5 58.5h0M688.5 58.5h0M697.5 58.5h0M706.5 58.5h0M715.5 58.5h0M724.5 58.5h0M733.5 58.5h0M742.5 58.5h0M751.5 58.5h0M760.5 58.5h0M769.5 58.5h0M778.5 58.5h0M31.5 67.5h0M40.5 67.5h0M67.5 67.5h0M76.5 67.5h0M85.5 67.5h0M157.5 67.5h0M166.5 67.5h0M220.5 67.5h0M229.5 67.5h0M238.5 67.5h0M247.5 67.5h0M256.5 67.5h0M265.5 67.5h0M274.5 67.5h0M283.5 67.5h0M292.5 67.5h0M301.5 67.5h0M310.5 67.5h0M319.5 67.5h0M328.5 67.5h0M337.5 67.5h0M346.5 67.5h0M355.5 67.5h0M364.5 67.5h0M373.5 67.5h0M382.5 67.5h0M391.5 67.5h0M400.5 67.5h0M409.5 67.5h0M418.5 67.5h0M427.5 67.5h0M436.5 67.5h0M445.5 67.5h0M454.5 67.5h0M463.5 67.5h0M472.5 67.5h0M481.5 67.5h0M490.5 67.5h0M499.5 67.5h0M508.5 67.5h0M517.5 67.5h0M526.5 67.5h0M535.5 67.5h0M544.5 67.5h0M553.5 67.5h0M562.5 67.5h0M571.5 67.5h0M580.5 67.5h0M589.5 67.5h0M598.5 67.5h0M607.5 67.5h0M616.5 67.5h0M625.5 67.5h0M634.5 67.5h0M643.5 67.5h0M652.5 67.5h0M661.5 67.5h0M670.5 67.5h0M679.5 67.5h0M688.5 67.5h0M697.5 67.5h0M706.5 67.5h0M715.5 67.5h0M724.5 67.5h0M733.5 67.5h0M742.5 67.5h0M751.5 67.5h0M760.5 67.5h0M769.5 67.5h0M778.5 67.5h0M22.5 76.5h0M31.5 76.5h0M40.5 76.5h0M67.5 76.5h0M76.5 76.5h0M85.5 76.5h0M148.5 76.5h0M157.5 76.5h0M166.5 76.5h0M175.5 76.5h0M184.5 76.5h0M193.5 76.5h0M202.5 76.5h0M211.5 76.5h0M220.5 76.5h0M229.5 76.5h0M238.5 76.5h0M247.5 76.5h0M256.5 76.5h0M265.5 76.5h0M274.5 76.5h0M283.5 76.5h0M292.5 76.5h0M301.5 76.5h0M310.5 76.5h0M319.5 76.5h0M328.5 76.5h0M337.5 76.5h0M346.5 76.5h0M355.5 76.5h0M364.5 76.5h0M373.5 76.5h0M382.5 76.5h0M391.5 76.5h0M400.5 76.5h0M409.5 76.5h0M418.5 76.5h0M427.5 76.5h0M436.5 76.5h0M445.5 76.5h0M454.5 76.5h0M463.5 76.5h0M472.5 76.5h0M481.5 76.5h0M490.5 76.5h0M499.5 76.5h0M508.5 76.5h0M517.5 76.5h0M526.5 76.5h0M535.5 76.5h0M544.5 76.5h0M553.5 76.5h0M562.5 76.5h0M571.5 76.5h0M580.5 76.5h0M589.5 76.5h0M598.5 76.5h0M607.5 76.5h0M616.5 76.5h0M625.5 76.5h0M634.5 76.5h0M643.5 76.5h0M652.5 76.5h0M661.5 76.5h0M670.5 76.5h0M679.5 76.5h0M688.5 76.5h0M697.5 76.5h0M706.5 76.5h0M715.5 76.5h0M724.5 76.5h0M733.5 76.5h0M742.5 76.5h0M751.5 76.5h0M760.5 76.5h0M769.5 76.5h0M778.5 76.5h0M22.5 85.5h0M31.5 85.5h0M40.5 85.5h0M58.5 85.5h0M67.5 85.5h0M76.5 85.5h0M85.5 85.5h0M94.5 85.5h0M130.5 85.5h0M139.5 85.5h0M148.5 85.5h0M157.5 85.5h0M166.5 85.5h0M175.5 85.5h0M184.5 85.5h0M193.5 85.5h0M202.5 85.5h0M211.5 85.5h0M220.5 85.5h0M229.5 85.5h0M238.5 85.5h0M247.5 85.5h0M256.5 85.5h0M265.5 85.5h0M274.5 85.5h0M283.5 85.5h0M292.5 85.5h0M301.5 85.5h0M310.5 85.5h0M319.5 85.5h0M328.5 85.5h0M337.5 85.5h0M346.5 85.5h0M355.5 85.5h0M364.5 85.5h0M373.5 85.5h0M382.5 85.5h0M391.5 85.5h0M400.5 85.5h0M409.5 85.5h0M418.5 85.5h0M427.5 85.5h0M436.5 85.5h0M445.5 85.5h0M454.5 85.5h0M463.5 85.5h0M472.5 85.5h0M481.5 85.5h0M490.5 85.5h0M499.5 85.5h0M508.5 85.5h0M517.5 85.5h0M526.5 85.5h0M535.5 85.5h0M544.5 85.5h0M553.5 85.5h0M562.5 85.5h0M571.5 85.5h0M580.5 85.5h0M589.5 85.5h0M598.5 85.5h0M607.5 85.5h0M616.5 85.5h0M625.5 85.5h0M634.5 85.5h0M643.5 85.5h0M652.5 85.5h0M661.5 85.5h0M670.5 85.5h0M679.5 85.5h0M688.5 85.5h0M697.5 85.5h0M706.5 85.5h0M715.5 85.5h0M724.5 85.5h0M733.5 85.5h0M742.5 85.5h0M751.5 85.5h0M760.5 85.5h0M769.5 85.5h0M778.5 85.5h0M67.5 94.5h0M76.5 94.5h0M85.5 94.5h0M94.5 94.5h0M121.5 94.5h0M130.5 94.5h0M139.5 94.5h0M148.5 94.5h0M157.5 94.5h0M166.5 94.5h0M175.5 94.5h0M184.5 94.5h0M193.5 94.5h0M202.5 94.5h0M211.5 94.5h0M220.5 94.5h0M229.5 94.5h0M238.5 94.5h0M247.5 94.5h0M256.5 94.5h0M265.5 94.5h0M274.5 94.5h0M283.5 94.5h0M292.5 94.5h0M301.5 94.5h0M310.5 94.5h0M319.5 94.5h0M328.5 94.5h0M337.5 94.5h0M346.5 94.5h0M355.5 94.5h0M364.5 94.5h0M373.5 94.5h0M382.5 94.5h0M391.5 94.5h0M400.5 94.5h0M409.5 94.5h0M418.5 94.5h0M427.5 94.5h0M436.5 94.5h0M445.5 94.5h0M454.5 94.5h0M463.5 94.5h0M472.5 94.5h0M481.5 94.5h0M490.5 94.5h0M499.5 94.5h0M508.5 94.5h0M517.5 94.5h0M526.5 94.5h0M535.5 94.5h0M544.5 94.5h0M553.5 94.5h0M562.5 94.5h0M571.5 94.5h0M580.5 94.5h0M589.5 94.5h0M598.5 94.5h0M607.5 94.5h0M616.5 94.5h0M625.5 94.5h0M634.5 94.5h0M643.5 94.5h0M652.5 94.5h0M661.5 94.5h0M670.5 94.5h0M679.5 94.5h0M688.5 94.5h0M697.5 94.5h0M706.5 94.5h0M715.5 94.5h0M724.5 94.5h0M733.5 94.5h0M742.5 94.5h0M751.5 94.5h0M760.5 94.5h0M769.5 94.5h0M778.5 94.5h0M58.5 103.5h0M103.5 103.5h0M112.5 103.5h0M121.5 103.5h0M130.5 103.5h0M139.5 103.5h0M148.5 103.5h0M157.5 103.5h0M166.5 103.5h0M175.5 103.5h0M184.5 103.5h0M193.5 103.5h0M202.5 103.5h0M211.5 103.5h0M220.5 103.5h0M229.5 103.5h0M238.5 103.5h0M247.5 103.5h0M256.5 103.5h0M265.5 103.5h0M274.5 103.5h0M283.5 103.5h0M292.5 103.5h0M301.5 103.5h0M310.5 103.5h0M319.5 103.5h0M328.5 103.5h0M337.5 103.5h0M346.5 103.5h0M355.5 103.5h0M364.5 103.5h0M373.5 103.5h0M382.5 103.5h0M391.5 103.5h0M400.5 103.5h0M409.5 103.5h0M418.5 103.5h0M427.5 103.5h0M436.5 103.5h0M445.5 103.5h0M454.5 103.5h0M463.5 103.5h0M472.5 103.5h0M481.5 103.5h0M490.5 103.5h0M499.5 103.5h0M508.5 103.5h0M517.5 103.5h0M526.5 103.5h0M535.5 103.5h0M544.5 103.5h0M553.5 103.5h0M562.5 103.5h0M571.5 103.5h0M580.5 103.5h0M589.5 103.5h0M598.5 103.5h0M607.5 103.5h0M616.5 103.5h0M625.5 103.5h0M634.5 103.5h0M643.5 103.5h0M652.5 103.5h0M661.5 103.5h0M670.5 103.5h0M679.5 103.5h0M688.5 103.5h0M697.5 103.5h0M706.5 103.5h0M715.5 103.5h0M724.5 103.5h0M733.5 103.5h0M742.5 103.5h0M751.5 103.5h0M760.5 103.5h0M769.5 103.5h0M778.5 103.5h0M76.5 112.5h0M94.5 112.5h0M103.5 112.5h0M112.5 112.5h0M121.5 112.5h0M130.5 112.5h0M139.5 112.5h0M148.5 112.5h0M157.5 112.5h0M166.5 112.5h0M175.5 112.5h0M184.5 112.5h0M193.5 112.5h0M202.5 112.5h0M211.5 112.5h0M220.5 112.5h0M229.5 112.5h0M238.5 112.5h0M247.5 112.5h0M256.5 112.5h0M265.5 112.5h0M274.5 112.5h0M283.5 112.5h0M292.5 112.5h0M301.5 112.5h0M310.5 112.5h0M319.5 112.5h0M328.5 112.5h0M337.5 112.5h0M346.5 112.5h0M355.5 112.5h0M364.5 112.5h0M373.5 112.5h0M382.5 112.5h0M391.5 112.5h0M400.5 112.5h0M409.5 112.5h0M418.5 112.5h0M427.5 112.5h0M436.5 112.5h0M445.5 112.5h0M454.5 112.5h0M463.5 112.5h0M472.5 112.5h0M481.5 112.5h0M490.5 112.5h0M499.5 112.5h0M508.5 112.5h0M517.5 112.5h0M526.5 112.5h0M535.5 112.5h0M544.5 112.5h0M553.5 112.5h0M562.5 112.5h0M571.5 112.5h0M580.5 112.5h0M589.5 112.5h0M598.5 112.5h0M607.5 112.5h0M616.5 112.5h0M625.5 112.5h0M634.5 112.5h0M643.5 112.5h0M652.5 112.5h0M661.5 112.5h0M670.5 112.5h0M679.5 112.5h0M688.5 112.5h0M697.5 112.5h0M706.5 112.5h0M715.5 112.5h0M724.5 112.5h0M733.5 112.5h0M742.5 112.5h0M751.5 112.5h0M760.5 112.5h0M769.5 112.5h0M778.5 112.5h0M58.5 121.5h0M67.5 121.5h0M76.5 121.5h0M85.5 121.5h0M94.5 121.5h0M103.5 121.5h0M112.5 121.5h0M121.5 121.5h0M130.5 121.5h0M139.5 121.5h0M148.5 121.5h0M157.5 121.5h0M166.5 121.5h0M175.5 121.5h0M184.5 121.5h0M193.5 121.5h0M202.5 121.5h0M211.5 121.5h0M220.5 121.5h0M229.5 121.5h0M238.5 121.5h0M247.5 121.5h0M256.5 121.5h0M265.5 121.5h0M274.5 121.5h0M283.5 121.5h0M292.5 121.5h0M301.5 121.5h0M310.5 121.5h0M319.5 121.5h0M328.5 121.5h0M337.5 121.5h0M346.5 121.5h0M355.5 121.5h0M364.5 121.5h0M373.5 121.5h0M382.5 121.5h0M391.5 121.5h0M400.5 121.5h0M409.5 121.5h0M418.5 121.5h0M427.5 121.5h0M436.5 121.5h0M445.5 121.5h0M454.5 121.5h0M463.5 121.5h0M472.5 121.5h0M481.5 121.5h0M490.5 121.5h0M499.5 121.5h0M508.5 121.5h0M517.5 121.5h0M526.5 121.5h0M535.5 121.5h0M544.5 121.5h0M553.5 121.5h0M562.5 121.5h0M571.5 121.5h0M580.5 121.5h0M589.5 121.5h0M598.5 121.5h0M607.5 121.5h0M616.5 121.5h0M625.5 121.5h0M634.5 121.5h0M643.5 121.5h0M652.5 121.5h0M661.5 121.5h0M670.5 121.5h0M679.5 121.5h0M688.5 121.5h0M697.5 121.5h0M706.5 121.5h0M715.5 121.5h0M724.5 121.5h0M733.5 121.5h0M742.5 121.5h0M751.5 121.5h0M760.5 121.5h0M769.5 121.5h0M778.5 121.5h0M76.5 130.5h0M85.5 130.5h0M94.5 130.5h0M103.5 130.5h0M112.5 130.5h0M121.5 130.5h0M130.5 130.5h0M139.5 130.5h0M148.5 130.5h0M157.5 130.5h0M166.5 130.5h0M175.5 130.5h0M184.5 130.5h0M193.5 130.5h0M202.5 130.5h0M211.5 130.5h0M220.5 130.5h0M229.5 130.5h0M238.5 130.5h0M247.5 130.5h0M256.5 130.5h0M265.5 130.5h0M274.5 130.5h0M283.5 130.5h0M292.5 130.5h0M301.5 130.5h0M310.5 130.5h0M319.5 130.5h0M328.5 130.5h0M337.5 130.5h0M346.5 130.5h0M355.5 130.5h0M364.5 130.5h0M373.5 130.5h0M382.5 130.5h0M391.5 130.5h0M400.5 130.5h0M409.5 130.5h0M418.5 130.5h0M427.5 130.5h0M436.5 130.5h0M445.5 130.5h0M454.5 130.5h0M463.5 130.5h0M472.5 130.5h0M481.5 130.5h0M490.5 130.5h0M499.5 130.5h0M508.5 130.5h0M517.5 130.5h0M526.5 130.5h0M535.5 130.5h0M544.5 130.5h0M553.5 130.5h0M562.5 130.5h0M571.5 130.5h0M580.5 130.5h0M589.5 130.5h0M598.5 130.5h0M607.5 130.5h0M616.5 130.5h0M625.5 130.5h0M634.5 130.5h0M643.5 130.5h0M652.5 130.5h0M661.5 130.5h0M670.5 130.5h0M679.5 130.5h0M688.5 130.5h0M697.5 130.5h0M706.5 130.5h0M715.5 130.5h0M724.5 130.5h0M733.5 130.5h0M742.5 130.5h0M751.5 130.5h0M760.5 130.5h0M769.5 130.5h0M778.5 130.5h0M85.5 139.5h0M94.5 139.5h0M103.5 139.5h0M112.5 139.5h0M121.5 139.5h0M130.5 139.5h0M139.5 139.5h0M148.5 139.5h0M157.5 139.5h0M166.5 139.5h0M175.5 139.5h0M184.5 139.5h0M193.5 139.5h0M202.5 139.5h0M211.5 139.5h0M220.5 139.5h0M229.5 139.5h0M238.5 139.5h0M247.5 139.5h0M256.5 139.5h0M265.5 139.5h0M274.5 139.5h0M283.5 139.5h0M292.5 139.5h0M301.5 139.5h0M310.5 139.5h0M319.5 139.5h0M328.5 139.5h0M337.5 139.5h0M346.5 139.5h0M355.5 139.5h0M382.5 139.5h0M391.5 139.5h0M400.5 139.5h0M409.5 139.5h0M418.5 139.5h0M427.5 139.5h0M436.5 139.5h0M445.5 139.5h0M454.5 139.5h0M490.5 139.5h0M499.5 139.5h0M508.5 139.5h0M517.5 139.5h0M526.5 139.5h0M535.5 139.5h0M544.5 139.5h0M553.5 139.5h0M562.5 139.5h0M571.5 139.5h0M580.5 139.5h0M589.5 139.5h0M598.5 139.5h0M607.5 139.5h0M616.5 139.5h0M625.5 139.5h0M634.5 139.5h0M643.5 139.5h0M652.5 139.5h0M661.5 139.5h0M670.5 139.5h0M679.5 139.5h0M688.5 139.5h0M697.5 139.5h0M706.5 139.5h0M715.5 139.5h0M724.5 139.5h0M733.5 139.5h0M742.5 139.5h0M751.5 139.5h0M760.5 139.5h0M769.5 139.5h0M778.5 139.5h0M85.5 148.5h0M94.5 148.5h0M103.5 148.5h0M112.5 148.5h0M121.5 148.5h0M130.5 148.5h0M139.5 148.5h0M148.5 148.5h0M157.5 148.5h0M166.5 148.5h0M175.5 148.5h0M193.5 148.5h0M202.5 148.5h0M211.5 148.5h0M220.5 148.5h0M229.5 148.5h0M238.5 148.5h0M247.5 148.5h0M256.5 148.5h0M265.5 148.5h0M274.5 148.5h0M283.5 148.5h0M292.5 148.5h0M301.5 148.5h0M310.5 148.5h0M337.5 148.5h0M346.5 148.5h0M373.5 148.5h0M382.5 148.5h0M391.5 148.5h0M400.5 148.5h0M409.5 148.5h0M418.5 148.5h0M427.5 148.5h0M436.5 148.5h0M445.5 148.5h0M490.5 148.5h0M499.5 148.5h0M508.5 148.5h0M517.5 148.5h0M526.5 148.5h0M535.5 148.5h0M544.5 148.5h0M553.5 148.5h0M562.5 148.5h0M571.5 148.5h0M580.5 148.5h0M589.5 148.5h0M598.5 148.5h0M607.5 148.5h0M616.5 148.5h0M625.5 148.5h0M634.5 148.5h0M643.5 148.5h0M652.5 148.5h0M661.5 148.5h0M670.5 148.5h0M679.5 148.5h0M688.5 148.5h0M697.5 148.5h0M706.5 148.5h0M715.5 148.5h0M724.5 148.5h0M733.5 148.5h0M742.5 148.5h0M751.5 148.5h0M760.5 148.5h0M769.5 148.5h0M778.5 148.5h0M85.5 157.5h0M94.5 157.5h0M103.5 157.5h0M112.5 157.5h0M121.5 157.5h0M130.5 157.5h0M139.5 157.5h0M148.5 157.5h0M157.5 157.5h0M166.5 157.5h0M175.5 157.5h0M211.5 157.5h0M220.5 157.5h0M229.5 157.5h0M238.5 157.5h0M247.5 157.5h0M256.5 157.5h0M265.5 157.5h0M274.5 157.5h0M283.5 157.5h0M292.5 157.5h0M301.5 157.5h0M346.5 157.5h0M382.5 157.5h0M391.5 157.5h0M400.5 157.5h0M409.5 157.5h0M418.5 157.5h0M427.5 157.5h0M436.5 157.5h0M472.5 157.5h0M481.5 157.5h0M490.5 157.5h0M499.5 157.5h0M508.5 157.5h0M517.5 157.5h0M526.5 157.5h0M535.5 157.5h0M544.5 157.5h0M553.5 157.5h0M562.5 157.5h0M571.5 157.5h0M580.5 157.5h0M589.5 157.5h0M598.5 157.5h0M607.5 157.5h0M616.5 157.5h0M625.5 157.5h0M634.5 157.5h0M643.5 157.5h0M652.5 157.5h0M661.5 157.5h0M670.5 157.5h0M679.5 157.5h0M688.5 157.5h0M697.5 157.5h0M706.5 157.5h0M715.5 157.5h0M724.5 157.5h0M733.5 157.5h0M742.5 157.5h0M751.5 157.5h0M760.5 157.5h0M769.5 157.5h0M778.5 157.5h0M31.5 166.5h0M40.5 166.5h0M49.5 166.5h0M76.5 166.5h0M85.5 166.5h0M94.5 166.5h0M103.5 166.5h0M112.5 166.5h0M121.5 166.5h0M130.5 166.5h0M139.5 166.5h0M175.5 166.5h0M184.5 166.5h0M211.5 166.5h0M220.5 166.5h0M229.5 166.5h0M238.5 166.5h0M247.5 166.5h0M256.5 166.5h0M265.5 166.5h0M274.5 166.5h0M283.5 166.5h0M292.5 166.5h0M301.5 166.5h0M391.5 166.5h0M400.5 166.5h0M409.5 166.5h0M418.5 166.5h0M427.5 166.5h0M436.5 166.5h0M445.5 166.5h0M481.5 166.5h0M490.5 166.5h0M499.5 166.5h0M508.5 166.5h0M517.5 166.5h0M526.5 166.5h0M535.5 166.5h0M544.5 166.5h0M553.5 166.5h0M562.5 166.5h0M571.5 166.5h0M580.5 166.5h0M589.5 166.5h0M598.5 166.5h0M607.5 166.5h0M616.5 166.5h0M625.5 166.5h0M634.5 166.5h0M643.5 166.5h0M652.5 166.5h0M661.5 166.5h0M670.5 166.5h0M679.5 166.5h0M688.5 166.5h0M697.5 166.5h0M706.5 166.5h0M715.5 166.5h0M724.5 166.5h0M733.5 166.5h0M742.5 166.5h0M751.5 166.5h0M760.5 166.5h0M769.5 166.5h0M778.5 166.5h0M31.5 175.5h0M40.5 175.5h0M49.5 175.5h0M58.5 175.5h0M67.5 175.5h0M76.5 175.5h0M85.5 175.5h0M94.5 175.5h0M103.5 175.5h0M157.5 175.5h0M175.5 175.5h0M184.5 175.5h0M193.5 175.5h0M229.5 175.5h0M238.5 175.5h0M247.5 175.5h0M256.5 175.5h0M265.5 175.5h0M274.5 175.5h0M283.5 175.5h0M292.5 175.5h0M409.5 175.5h0M418.5 175.5h0M427.5 175.5h0M436.5 175.5h0M445.5 175.5h0M490.5 175.5h0M499.5 175.5h0M508.5 175.5h0M517.5 175.5h0M526.5 175.5h0M535.5 175.5h0M544.5 175.5h0M553.5 175.5h0M562.5 175.5h0M571.5 175.5h0M580.5 175.5h0M589.5 175.5h0M598.5 175.5h0M607.5 175.5h0M616.5 175.5h0M625.5 175.5h0M634.5 175.5h0M643.5 175.5h0M652.5 175.5h0M661.5 175.5h0M670.5 175.5h0M679.5 175.5h0M688.5 175.5h0M697.5 175.5h0M706.5 175.5h0M715.5 175.5h0M724.5 175.5h0M733.5 175.5h0M742.5 175.5h0M751.5 175.5h0M760.5 175.5h0M769.5 175.5h0M778.5 175.5h0M31.5 184.5h0M40.5 184.5h0M49.5 184.5h0M58.5 184.5h0M67.5 184.5h0M76.5 184.5h0M85.5 184.5h0M94.5 184.5h0M103.5 184.5h0M157.5 184.5h0M184.5 184.5h0M193.5 184.5h0M202.5 184.5h0M238.5 184.5h0M247.5 184.5h0M256.5 184.5h0M265.5 184.5h0M274.5 184.5h0M283.5 184.5h0M292.5 184.5h0M301.5 184.5h0M337.5 184.5h0M346.5 184.5h0M355.5 184.5h0M409.5 184.5h0M418.5 184.5h0M427.5 184.5h0M436.5 184.5h0M445.5 184.5h0M454.5 184.5h0M499.5 184.5h0M508.5 184.5h0M517.5 184.5h0M526.5 184.5h0M535.5 184.5h0M544.5 184.5h0M553.5 184.5h0M562.5 184.5h0M571.5 184.5h0M580.5 184.5h0M589.5 184.5h0M598.5 184.5h0M607.5 184.5h0M616.5 184.5h0M625.5 184.5h0M634.5 184.5h0M643.5 184.5h0M652.5 184.5h0M661.5 184.5h0M670.5 184.5h0M679.5 184.5h0M688.5 184.5h0M697.5 184.5h0M706.5 184.5h0M715.5 184.5h0M724.5 184.5h0M733.5 184.5h0M742.5 184.5h0M751.5 184.5h0M760.5 184.5h0M769.5 184.5h0M778.5 184.5h0M31.5 193.5h0M40.5 193.5h0M49.5 193.5h0M58.5 193.5h0M67.5 193.5h0M76.5 193.5h0M85.5 193.5h0M157.5 193.5h0M202.5 193.5h0M211.5 193.5h0M220.5 193.5h0M238.5 193.5h0M247.5 193.5h0M256.5 193.5h0M265.5 193.5h0M310.5 193.5h0M319.5 193.5h0M328.5 193.5h0M337.5 193.5h0M346.5 193.5h0M355.5 193.5h0M364.5 193.5h0M373.5 193.5h0M382.5 193.5h0M391.5 193.5h0M400.5 193.5h0M409.5 193.5h0M418.5 193.5h0M427.5 193.5h0M436.5 193.5h0M445.5 193.5h0M454.5 193.5h0M463.5 193.5h0M490.5 193.5h0M499.5 193.5h0M508.5 193.5h0M517.5 193.5h0M526.5 193.5h0M535.5 193.5h0M544.5 193.5h0M553.5 193.5h0M562.5 193.5h0M571.5 193.5h0M580.5 193.5h0M589.5 193.5h0M598.5 193.5h0M607.5 193.5h0M616.5 193.5h0M625.5 193.5h0M634.5 193.5h0M643.5 193.5h0M652.5 193.5h0M661.5 193.5h0M670.5 193.5h0M679.5 193.5h0M688.5 193.5h0M697.5 193.5h0M706.5 193.5h0M715.5 193.5h0M724.5 193.5h0M733.5 193.5h0M742.5 193.5h0M751.5 193.5h0M760.5 193.5h0M769.5 193.5h0M778.5 193.5h0M22.5 202.5h0M31.5 202.5h0M40.5 202.5h0M49.5 202.5h0M58.5 202.5h0M67.5 202.5h0M76.5 202.5h0M85.5 202.5h0M157.5 202.5h0M211.5 202.5h0M247.5 202.5h0M256.5 202.5h0M292.5 202.5h0M301.5 202.5h0M310.5 202.5h0M319.5 202.5h0M328.5 202.5h0M337.5 202.5h0M346.5 202.5h0M355.5 202.5h0M364.5 202.5h0M373.5 202.5h0M382.5 202.5h0M391.5 202.5h0M400.5 202.5h0M409.5 202.5h0M418.5 202.5h0M427.5 202.5h0M436.5 202.5h0M445.5 202.5h0M454.5 202.5h0M490.5 202.5h0M499.5 202.5h0M508.5 202.5h0M517.5 202.5h0M526.5 202.5h0M535.5 202.5h0M544.5 202.5h0M553.5 202.5h0M562.5 202.5h0M571.5 202.5h0M580.5 202.5h0M589.5 202.5h0M598.5 202.5h0M607.5 202.5h0M616.5 202.5h0M625.5 202.5h0M634.5 202.5h0M643.5 202.5h0M652.5 202.5h0M661.5 202.5h0M670.5 202.5h0M679.5 202.5h0M688.5 202.5h0M697.5 202.5h0M706.5 202.5h0M715.5 202.5h0M724.5 202.5h0M733.5 202.5h0M742.5 202.5h0M751.5 202.5h0M760.5 202.5h0M769.5 202.5h0M778.5 202.5h0M22.5 211.5h0M31.5 211.5h0M40.5 211.5h0M49.5 211.5h0M58.5 211.5h0M67.5 211.5h0M76.5 211.5h0M85.5 211.5h0M211.5 211.5h0M247.5 211.5h0M256.5 211.5h0M265.5 211.5h0M292.5 211.5h0M301.5 211.5h0M310.5 211.5h0M319.5 211.5h0M328.5 211.5h0M337.5 211.5h0M346.5 211.5h0M355.5 211.5h0M364.5 211.5h0M373.5 211.5h0M382.5 211.5h0M391.5 211.5h0M400.5 211.5h0M409.5 211.5h0M418.5 211.5h0M427.5 211.5h0M436.5 211.5h0M445.5 211.5h0M454.5 211.5h0M499.5 211.5h0M508.5 211.5h0M517.5 211.5h0M526.5 211.5h0M535.5 211.5h0M544.5 211.5h0M553.5 211.5h0M562.5 211.5h0M571.5 211.5h0M580.5 211.5h0M589.5 211.5h0M598.5 211.5h0M607.5 211.5h0M616.5 211.5h0M625.5 211.5h0M634.5 211.5h0M643.5 211.5h0M652.5 211.5h0M661.5 211.5h0M670.5 211.5h0M679.5 211.5h0M688.5 211.5h0M697.5 211.5h0M706.5 211.5h0M715.5 211.5h0M724.5 211.5h0M733.5 211.5h0M742.5 211.5h0M751.5 211.5h0M760.5 211.5h0M769.5 211.5h0M778.5 211.5h0M31.5 220.5h0M40.5 220.5h0M49.5 220.5h0M58.5 220.5h0M67.5 220.5h0M76.5 220.5h0M193.5 220.5h0M202.5 220.5h0M256.5 220.5h0M301.5 220.5h0M310.5 220.5h0M319.5 220.5h0M328.5 220.5h0M337.5 220.5h0M346.5 220.5h0M355.5 220.5h0M364.5 220.5h0M373.5 220.5h0M382.5 220.5h0M391.5 220.5h0M400.5 220.5h0M409.5 220.5h0M418.5 220.5h0M427.5 220.5h0M436.5 220.5h0M445.5 220.5h0M454.5 220.5h0M499.5 220.5h0M508.5 220.5h0M517.5 220.5h0M526.5 220.5h0M535.5 220.5h0M544.5 220.5h0M553.5 220.5h0M562.5 220.5h0M571.5 220.5h0M580.5 220.5h0M589.5 220.5h0M598.5 220.5h0M607.5 220.5h0M616.5 220.5h0M625.5 220.5h0M634.5 220.5h0M643.5 220.5h0M652.5 220.5h0M661.5 220.5h0M670.5 220.5h0M679.5 220.5h0M688.5 220.5h0M697.5 220.5h0M706.5 220.5h0M715.5 220.5h0M724.5 220.5h0M733.5 220.5h0M742.5 220.5h0M751.5 220.5h0M760.5 220.5h0M769.5 220.5h0M778.5 220.5h0M49.5 229.5h0M103.5 229.5h0M112.5 229.5h0M121.5 229.5h0M130.5 229.5h0M139.5 229.5h0M148.5 229.5h0M157.5 229.5h0M166.5 229.5h0M310.5 229.5h0M337.5 229.5h0M346.5 229.5h0M364.5 229.5h0M373.5 229.5h0M382.5 229.5h0M391.5 229.5h0M400.5 229.5h0M409.5 229.5h0M418.5 229.5h0M427.5 229.5h0M436.5 229.5h0M445.5 229.5h0M454.5 229.5h0M463.5 229.5h0M472.5 229.5h0M481.5 229.5h0M490.5 229.5h0M499.5 229.5h0M508.5 229.5h0M517.5 229.5h0M526.5 229.5h0M535.5 229.5h0M544.5 229.5h0M553.5 229.5h0M562.5 229.5h0M571.5 229.5h0M580.5 229.5h0M589.5 229.5h0M598.5 229.5h0M607.5 229.5h0M616.5 229.5h0M625.5 229.5h0M634.5 229.5h0M643.5 229.5h0M652.5 229.5h0M661.5 229.5h0M670.5 229.5h0M679.5 229.5h0M688.5 229.5h0M697.5 229.5h0M706.5 229.5h0M715.5 229.5h0M724.5 229.5h0M733.5 229.5h0M742.5 229.5h0M751.5 229.5h0M760.5 229.5h0M769.5 229.5h0M778.5 229.5h0M49.5 238.5h0M85.5 238.5h0M94.5 238.5h0M103.5 238.5h0M112.5 238.5h0M121.5 238.5h0M130.5 238.5h0M139.5 238.5h0M148.5 238.5h0M157.5 238.5h0M166.5 238.5h0M346.5 238.5h0M364.5 238.5h0M373.5 238.5h0M382.5 238.5h0M391.5 238.5h0M400.5 238.5h0M409.5 238.5h0M418.5 238.5h0M427.5 238.5h0M436.5 238.5h0M445.5 238.5h0M454.5 238.5h0M463.5 238.5h0M472.5 238.5h0M481.5 238.5h0M490.5 238.5h0M499.5 238.5h0M508.5 238.5h0M517.5 238.5h0M526.5 238.5h0M535.5 238.5h0M544.5 238.5h0M553.5 238.5h0M562.5 238.5h0M571.5 238.5h0M580.5 238.5h0M589.5 238.5h0M598.5 238.5h0M607.5 238.5h0M616.5 238.5h0M625.5 238.5h0M634.5 238.5h0M643.5 238.5h0M652.5 238.5h0M661.5 238.5h0M670.5 238.5h0M679.5 238.5h0M688.5 238.5h0M697.5 238.5h0M706.5 238.5h0M715.5 238.5h0M724.5 238.5h0M733.5 238.5h0M742.5 238.5h0M751.5 238.5h0M760.5 238.5h0M769.5 238.5h0M778.5 238.5h0M40.5 247.5h0M49.5 247.5h0M58.5 247.5h0M67.5 247.5h0M76.5 247.5h0M85.5 247.5h0M94.5 247.5h0M103.5 247.5h0M112.5 247.5h0M121.5 247.5h0M130.5 247.5h0M139.5 247.5h0M148.5 247.5h0M157.5 247.5h0M166.5 247.5h0M364.5 247.5h0M373.5 247.5h0M382.5 247.5h0M391.5 247.5h0M400.5 247.5h0M409.5 247.5h0M418.5 247.5h0M427.5 247.5h0M436.5 247.5h0M445.5 247.5h0M454.5 247.5h0M463.5 247.5h0M472.5 247.5h0M481.5 247.5h0M490.5 247.5h0M499.5 247.5h0M508.5 247.5h0M517.5 247.5h0M526.5 247.5h0M535.5 247.5h0M544.5 247.5h0M553.5 247.5h0M562.5 247.5h0M571.5 247.5h0M580.5 247.5h0M589.5 247.5h0M598.5 247.5h0M607.5 247.5h0M616.5 247.5h0M625.5 247.5h0M634.5 247.5h0M643.5 247.5h0M652.5 247.5h0M661.5 247.5h0M670.5 247.5h0M679.5 247.5h0M688.5 247.5h0M697.5 247.5h0M706.5 247.5h0M715.5 247.5h0M724.5 247.5h0M733.5 247.5h0M742.5 247.5h0M751.5 247.5h0M760.5 247.5h0M769.5 247.5h0M778.5 247.5h0M31.5 256.5h0M40.5 256.5h0M49.5 256.5h0M58.5 256.5h0M67.5 256.5h0M76.5 256.5h0M85.5 256.5h0M94.5 256.5h0M103.5 256.5h0M112.5 256.5h0M121.5 256.5h0M130.5 256.5h0M139.5 256.5h0M148.5 256.5h0M157.5 256.5h0M166.5 256.5h0M355.5 256.5h0M364.5 256.5h0M373.5 256.5h0M382.5 256.5h0M391.5 256.5h0M400.5 256.5h0M409.5 256.5h0M418.5 256.5h0M427.5 256.5h0M436.5 256.5h0M445.5 256.5h0M454.5 256.5h0M463.5 256.5h0M472.5 256.5h0M481.5 256.5h0M490.5 256.5h0M499.5 256.5h0M508.5 256.5h0M517.5 256.5h0M526.5 256.5h0M535.5 256.5h0M544.5 256.5h0M553.5 256.5h0M562.5 256.5h0M571.5 256.5h0M580.5 256.5h0M589.5 256.5h0M598.5 256.5h0M607.5 256.5h0M616.5 256.5h0M625.5 256.5h0M634.5 256.5h0M643.5 256.5h0M652.5 256.5h0M661.5 256.5h0M670.5 256.5h0M679.5 256.5h0M688.5 256.5h0M697.5 256.5h0M706.5 256.5h0M715.5 256.5h0M724.5 256.5h0M733.5 256.5h0M742.5 256.5h0M751.5 256.5h0M760.5 256.5h0M769.5 256.5h0M778.5 256.5h0M22.5 265.5h0M31.5 265.5h0M40.5 265.5h0M49.5 265.5h0M58.5 265.5h0M67.5 265.5h0M76.5 265.5h0M85.5 265.5h0M94.5 265.5h0M103.5 265.5h0M112.5 265.5h0M121.5 265.5h0M130.5 265.5h0M139.5 265.5h0M148.5 265.5h0M157.5 265.5h0M166.5 265.5h0M175.5 265.5h0M184.5 265.5h0M193.5 265.5h0M247.5 265.5h0M256.5 265.5h0M355.5 265.5h0M364.5 265.5h0M373.5 265.5h0M382.5 265.5h0M391.5 265.5h0M400.5 265.5h0M409.5 265.5h0M418.5 265.5h0M427.5 265.5h0M436.5 265.5h0M445.5 265.5h0M454.5 265.5h0M463.5 265.5h0M472.5 265.5h0M481.5 265.5h0M490.5 265.5h0M499.5 265.5h0M508.5 265.5h0M517.5 265.5h0M526.5 265.5h0M535.5 265.5h0M544.5 265.5h0M553.5 265.5h0M562.5 265.5h0M571.5 265.5h0M580.5 265.5h0M589.5 265.5h0M598.5 265.5h0M607.5 265.5h0M616.5 265.5h0M625.5 265.5h0M634.5 265.5h0M643.5 265.5h0M652.5 265.5h0M661.5 265.5h0M670.5 265.5h0M679.5 265.5h0M688.5 265.5h0M697.5 265.5h0M706.5 265.5h0M715.5 265.5h0M724.5 265.5h0M733.5 265.5h0M742.5 265.5h0M751.5 265.5h0M760.5 265.5h0M769.5 265.5h0M778.5 265.5h0M22.5 274.5h0M31.5 274.5h0M40.5 274.5h0M49.5 274.5h0M58.5 274.5h0M67.5 274.5h0M76.5 274.5h0M85.5 274.5h0M94.5 274.5h0M103.5 274.5h0M112.5 274.5h0M121.5 274.5h0M130.5 274.5h0M139.5 274.5h0M148.5 274.5h0M157.5 274.5h0M166.5 274.5h0M175.5 274.5h0M184.5 274.5h0M193.5 274.5h0M202.5 274.5h0M247.5 274.5h0M256.5 274.5h0M265.5 274.5h0M274.5 274.5h0M283.5 274.5h0M319.5 274.5h0M355.5 274.5h0M364.5 274.5h0M373.5 274.5h0M382.5 274.5h0M391.5 274.5h0M400.5 274.5h0M409.5 274.5h0M418.5 274.5h0M427.5 274.5h0M436.5 274.5h0M445.5 274.5h0M454.5 274.5h0M463.5 274.5h0M472.5 274.5h0M481.5 274.5h0M490.5 274.5h0M499.5 274.5h0M508.5 274.5h0M517.5 274.5h0M526.5 274.5h0M535.5 274.5h0M544.5 274.5h0M553.5 274.5h0M562.5 274.5h0M571.5 274.5h0M580.5 274.5h0M589.5 274.5h0M598.5 274.5h0M607.5 274.5h0M616.5 274.5h0M625.5 274.5h0M634.5 274.5h0M643.5 274.5h0M652.5 274.5h0M661.5 274.5h0M670.5 274.5h0M679.5 274.5h0M688.5 274.5h0M697.5 274.5h0M706.5 274.5h0M715.5 274.5h0M724.5 274.5h0M733.5 274.5h0M742.5 274.5h0M751.5 274.5h0M760.5 274.5h0M769.5 274.5h0M778.5 274.5h0M22.5 283.5h0M31.5 283.5h0M40.5 283.5h0M49.5 283.5h0M58.5 283.5h0M67.5 283.5h0M76.5 283.5h0M85.5 283.5h0M94.5 283.5h0M103.5 283.5h0M112.5 283.5h0M121.5 283.5h0M130.5 283.5h0M139.5 283.5h0M148.5 283.5h0M157.5 283.5h0M166.5 283.5h0M175.5 283.5h0M184.5 283.5h0M193.5 283.5h0M202.5 283.5h0M211.5 283.5h0M220.5 283.5h0M238.5 283.5h0M247.5 283.5h0M256.5 283.5h0M265.5 283.5h0M274.5 283.5h0M283.5 283.5h0M292.5 283.5h0M301.5 283.5h0M310.5 283.5h0M319.5 283.5h0M328.5 283.5h0M337.5 283.5h0M346.5 283.5h0M355.5 283.5h0M364.5 283.5h0M373.5 283.5h0M382.5 283.5h0M391.5 283.5h0M400.5 283.5h0M409.5 283.5h0M418.5 283.5h0M427.5 283.5h0M436.5 283.5h0M445.5 283.5h0M454.5 283.5h0M463.5 283.5h0M472.5 283.5h0M481.5 283.5h0M490.5 283.5h0M499.5 283.5h0M508.5 283.5h0M517.5 283.5h0M526.5 283.5h0M535.5 283.5h0M544.5 283.5h0M553.5 283.5h0M562.5 283.5h0M571.5 283.5h0M580.5 283.5h0M589.5 283.5h0M598.5 283.5h0M607.5 283.5h0M616.5 283.5h0M625.5 283.5h0M634.5 283.5h0M643.5 283.5h0M652.5 283.5h0M661.5 283.5h0M670.5 283.5h0M679.5 283.5h0M688.5 283.5h0M697.5 283.5h0M706.5 283.5h0M715.5 283.5h0M724.5 283.5h0M733.5 283.5h0M742.5 283.5h0M751.5 283.5h0M760.5 283.5h0M769.5 283.5h0M778.5 283.5h0M22.5 292.5h0M31.5 292.5h0M40.5 292.5h0M49.5 292.5h0M58.5 292.5h0M67.5 292.5h0M76.5 292.5h0M85.5 292.5h0M94.5 292.5h0M103.5 292.5h0M112.5 292.5h0M121.5 292.5h0M130.5 292.5h0M139.5 292.5h0M148.5 292.5h0M157.5 292.5h0M166.5 292.5h0M175.5 292.5h0M184.5 292.5h0M193.5 292.5h0M202.5 292.5h0M211.5 292.5h0M220.5 292.5h0M229.5 292.5h0M238.5 292.5h0M247.5 292.5h0M256.5 292.5h0M265.5 292.5h0M274.5 292.5h0M283.5 292.5h0M292.5 292.5h0M301.5 292.5h0M310.5 292.5h0M319.5 292.5h0M328.5 292.5h0M337.5 292.5h0M346.5 292.5h0M355.5 292.5h0M364.5 292.5h0M373.5 292.5h0M382.5 292.5h0M391.5 292.5h0M400.5 292.5h0M409.5 292.5h0M418.5 292.5h0M427.5 292.5h0M436.5 292.5h0M445.5 292.5h0M472.5 292.5h0M481.5 292.5h0M490.5 292.5h0M499.5 292.5h0M508.5 292.5h0M517.5 292.5h0M526.5 292.5h0M535.5 292.5h0M544.5 292.5h0M553.5 292.5h0M562.5 292.5h0M571.5 292.5h0M580.5 292.5h0M589.5 292.5h0M598.5 292.5h0M607.5 292.5h0M616.5 292.5h0M625.5 292.5h0M634.5 292.5h0M643.5 292.5h0M652.5 292.5h0M661.5 292.5h0M670.5 292.5h0M679.5 292.5h0M688.5 292.5h0M697.5 292.5h0M706.5 292.5h0M715.5 292.5h0M724.5 292.5h0M733.5 292.5h0M742.5 292.5h0M751.5 292.5h0M760.5 292.5h0M769.5 292.5h0M778.5 292.5h0M13.5 301.5h0M22.5 301.5h0M31.5 301.5h0M40.5 301.5h0M49.5 301.5h0M58.5 301.5h0M67.5 301.5h0M76.5 301.5h0M85.5 301.5h0M94.5 301.5h0M103.5 301.5h0M112.5 301.5h0M121.5 301.5h0M130.5 301.5h0M139.5 301.5h0M148.5 301.5h0M157.5 301.5h0M166.5 301.5h0M175.5 301.5h0M184.5 301.5h0M193.5 301.5h0M202.5 301.5h0M211.5 301.5h0M220.5 301.5h0M229.5 301.5h0M238.5 301.5h0M247.5 301.5h0M256.5 301.5h0M265.5 301.5h0M274.5 301.5h0M283.5 301.5h0M292.5 301.5h0M301.5 301.5h0M310.5 301.5h0M319.5 301.5h0M328.5 301.5h0M346.5 301.5h0M355.5 301.5h0M364.5 301.5h0M373.5 301.5h0M382.5 301.5h0M391.5 301.5h0M400.5 301.5h0M409.5 301.5h0M418.5 301.5h0M427.5 301.5h0M436.5 301.5h0M445.5 301.5h0M481.5 301.5h0M490.5 301.5h0M499.5 301.5h0M508.5 301.5h0M517.5 301.5h0M526.5 301.5h0M535.5 301.5h0M544.5 301.5h0M553.5 301.5h0M562.5 301.5h0M571.5 301.5h0M580.5 301.5h0M589.5 301.5h0M598.5 301.5h0M607.5 301.5h0M616.5 301.5h0M625.5 301.5h0M634.5 301.5h0M643.5 301.5h0M652.5 301.5h0M661.5 301.5h0M670.5 301.5h0M679.5 301.5h0M688.5 301.5h0M697.5 301.5h0M706.5 301.5h0M715.5 301.5h0M724.5 301.5h0M733.5 301.5h0M742.5 301.5h0M751.5 301.5h0M760.5 301.5h0M769.5 301.5h0M778.5 301.5h0M4.5 310.5h0M13.5 310.5h0M22.5 310.5h0M31.5 310.5h0M40.5 310.5h0M49.5 310.5h0M58.5 310.5h0M67.5 310.5h0M76.5 310.5h0M85.5 310.5h0M94.5 310.5h0M103.5 310.5h0M112.5 310.5h0M121.5 310.5h0M130.5 310.5h0M139.5 310.5h0M148.5 310.5h0M157.5 310.5h0M166.5 310.5h0M175.5 310.5h0M184.5 310.5h0M193.5 310.5h0M202.5 310.5h0M211.5 310.5h0M220.5 310.5h0M229.5 310.5h0M238.5 310.5h0M247.5 310.5h0M256.5 310.5h0M265.5 310.5h0M274.5 310.5h0M283.5 310.5h0M292.5 310.5h0M301.5 310.5h0M310.5 310.5h0M319.5 310.5h0M328.5 310.5h0M337.5 310.5h0M364.5 310.5h0M373.5 310.5h0M382.5 310.5h0M391.5 310.5h0M400.5 310.5h0M409.5 310.5h0M418.5 310.5h0M427.5 310.5h0M436.5 310.5h0M445.5 310.5h0M454.5 310.5h0M490.5 310.5h0M499.5 310.5h0M508.5 310.5h0M517.5 310.5h0M526.5 310.5h0M535.5 310.5h0M544.5 310.5h0M553.5 310.5h0M562.5 310.5h0M571.5 310.5h0M580.5 310.5h0M589.5 310.5h0M598.5 310.5h0M607.5 310.5h0M616.5 310.5h0M625.5 310.5h0M634.5 310.5h0M643.5 310.5h0M652.5 310.5h0M661.5 310.5h0M670.5 310.5h0M679.5 310.5h0M688.5 310.5h0M697.5 310.5h0M706.5 310.5h0M715.5 310.5h0M724.5 310.5h0M733.5 310.5h0M742.5 310.5h0M751.5 310.5h0M760.5 310.5h0M769.5 310.5h0M778.5 310.5h0M4.5 319.5h0M13.5 319.5h0M22.5 319.5h0M31.5 319.5h0M40.5 319.5h0M49.5 319.5h0M58.5 319.5h0M67.5 319.5h0M76.5 319.5h0M85.5 319.5h0M94.5 319.5h0M103.5 319.5h0M112.5 319.5h0M121.5 319.5h0M130.5 319.5h0M139.5 319.5h0M148.5 319.5h0M157.5 319.5h0M166.5 319.5h0M175.5 319.5h0M184.5 319.5h0M193.5 319.5h0M202.5 319.5h0M211.5 319.5h0M220.5 319.5h0M229.5 319.5h0M238.5 319.5h0M247.5 319.5h0M256.5 319.5h0M265.5 319.5h0M274.5 319.5h0M283.5 319.5h0M292.5 319.5h0M301.5 319.5h0M310.5 319.5h0M319.5 319.5h0M328.5 319.5h0M337.5 319.5h0M364.5 319.5h0M373.5 319.5h0M382.5 319.5h0M391.5 319.5h0M400.5 319.5h0M409.5 319.5h0M418.5 319.5h0M427.5 319.5h0M436.5 319.5h0M445.5 319.5h0M454.5 319.5h0M463.5 319.5h0M526.5 319.5h0M535.5 319.5h0M544.5 319.5h0M553.5 319.5h0M562.5 319.5h0M571.5 319.5h0M580.5 319.5h0M589.5 319.5h0M598.5 319.5h0M607.5 319.5h0M616.5 319.5h0M625.5 319.5h0M634.5 319.5h0M643.5 319.5h0M652.5 319.5h0M661.5 319.5h0M670.5 319.5h0M679.5 319.5h0M688.5 319.5h0M697.5 319.5h0M706.5 319.5h0M715.5 319.5h0M724.5 319.5h0M733.5 319.5h0M742.5 319.5h0M751.5 319.5h0M760.5 319.5h0M769.5 319.5h0M778.5 319.5h0M4.5 328.5h0M13.5 328.5h0M22.5 328.5h0M31.5 328.5h0M40.5 328.5h0M49.5 328.5h0M58.5 328.5h0M67.5 328.5h0M76.5 328.5h0M85.5 328.5h0M94.5 328.5h0M103.5 328.5h0M112.5 328.5h0M121.5 328.5h0M130.5 328.5h0M139.5 328.5h0M148.5 328.5h0M157.5 328.5h0M166.5 328.5h0M175.5 328.5h0M184.5 328.5h0M193.5 328.5h0M202.5 328.5h0M211.5 328.5h0M220.5 328.5h0M229.5 328.5h0M238.5 328.5h0M247.5 328.5h0M256.5 328.5h0M265.5 328.5h0M274.5 328.5h0M283.5 328.5h0M292.5 328.5h0M301.5 328.5h0M310.5 328.5h0M319.5 328.5h0M328.5 328.5h0M337.5 328.5h0M346.5 328.5h0M373.5 328.5h0M382.5 328.5h0M391.5 328.5h0M400.5 328.5h0M409.5 328.5h0M418.5 328.5h0M427.5 328.5h0M436.5 328.5h0M445.5 328.5h0M454.5 328.5h0M463.5 328.5h0M472.5 328.5h0M508.5 328.5h0M535.5 328.5h0M544.5 328.5h0M553.5 328.5h0M562.5 328.5h0M571.5 328.5h0M580.5 328.5h0M589.5 328.5h0M598.5 328.5h0M607.5 328.5h0M616.5 328.5h0M625.5 328.5h0M634.5 328.5h0M643.5 328.5h0M652.5 328.5h0M661.5 328.5h0M670.5 328.5h0M679.5 328.5h0M688.5 328.5h0M697.5 328.5h0M706.5 328.5h0M715.5 328.5h0M724.5 328.5h0M733.5 328.5h0M742.5 328.5h0M751.5 328.5h0M760.5 328.5h0M769.5 328.5h0M778.5 328.5h0M4.5 337.5h0M13.5 337.5h0M22.5 337.5h0M31.5 337.5h0M40.5 337.5h0M49.5 337.5h0M58.5 337.5h0M67.5 337.5h0M76.5 337.5h0M85.5 337.5h0M94.5 337.5h0M103.5 337.5h0M112.5 337.5h0M121.5 337.5h0M130.5 337.5h0M139.5 337.5h0M148.5 337.5h0M157.5 337.5h0M166.5 337.5h0M175.5 337.5h0M184.5 337.5h0M193.5 337.5h0M202.5 337.5h0M211.5 337.5h0M220.5 337.5h0M229.5 337.5h0M238.5 337.5h0M247.5 337.5h0M256.5 337.5h0M265.5 337.5h0M274.5 337.5h0M283.5 337.5h0M292.5 337.5h0M301.5 337.5h0M310.5 337.5h0M319.5 337.5h0M328.5 337.5h0M337.5 337.5h0M346.5 337.5h0M373.5 337.5h0M382.5 337.5h0M391.5 337.5h0M400.5 337.5h0M409.5 337.5h0M418.5 337.5h0M427.5 337.5h0M436.5 337.5h0M445.5 337.5h0M454.5 337.5h0M463.5 337.5h0M472.5 337.5h0M499.5 337.5h0M508.5 337.5h0M598.5 337.5h0M607.5 337.5h0M616.5 337.5h0M625.5 337.5h0M634.5 337.5h0M643.5 337.5h0M652.5 337.5h0M661.5 337.5h0M670.5 337.5h0M679.5 337.5h0M688.5 337.5h0M697.5 337.5h0M706.5 337.5h0M715.5 337.5h0M724.5 337.5h0M733.5 337.5h0M742.5 337.5h0M751.5 337.5h0M760.5 337.5h0M769.5 337.5h0M778.5 337.5h0M4.5 346.5h0M13.5 346.5h0M22.5 346.5h0M31.5 346.5h0M40.5 346.5h0M49.5 346.5h0M58.5 346.5h0M67.5 346.5h0M76.5 346.5h0M85.5 346.5h0M94.5 346.5h0M103.5 346.5h0M112.5 346.5h0M121.5 346.5h0M130.5 346.5h0M139.5 346.5h0M148.5 346.5h0M157.5 346.5h0M166.5 346.5h0M175.5 346.5h0M184.5 346.5h0M193.5 346.5h0M202.5 346.5h0M211.5 346.5h0M220.5 346.5h0M229.5 346.5h0M238.5 346.5h0M247.5 346.5h0M256.5 346.5h0M265.5 346.5h0M274.5 346.5h0M283.5 346.5h0M292.5 346.5h0M301.5 346.5h0M310.5 346.5h0M319.5 346.5h0M328.5 346.5h0M337.5 346.5h0M346.5 346.5h0M355.5 346.5h0M382.5 346.5h0M391.5 346.5h0M400.5 346.5h0M409.5 346.5h0M418.5 346.5h0M427.5 346.5h0M436.5 346.5h0M445.5 346.5h0M454.5 346.5h0M463.5 346.5h0M472.5 346.5h0M481.5 346.5h0M490.5 346.5h0M499.5 346.5h0M508.5 346.5h0M517.5 346.5h0M526.5 346.5h0M607.5 346.5h0M616.5 346.5h0M625.5 346.5h0M634.5 346.5h0M643.5 346.5h0M652.5 346.5h0M661.5 346.5h0M670.5 346.5h0M679.5 346.5h0M688.5 346.5h0M697.5 346.5h0M706.5 346.5h0M715.5 346.5h0M724.5 346.5h0M733.5 346.5h0M742.5 346.5h0M751.5 346.5h0M760.5 346.5h0M769.5 346.5h0M778.5 346.5h0M4.5 355.5h0M13.5 355.5h0M22.5 355.5h0M31.5 355.5h0M40.5 355.5h0M49.5 355.5h0M58.5 355.5h0M67.5 355.5h0M76.5 355.5h0M85.5 355.5h0M94.5 355.5h0M103.5 355.5h0M112.5 355.5h0M121.5 355.5h0M130.5 355.5h0M139.5 355.5h0M148.5 355.5h0M157.5 355.5h0M166.5 355.5h0M175.5 355.5h0M184.5 355.5h0M193.5 355.5h0M202.5 355.5h0M211.5 355.5h0M220.5 355.5h0M229.5 355.5h0M238.5 355.5h0M247.5 355.5h0M256.5 355.5h0M265.5 355.5h0M274.5 355.5h0M283.5 355.5h0M292.5 355.5h0M301.5 355.5h0M310.5 355.5h0M319.5 355.5h0M328.5 355.5h0M337.5 355.5h0M346.5 355.5h0M355.5 355.5h0M391.5 355.5h0M400.5 355.5h0M409.5 355.5h0M418.5 355.5h0M427.5 355.5h0M436.5 355.5h0M445.5 355.5h0M454.5 355.5h0M463.5 355.5h0M472.5 355.5h0M481.5 355.5h0M490.5 355.5h0M499.5 355.5h0M508.5 355.5h0M517.5 355.5h0M526.5 355.5h0M535.5 355.5h0M616.5 355.5h0M625.5 355.5h0M634.5 355.5h0M643.5 355.5h0M652.5 355.5h0M661.5 355.5h0M670.5 355.5h0M679.5 355.5h0M688.5 355.5h0M697.5 355.5h0M706.5 355.5h0M715.5 355.5h0M724.5 355.5h0M733.5 355.5h0M742.5 355.5h0M751.5 355.5h0M760.5 355.5h0M778.5 355.5h0M4.5 364.5h0M13.5 364.5h0M22.5 364.5h0M31.5 364.5h0M40.5 364.5h0M49.5 364.5h0M58.5 364.5h0M67.5 364.5h0M76.5 364.5h0M85.5 364.5h0M94.5 364.5h0M103.5 364.5h0M112.5 364.5h0M121.5 364.5h0M130.5 364.5h0M139.5 364.5h0M148.5 364.5h0M157.5 364.5h0M166.5 364.5h0M175.5 364.5h0M184.5 364.5h0M193.5 364.5h0M202.5 364.5h0M211.5 364.5h0M220.5 364.5h0M229.5 364.5h0M238.5 364.5h0M247.5 364.5h0M256.5 364.5h0M265.5 364.5h0M274.5 364.5h0M283.5 364.5h0M292.5 364.5h0M301.5 364.5h0M310.5 364.5h0M319.5 364.5h0M328.5 364.5h0M337.5 364.5h0M346.5 364.5h0M355.5 364.5h0M364.5 364.5h0M391.5 364.5h0M400.5 364.5h0M409.5 364.5h0M418.5 364.5h0M427.5 364.5h0M436.5 364.5h0M445.5 364.5h0M454.5 364.5h0M463.5 364.5h0M472.5 364.5h0M481.5 364.5h0M490.5 364.5h0M499.5 364.5h0M508.5 364.5h0M517.5 364.5h0M526.5 364.5h0M616.5 364.5h0M625.5 364.5h0M634.5 364.5h0M643.5 364.5h0M652.5 364.5h0M661.5 364.5h0M670.5 364.5h0M679.5 364.5h0M688.5 364.5h0M697.5 364.5h0M706.5 364.5h0M715.5 364.5h0M724.5 364.5h0M733.5 364.5h0M742.5 364.5h0M4.5 373.5h0M13.5 373.5h0M22.5 373.5h0M31.5 373.5h0M40.5 373.5h0M49.5 373.5h0M58.5 373.5h0M67.5 373.5h0M76.5 373.5h0M85.5 373.5h0M94.5 373.5h0M103.5 373.5h0M112.5 373.5h0M121.5 373.5h0M130.5 373.5h0M139.5 373.5h0M148.5 373.5h0M157.5 373.5h0M166.5 373.5h0M175.5 373.5h0M184.5 373.5h0M193.5 373.5h0M202.5 373.5h0M211.5 373.5h0M220.5 373.5h0M229.5 373.5h0M238.5 373.5h0M247.5 373.5h0M256.5 373.5h0M265.5 373.5h0M274.5 373.5h0M283.5 373.5h0M292.5 373.5h0M301.5 373.5h0M310.5 373.5h0M319.5 373.5h0M328.5 373.5h0M337.5 373.5h0M346.5 373.5h0M355.5 373.5h0M364.5 373.5h0M391.5 373.5h0M400.5 373.5h0M409.5 373.5h0M418.5 373.5h0M427.5 373.5h0M436.5 373.5h0M445.5 373.5h0M454.5 373.5h0M463.5 373.5h0M472.5 373.5h0M481.5 373.5h0M490.5 373.5h0M499.5 373.5h0M508.5 373.5h0M517.5 373.5h0M526.5 373.5h0M643.5 373.5h0M652.5 373.5h0M661.5 373.5h0M670.5 373.5h0M679.5 373.5h0M688.5 373.5h0M697.5 373.5h0M706.5 373.5h0M715.5 373.5h0M724.5 373.5h0M733.5 373.5h0M4.5 382.5h0M13.5 382.5h0M22.5 382.5h0M31.5 382.5h0M40.5 382.5h0M49.5 382.5h0M58.5 382.5h0M67.5 382.5h0M76.5 382.5h0M85.5 382.5h0M94.5 382.5h0M103.5 382.5h0M112.5 382.5h0M121.5 382.5h0M130.5 382.5h0M139.5 382.5h0M148.5 382.5h0M157.5 382.5h0M166.5 382.5h0M175.5 382.5h0M184.5 382.5h0M193.5 382.5h0M202.5 382.5h0M211.5 382.5h0M220.5 382.5h0M229.5 382.5h0M238.5 382.5h0M247.5 382.5h0M256.5 382.5h0M265.5 382.5h0M274.5 382.5h0M283.5 382.5h0M292.5 382.5h0M301.5 382.5h0M310.5 382.5h0M319.5 382.5h0M328.5 382.5h0M337.5 382.5h0M346.5 382.5h0M355.5 382.5h0M364.5 382.5h0M400.5 382.5h0M409.5 382.5h0M418.5 382.5h0M427.5 382.5h0M436.5 382.5h0M445.5 382.5h0M454.5 382.5h0M463.5 382.5h0M472.5 382.5h0M481.5 382.5h0M490.5 382.5h0M499.5 382.5h0M508.5 382.5h0M517.5 382.5h0M643.5 382.5h0M652.5 382.5h0M661.5 382.5h0M670.5 382.5h0M679.5 382.5h0M688.5 382.5h0M697.5 382.5h0M706.5 382.5h0M715.5 382.5h0M724.5 382.5h0M4.5 391.5h0M13.5 391.5h0M22.5 391.5h0M31.5 391.5h0M40.5 391.5h0M49.5 391.5h0M58.5 391.5h0M67.5 391.5h0M76.5 391.5h0M85.5 391.5h0M94.5 391.5h0M103.5 391.5h0M112.5 391.5h0M121.5 391.5h0M130.5 391.5h0M139.5 391.5h0M148.5 391.5h0M157.5 391.5h0M166.5 391.5h0M175.5 391.5h0M184.5 391.5h0M193.5 391.5h0M202.5 391.5h0M211.5 391.5h0M220.5 391.5h0M229.5 391.5h0M238.5 391.5h0M247.5 391.5h0M256.5 391.5h0M265.5 391.5h0M274.5 391.5h0M283.5 391.5h0M292.5 391.5h0M301.5 391.5h0M310.5 391.5h0M319.5 391.5h0M328.5 391.5h0M337.5 391.5h0M346.5 391.5h0M355.5 391.5h0M364.5 391.5h0M400.5 391.5h0M409.5 391.5h0M418.5 391.5h0M427.5 391.5h0M436.5 391.5h0M445.5 391.5h0M454.5 391.5h0M463.5 391.5h0M472.5 391.5h0M481.5 391.5h0M490.5 391.5h0M499.5 391.5h0M508.5 391.5h0M643.5 391.5h0M652.5 391.5h0M661.5 391.5h0M670.5 391.5h0M679.5 391.5h0M688.5 391.5h0M697.5 391.5h0M706.5 391.5h0M715.5 391.5h0M4.5 400.5h0M13.5 400.5h0M22.5 400.5h0M31.5 400.5h0M40.5 400.5h0M49.5 400.5h0M58.5 400.5h0M67.5 400.5h0M76.5 400.5h0M85.5 400.5h0M94.5 400.5h0M103.5 400.5h0M112.5 400.5h0M121.5 400.5h0M130.5 400.5h0M139.5 400.5h0M148.5 400.5h0M157.5 400.5h0M166.5 400.5h0M175.5 400.5h0M184.5 400.5h0M193.5 400.5h0M202.5 400.5h0M211.5 400.5h0M220.5 400.5h0M229.5 400.5h0M238.5 400.5h0M247.5 400.5h0M256.5 400.5h0M265.5 400.5h0M274.5 400.5h0M283.5 400.5h0M292.5 400.5h0M301.5 400.5h0M310.5 400.5h0M319.5 400.5h0M328.5 400.5h0M337.5 400.5h0M346.5 400.5h0M355.5 400.5h0M364.5 400.5h0M373.5 400.5h0M409.5 400.5h0M418.5 400.5h0M427.5 400.5h0M436.5 400.5h0M445.5 400.5h0M454.5 400.5h0M463.5 400.5h0M472.5 400.5h0M481.5 400.5h0M490.5 400.5h0M499.5 400.5h0M643.5 400.5h0M652.5 400.5h0M661.5 400.5h0M670.5 400.5h0M679.5 400.5h0M688.5 400.5h0M697.5 400.5h0M706.5 400.5h0M4.5 409.5h0M13.5 409.5h0M22.5 409.5h0M31.5 409.5h0M40.5 409.5h0M49.5 409.5h0M58.5 409.5h0M67.5 409.5h0M76.5 409.5h0M85.5 409.5h0M94.5 409.5h0M103.5 409.5h0M112.5 409.5h0M121.5 409.5h0M130.5 409.5h0M139.5 409.5h0M148.5 409.5h0M157.5 409.5h0M166.5 409.5h0M175.5 409.5h0M184.5 409.5h0M193.5 409.5h0M202.5 409.5h0M211.5 409.5h0M220.5 409.5h0M229.5 409.5h0M238.5 409.5h0M247.5 409.5h0M256.5 409.5h0M265.5 409.5h0M274.5 409.5h0M283.5 409.5h0M292.5 409.5h0M301.5 409.5h0M310.5 409.5h0M319.5 409.5h0M328.5 409.5h0M337.5 409.5h0M346.5 409.5h0M355.5 409.5h0M364.5 409.5h0M373.5 409.5h0M382.5 409.5h0M418.5 409.5h0M427.5 409.5h0M436.5 409.5h0M445.5 409.5h0M454.5 409.5h0M463.5 409.5h0M472.5 409.5h0M481.5 409.5h0M643.5 409.5h0M652.5 409.5h0M661.5 409.5h0M670.5 409.5h0M679.5 409.5h0M688.5 409.5h0M697.5 409.5h0M4.5 418.5h0M13.5 418.5h0M22.5 418.5h0M31.5 418.5h0M40.5 418.5h0M49.5 418.5h0M58.5 418.5h0M67.5 418.5h0M76.5 418.5h0M85.5 418.5h0M94.5 418.5h0M103.5 418.5h0M112.5 418.5h0M121.5 418.5h0M130.5 418.5h0M139.5 418.5h0M148.5 418.5h0M157.5 418.5h0M166.5 418.5h0M175.5 418.5h0M184.5 418.5h0M193.5 418.5h0M202.5 418.5h0M211.5 418.5h0M220.5 418.5h0M229.5 418.5h0M238.5 418.5h0M247.5 418.5h0M256.5 418.5h0M265.5 418.5h0M274.5 418.5h0M283.5 418.5h0M292.5 418.5h0M301.5 418.5h0M310.5 418.5h0M319.5 418.5h0M328.5 418.5h0M337.5 418.5h0M346.5 418.5h0M355.5 418.5h0M364.5 418.5h0M373.5 418.5h0M382.5 418.5h0M418.5 418.5h0M427.5 418.5h0M436.5 418.5h0M445.5 418.5h0M454.5 418.5h0M463.5 418.5h0M472.5 418.5h0M652.5 418.5h0M661.5 418.5h0M670.5 418.5h0M679.5 418.5h0M688.5 418.5h0M4.5 427.5h0M13.5 427.5h0M22.5 427.5h0M31.5 427.5h0M40.5 427.5h0M49.5 427.5h0M58.5 427.5h0M67.5 427.5h0M76.5 427.5h0M85.5 427.5h0M94.5 427.5h0M103.5 427.5h0M112.5 427.5h0M121.5 427.5h0M130.5 427.5h0M139.5 427.5h0M148.5 427.5h0M157.5 427.5h0M166.5 427.5h0M175.5 427.5h0M184.5 427.5h0M193.5 427.5h0M202.5 427.5h0M211.5 427.5h0M220.5 427.5h0M229.5 427.5h0M238.5 427.5h0M247.5 427.5h0M256.5 427.5h0M265.5 427.5h0M274.5 427.5h0M283.5 427.5h0M292.5 427.5h0M301.5 427.5h0M310.5 427.5h0M319.5 427.5h0M328.5 427.5h0M337.5 427.5h0M346.5 427.5h0M355.5 427.5h0M364.5 427.5h0M373.5 427.5h0M382.5 427.5h0M391.5 427.5h0M418.5 427.5h0M427.5 427.5h0M436.5 427.5h0M445.5 427.5h0M454.5 427.5h0M652.5 427.5h0M661.5 427.5h0M670.5 427.5h0M679.5 427.5h0M688.5 427.5h0M4.5 436.5h0M13.5 436.5h0M22.5 436.5h0M31.5 436.5h0M40.5 436.5h0M49.5 436.5h0M58.5 436.5h0M67.5 436.5h0M76.5 436.5h0M85.5 436.5h0M94.5 436.5h0M103.5 436.5h0M112.5 436.5h0M121.5 436.5h0M130.5 436.5h0M139.5 436.5h0M148.5 436.5h0M157.5 436.5h0M166.5 436.5h0M175.5 436.5h0M184.5 436.5h0M193.5 436.5h0M202.5 436.5h0M211.5 436.5h0M220.5 436.5h0M229.5 436.5h0M238.5 436.5h0M247.5 436.5h0M256.5 436.5h0M265.5 436.5h0M274.5 436.5h0M283.5 436.5h0M292.5 436.5h0M301.5 436.5h0M310.5 436.5h0M319.5 436.5h0M328.5 436.5h0M337.5 436.5h0M346.5 436.5h0M355.5 436.5h0M364.5 436.5h0M373.5 436.5h0M382.5 436.5h0M391.5 436.5h0M400.5 436.5h0M418.5 436.5h0M427.5 436.5h0M436.5 436.5h0M652.5 436.5h0M661.5 436.5h0M670.5 436.5h0M679.5 436.5h0M688.5 436.5h0M4.5 445.5h0M13.5 445.5h0M22.5 445.5h0M31.5 445.5h0M40.5 445.5h0M49.5 445.5h0M58.5 445.5h0M67.5 445.5h0M76.5 445.5h0M85.5 445.5h0M94.5 445.5h0M103.5 445.5h0M112.5 445.5h0M121.5 445.5h0M130.5 445.5h0M139.5 445.5h0M148.5 445.5h0M157.5 445.5h0M166.5 445.5h0M175.5 445.5h0M184.5 445.5h0M193.5 445.5h0M202.5 445.5h0M211.5 445.5h0M220.5 445.5h0M229.5 445.5h0M238.5 445.5h0M247.5 445.5h0M256.5 445.5h0M265.5 445.5h0M274.5 445.5h0M283.5 445.5h0M292.5 445.5h0M301.5 445.5h0M310.5 445.5h0M319.5 445.5h0M328.5 445.5h0M337.5 445.5h0M346.5 445.5h0M355.5 445.5h0M364.5 445.5h0M373.5 445.5h0M382.5 445.5h0M391.5 445.5h0M400.5 445.5h0M409.5 445.5h0M652.5 445.5h0M661.5 445.5h0M670.5 445.5h0M679.5 445.5h0M688.5 445.5h0M4.5 454.5h0M13.5 454.5h0M22.5 454.5h0M31.5 454.5h0M40.5 454.5h0M49.5 454.5h0M58.5 454.5h0M67.5 454.5h0M76.5 454.5h0M85.5 454.5h0M94.5 454.5h0M103.5 454.5h0M112.5 454.5h0M121.5 454.5h0M130.5 454.5h0M139.5 454.5h0M148.5 454.5h0M157.5 454.5h0M166.5 454.5h0M175.5 454.5h0M184.5 454.5h0M193.5 454.5h0M202.5 454.5h0M211.5 454.5h0M220.5 454.5h0M229.5 454.5h0M238.5 454.5h0M247.5 454.5h0M256.5 454.5h0M265.5 454.5h0M274.5 454.5h0M283.5 454.5h0M292.5 454.5h0M301.5 454.5h0M310.5 454.5h0M319.5 454.5h0M328.5 454.5h0M337.5 454.5h0M346.5 454.5h0M355.5 454.5h0M364.5 454.5h0M373.5 454.5h0M382.5 454.5h0M391.5 454.5h0M400.5 454.5h0M409.5 454.5h0M463.5 454.5h0M472.5 454.5h0M661.5 454.5h0M670.5 454.5h0M679.5 454.5h0M688.5 454.5h0M4.5 463.5h0M13.5 463.5h0M22.5 463.5h0M31.5 463.5h0M40.5 463.5h0M49.5 463.5h0M58.5 463.5h0M67.5 463.5h0M76.5 463.5h0M85.5 463.5h0M94.5 463.5h0M103.5 463.5h0M112.5 463.5h0M121.5 463.5h0M130.5 463.5h0M139.5 463.5h0M148.5 463.5h0M157.5 463.5h0M166.5 463.5h0M175.5 463.5h0M184.5 463.5h0M193.5 463.5h0M202.5 463.5h0M211.5 463.5h0M220.5 463.5h0M229.5 463.5h0M238.5 463.5h0M247.5 463.5h0M256.5 463.5h0M265.5 463.5h0M274.5 463.5h0M283.5 463.5h0M292.5 463.5h0M301.5 463.5h0M310.5 463.5h0M319.5 463.5h0M328.5 463.5h0M337.5 463.5h0M346.5 463.5h0M355.5 463.5h0M364.5 463.5h0M373.5 463.5h0M382.5 463.5h0M391.5 463.5h0M400.5 463.5h0M409.5 463.5h0M418.5 463.5h0M427.5 463.5h0M436.5 463.5h0M445.5 463.5h0M454.5 463.5h0M463.5 463.5h0M661.5 463.5h0M670.5 463.5h0M679.5 463.5h0M688.5 463.5h0M4.5 472.5h0M13.5 472.5h0M22.5 472.5h0M31.5 472.5h0M40.5 472.5h0M49.5 472.5h0M58.5 472.5h0M67.5 472.5h0M76.5 472.5h0M85.5 472.5h0M94.5 472.5h0M103.5 472.5h0M112.5 472.5h0M121.5 472.5h0M130.5 472.5h0M139.5 472.5h0M148.5 472.5h0M157.5 472.5h0M166.5 472.5h0M175.5 472.5h0M184.5 472.5h0M193.5 472.5h0M202.5 472.5h0M211.5 472.5h0M220.5 472.5h0M229.5 472.5h0M238.5 472.5h0M247.5 472.5h0M256.5 472.5h0M265.5 472.5h0M274.5 472.5h0M283.5 472.5h0M292.5 472.5h0M301.5 472.5h0M310.5 472.5h0M319.5 472.5h0M328.5 472.5h0M337.5 472.5h0M346.5 472.5h0M355.5 472.5h0M364.5 472.5h0M373.5 472.5h0M382.5 472.5h0M391.5 472.5h0M400.5 472.5h0M409.5 472.5h0M418.5 472.5h0M427.5 472.5h0M436.5 472.5h0M445.5 472.5h0M454.5 472.5h0M463.5 472.5h0M670.5 472.5h0M679.5 472.5h0M4.5 481.5h0M13.5 481.5h0M22.5 481.5h0M31.5 481.5h0M40.5 481.5h0M49.5 481.5h0M58.5 481.5h0M67.5 481.5h0M76.5 481.5h0M85.5 481.5h0M94.5 481.5h0M103.5 481.5h0M112.5 481.5h0M121.5 481.5h0M130.5 481.5h0M139.5 481.5h0M148.5 481.5h0M157.5 481.5h0M166.5 481.5h0M175.5 481.5h0M184.5 481.5h0M193.5 481.5h0M202.5 481.5h0M211.5 481.5h0M220.5 481.5h0M229.5 481.5h0M238.5 481.5h0M247.5 481.5h0M256.5 481.5h0M265.5 481.5h0M274.5 481.5h0M283.5 481.5h0M292.5 481.5h0M301.5 481.5h0M310.5 481.5h0M319.5 481.5h0M328.5 481.5h0M337.5 481.5h0M346.5 481.5h0M355.5 481.5h0M364.5 481.5h0M373.5 481.5h0M382.5 481.5h0M391.5 481.5h0M400.5 481.5h0M409.5 481.5h0M418.5 481.5h0M427.5 481.5h0M436.5 481.5h0M445.5 481.5h0M454.5 481.5h0M463.5 481.5h0M670.5 481.5h0M688.5 481.5h0M697.5 481.5h0M4.5 490.5h0M13.5 490.5h0M22.5 490.5h0M31.5 490.5h0M40.5 490.5h0M49.5 490.5h0M58.5 490.5h0M67.5 490.5h0M76.5 490.5h0M85.5 490.5h0M94.5 490.5h0M103.5 490.5h0M112.5 490.5h0M121.5 490.5h0M130.5 490.5h0M139.5 490.5h0M148.5 490.5h0M157.5 490.5h0M166.5 490.5h0M175.5 490.5h0M184.5 490.5h0M193.5 490.5h0M202.5 490.5h0M211.5 490.5h0M220.5 490.5h0M229.5 490.5h0M238.5 490.5h0M247.5 490.5h0M256.5 490.5h0M265.5 490.5h0M274.5 490.5h0M283.5 490.5h0M292.5 490.5h0M301.5 490.5h0M310.5 490.5h0M319.5 490.5h0M328.5 490.5h0M337.5 490.5h0M346.5 490.5h0M355.5 490.5h0M364.5 490.5h0M373.5 490.5h0M382.5 490.5h0M391.5 490.5h0M400.5 490.5h0M409.5 490.5h0M418.5 490.5h0M427.5 490.5h0M436.5 490.5h0M445.5 490.5h0M454.5 490.5h0M688.5 490.5h0M697.5 490.5h0M13.5 499.5h0M22.5 499.5h0M31.5 499.5h0M40.5 499.5h0M49.5 499.5h0M58.5 499.5h0M67.5 499.5h0M76.5 499.5h0M85.5 499.5h0M94.5 499.5h0M103.5 499.5h0M112.5 499.5h0M121.5 499.5h0M130.5 499.5h0M139.5 499.5h0M148.5 499.5h0M157.5 499.5h0M166.5 499.5h0M175.5 499.5h0M184.5 499.5h0M193.5 499.5h0M202.5 499.5h0M211.5 499.5h0M220.5 499.5h0M229.5 499.5h0M238.5 499.5h0M247.5 499.5h0M256.5 499.5h0M265.5 499.5h0M274.5 499.5h0M283.5 499.5h0M292.5 499.5h0M301.5 499.5h0M310.5 499.5h0M319.5 499.5h0M328.5 499.5h0M337.5 499.5h0M346.5 499.5h0M355.5 499.5h0M364.5 499.5h0M373.5 499.5h0M382.5 499.5h0M391.5 499.5h0M400.5 499.5h0M409.5 499.5h0M418.5 499.5h0M427.5 499.5h0M436.5 499.5h0M445.5 499.5h0M454.5 499.5h0M697.5 499.5h0M22.5 508.5h0M31.5 508.5h0M40.5 508.5h0M49.5 508.5h0M58.5 508.5h0M67.5 508.5h0M76.5 508.5h0M85.5 508.5h0M130.5 508.5h0M139.5 508.5h0M148.5 508.5h0M157.5 508.5h0M166.5 508.5h0M175.5 508.5h0M184.5 508.5h0M193.5 508.5h0M202.5 508.5h0M211.5 508.5h0M220.5 508.5h0M229.5 508.5h0M238.5 508.5h0M247.5 508.5h0M256.5 508.5h0M265.5 508.5h0M274.5 508.5h0M283.5 508.5h0M292.5 508.5h0M301.5 508.5h0M310.5 508.5h0M319.5 508.5h0M328.5 508.5h0M337.5 508.5h0M346.5 508.5h0M355.5 508.5h0M364.5 508.5h0M373.5 508.5h0M382.5 508.5h0M391.5 508.5h0M400.5 508.5h0M409.5 508.5h0M418.5 508.5h0M427.5 508.5h0M436.5 508.5h0M445.5 508.5h0M454.5 508.5h0M31.5 517.5h0M139.5 517.5h0M157.5 517.5h0M166.5 517.5h0M175.5 517.5h0M184.5 517.5h0M193.5 517.5h0M202.5 517.5h0M211.5 517.5h0M220.5 517.5h0M229.5 517.5h0M238.5 517.5h0M247.5 517.5h0M256.5 517.5h0M265.5 517.5h0M274.5 517.5h0M283.5 517.5h0M292.5 517.5h0M301.5 517.5h0M310.5 517.5h0M319.5 517.5h0M328.5 517.5h0M337.5 517.5h0M346.5 517.5h0M355.5 517.5h0M364.5 517.5h0M373.5 517.5h0M382.5 517.5h0M391.5 517.5h0M400.5 517.5h0M409.5 517.5h0M418.5 517.5h0M427.5 517.5h0M436.5 517.5h0M445.5 517.5h0M166.5 526.5h0M175.5 526.5h0M184.5 526.5h0M193.5 526.5h0M202.5 526.5h0M211.5 526.5h0M220.5 526.5h0M229.5 526.5h0M238.5 526.5h0M247.5 526.5h0M256.5 526.5h0M265.5 526.5h0M274.5 526.5h0M283.5 526.5h0M292.5 526.5h0M301.5 526.5h0M310.5 526.5h0M319.5 526.5h0M328.5 526.5h0M337.5 526.5h0M346.5 526.5h0M355.5 526.5h0M364.5 526.5h0M373.5 526.5h0M382.5 526.5h0M391.5 526.5h0M400.5 526.5h0M409.5 526.5h0M418.5 526.5h0M427.5 526.5h0M436.5 526.5h0M166.5 535.5h0M175.5 535.5h0M184.5 535.5h0M193.5 535.5h0M202.5 535.5h0M211.5 535.5h0M220.5 535.5h0M229.5 535.5h0M238.5 535.5h0M247.5 535.5h0M256.5 535.5h0M265.5 535.5h0M274.5 535.5h0M283.5 535.5h0M292.5 535.5h0M301.5 535.5h0M310.5 535.5h0M319.5 535.5h0M328.5 535.5h0M337.5 535.5h0M346.5 535.5h0M355.5 535.5h0M364.5 535.5h0M373.5 535.5h0M382.5 535.5h0M391.5 535.5h0M400.5 535.5h0M409.5 535.5h0M418.5 535.5h0M427.5 535.5h0"/>
-            <!-- Bangalore → Bavaria -->
-            <path class="arc-glow" pathLength="1" d="M672 441 Q 520 110 172 124"/>
-            <path class="arc" pathLength="1" d="M672 441 Q 520 110 172 124"/>
-            <!-- Bavaria marker + leader line to the zoom circle -->
-            <g class="fade d2">
-              <circle class="ring" cx="172" cy="124" r="9"/>
-              <path class="lead" d="M168 133 L 152 278"/>
-              <circle class="inset-bg" cx="150" cy="362" r="84"/>
-            </g>
-            <!-- Kempten → Ingolstadt inside the zoom circle -->
-            <path class="arc short" pathLength="1" d="M120 392 Q 130 336 182 330"/>
-            <g class="fade d1"><circle class="pin" cx="672" cy="441" r="7"/></g>
-            <g class="fade d2"><circle class="pin" cx="120" cy="392" r="7"/></g>
-            <g class="fade d3"><circle class="pulse" cx="182" cy="330" r="7"/><circle class="pin now" cx="182" cy="330" r="7"/></g>
+        <div>
+          <h2 data-i18n="journey.title">Meine Geschichte in drei Kapiteln:</h2>
+          <div class="route">
+            <a class="stop now" href="#ch-ingolstadt" data-pin="in"><span class="n" aria-hidden="true"></span><span class="k" data-i18n="ch.in">Vollgas</span><span class="c">Ingolstadt</span><span class="m"><b data-i18n="route.in">seit 2025</b></span></a>
+            <div class="leg" aria-hidden="true"></div>
+            <a class="stop" href="#ch-kempten" data-pin="kem"><span class="n" aria-hidden="true"></span><span class="k" data-i18n="ch.kem">Neue Sprache, neue Perspektive</span><span class="c">Kempten</span><span class="m"><b>2019–2025</b></span></a>
+            <div class="leg" aria-hidden="true"></div>
+            <a class="stop" href="#ch-bangalore" data-pin="blr"><span class="n" aria-hidden="true"></span><span class="k" data-i18n="ch.blr">Die Wurzeln</span><span class="c">Bangalore</span><span class="m"><b data-i18n="route.blr">bis 2019</b></span></a>
+          </div>
+        </div>
+        <div class="passport" id="passport" role="img" aria-label="Reisestempel: Bangalore bis 2019, Kempten 2019–2025, Ingolstadt seit 2025" data-i18n-aria="pp.aria">
+          <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+            <defs>
+              <filter id="ink" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="7" result="n"/>
+                <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -.7 1.4" result="speckle"/>
+                <feComposite in="SourceGraphic" in2="speckle" operator="in" result="inked"/>
+                <feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="3" result="warp"/>
+                <feDisplacementMap in="inked" in2="warp" scale=".8"/>
+              </filter>
+            </defs>
           </svg>
-          <div class="lbl t1 blr" style="--x:88.2%;--y:81.7%;--xs:88%;--ys:86%"><b><span class="n">01</span>Bangalore</b><span data-i18n="route.blr">Indien · bis 2019</span></div>
-          <div class="lbl km t1" style="--x:57%;--y:35%">≈ <span data-num="7250">7.250</span> km</div>
-          <div class="lbl t2 left hide-sm" style="--x:12.6%;--y:75.3%"><b><span class="n">02</span>Kempten</b><span>2019–2025</span></div>
-          <div class="lbl t3 hide-sm" style="--x:25.8%;--y:58.5%"><b><span class="n">03</span>Ingolstadt</b><span data-i18n="route.in">seit 2025</span></div>
-          <div class="lbl cap t3" style="--x:21%;--y:84.5%"><span class="lg" data-i18n="map.bavaria">Bayern</span><span class="sm"><span style="color:var(--accent)">02</span> Kempten → <span style="color:var(--accent)">03</span> Ingolstadt</span> · <strong>≈ 140 km</strong></div>
+
+          <!-- Bangalore: Vidhana Soudha -->
+          <a class="stamp" href="#ch-bangalore" data-pin-target="blr" tabindex="-1" aria-hidden="true" style="--x:14%;--y:51%;--w:72%;--r:-2deg;--d:.05s">
+            <svg viewBox="0 0 340 250"><g fill="none" stroke="#8C3B12" stroke-linecap="round" stroke-linejoin="round">
+              <path class="paper" d="M0 0 H3.3 A4.2 4.2 0 0 0 11.7 0 H15.8 A4.2 4.2 0 0 0 24.2 0 H28.3 A4.2 4.2 0 0 0 36.7 0 H40.8 A4.2 4.2 0 0 0 49.2 0 H53.3 A4.2 4.2 0 0 0 61.7 0 H65.8 A4.2 4.2 0 0 0 74.2 0 H78.3 A4.2 4.2 0 0 0 86.7 0 H90.8 A4.2 4.2 0 0 0 99.2 0 H103.3 A4.2 4.2 0 0 0 111.7 0 H115.8 A4.2 4.2 0 0 0 124.2 0 H128.3 A4.2 4.2 0 0 0 136.7 0 H140.8 A4.2 4.2 0 0 0 149.2 0 H153.3 A4.2 4.2 0 0 0 161.7 0 H165.8 A4.2 4.2 0 0 0 174.2 0 H178.3 A4.2 4.2 0 0 0 186.7 0 H190.8 A4.2 4.2 0 0 0 199.2 0 H203.3 A4.2 4.2 0 0 0 211.7 0 H215.8 A4.2 4.2 0 0 0 224.2 0 H228.3 A4.2 4.2 0 0 0 236.7 0 H240.8 A4.2 4.2 0 0 0 249.2 0 H253.3 A4.2 4.2 0 0 0 261.7 0 H265.8 A4.2 4.2 0 0 0 274.2 0 H278.3 A4.2 4.2 0 0 0 286.7 0 H290.8 A4.2 4.2 0 0 0 299.2 0 H303.3 A4.2 4.2 0 0 0 311.7 0 H315.8 A4.2 4.2 0 0 0 324.2 0 H328.3 A4.2 4.2 0 0 0 336.7 0 H340 V2 A4.2 4.2 0 0 0 340 10.4 V14.6 A4.2 4.2 0 0 0 340 22.9 V27.1 A4.2 4.2 0 0 0 340 35.5 V39.5 A4.2 4.2 0 0 0 340 48 V52 A4.2 4.2 0 0 0 340 60.5 V64.5 A4.2 4.2 0 0 0 340 73 V77 A4.2 4.2 0 0 0 340 85.5 V89.5 A4.2 4.2 0 0 0 340 98 V102 A4.2 4.2 0 0 0 340 110.5 V114.5 A4.2 4.2 0 0 0 340 123 V127 A4.2 4.2 0 0 0 340 135.4 V139.6 A4.2 4.2 0 0 0 340 147.9 V152.1 A4.2 4.2 0 0 0 340 160.4 V164.6 A4.2 4.2 0 0 0 340 172.9 V177.1 A4.2 4.2 0 0 0 340 185.4 V189.6 A4.2 4.2 0 0 0 340 197.9 V202.1 A4.2 4.2 0 0 0 340 210.4 V214.6 A4.2 4.2 0 0 0 340 222.9 V227.1 A4.2 4.2 0 0 0 340 235.4 V239.6 A4.2 4.2 0 0 0 340 247.9 V250 H336.7 A4.2 4.2 0 0 0 328.3 250 H324.2 A4.2 4.2 0 0 0 315.8 250 H311.7 A4.2 4.2 0 0 0 303.3 250 H299.2 A4.2 4.2 0 0 0 290.8 250 H286.7 A4.2 4.2 0 0 0 278.3 250 H274.2 A4.2 4.2 0 0 0 265.8 250 H261.7 A4.2 4.2 0 0 0 253.3 250 H249.2 A4.2 4.2 0 0 0 240.8 250 H236.7 A4.2 4.2 0 0 0 228.3 250 H224.2 A4.2 4.2 0 0 0 215.8 250 H211.7 A4.2 4.2 0 0 0 203.3 250 H199.2 A4.2 4.2 0 0 0 190.8 250 H186.7 A4.2 4.2 0 0 0 178.3 250 H174.2 A4.2 4.2 0 0 0 165.8 250 H161.7 A4.2 4.2 0 0 0 153.3 250 H149.2 A4.2 4.2 0 0 0 140.8 250 H136.7 A4.2 4.2 0 0 0 128.3 250 H124.2 A4.2 4.2 0 0 0 115.8 250 H111.7 A4.2 4.2 0 0 0 103.3 250 H99.2 A4.2 4.2 0 0 0 90.8 250 H86.7 A4.2 4.2 0 0 0 78.3 250 H74.2 A4.2 4.2 0 0 0 65.8 250 H61.7 A4.2 4.2 0 0 0 53.3 250 H49.2 A4.2 4.2 0 0 0 40.8 250 H36.7 A4.2 4.2 0 0 0 28.3 250 H24.2 A4.2 4.2 0 0 0 15.8 250 H11.7 A4.2 4.2 0 0 0 3.3 250 H0 V247.9 A4.2 4.2 0 0 0 0 239.6 V235.4 A4.2 4.2 0 0 0 0 227.1 V222.9 A4.2 4.2 0 0 0 0 214.6 V210.4 A4.2 4.2 0 0 0 0 202.1 V197.9 A4.2 4.2 0 0 0 0 189.6 V185.4 A4.2 4.2 0 0 0 0 177.1 V172.9 A4.2 4.2 0 0 0 0 164.6 V160.4 A4.2 4.2 0 0 0 0 152.1 V147.9 A4.2 4.2 0 0 0 0 139.6 V135.4 A4.2 4.2 0 0 0 0 127 V123 A4.2 4.2 0 0 0 0 114.5 V110.5 A4.2 4.2 0 0 0 0 102 V98 A4.2 4.2 0 0 0 0 89.5 V85.5 A4.2 4.2 0 0 0 0 77 V73 A4.2 4.2 0 0 0 0 64.5 V60.5 A4.2 4.2 0 0 0 0 52 V48 A4.2 4.2 0 0 0 0 39.5 V35.5 A4.2 4.2 0 0 0 0 27.1 V22.9 A4.2 4.2 0 0 0 0 14.6 V10.4 A4.2 4.2 0 0 0 0 2 Z" fill="#FFFDF8" stroke="rgba(20,22,31,.12)" stroke-width=".8"/>
+              <rect x="14" y="14" width="312" height="222" fill="#F5E1D3" stroke-width="1.6"/>
+              <rect x="20" y="20" width="300" height="210" stroke-width=".8"/>
+              <text class="s" x="30" y="38" font-size="9" letter-spacing="3.5" fill="#8C3B12" stroke="none" data-i18n="pp.c.in">INDIEN</text>
+              <text x="312" y="42" text-anchor="end" font-size="22" fill="#8C3B12" stroke="none">2019</text>
+              <g transform="translate(170 178) scale(.98) translate(-160 -146)">
+                <path d="M110 146 H210" stroke-width="1.1"/>
+                <path d="M114 142 H206" stroke-width="1.1"/>
+                <path d="M118 138 H202" stroke-width="1.1"/>
+                <path d="M122 134 H198" stroke-width="1.1"/>
+                <path d="M110 146 L122 134 M210 146 L198 134" stroke-width="1.1"/>
+                <path d="M24 146 H110 M210 146 H296" stroke-width="1.4"/>
+                <path d="M34 134 H122 M198 134 H286 M34 134 V146 M286 134 V146 M38 140 H110 M210 140 H282" stroke-width="1.0"/>
+                <path d="M36 76 V134 M122 76 V134" stroke-width="1.2"/>
+                <path d="M34 76 H124" stroke-width="1.8"/>
+                <path d="M36 80 H122" stroke-width="1.0"/>
+                <path d="M36 104 H122" stroke-width="0.8"/>
+                <path d="M38 72 H120" stroke-width="1.0"/>
+                <path d="M40 72 V76 M45 72 V76 M50 72 V76 M55 72 V76 M60 72 V76 M65 72 V76 M70 72 V76 M75 72 V76 M80 72 V76 M85 72 V76 M90 72 V76 M95 72 V76 M100 72 V76 M105 72 V76 M110 72 V76 M115 72 V76" stroke-width="0.7"/>
+                <path d="M56 92 V87.5 A2 2 0 0 1 60 87.5 V92 M63.5 92 V87.5 A2 2 0 0 1 67.5 87.5 V92 M71 92 V87.5 A2 2 0 0 1 75 87.5 V92 M78.5 92 V87.5 A2 2 0 0 1 82.5 87.5 V92 M86 92 V87.5 A2 2 0 0 1 90 87.5 V92 M93.5 92 V87.5 A2 2 0 0 1 97.5 87.5 V92 M101 92 V87.5 A2 2 0 0 1 105 87.5 V92 M108.5 92 V87.5 A2 2 0 0 1 112.5 87.5 V92 M56 95 h4 v6 h-4 Z M63.5 95 h4 v6 h-4 Z M71 95 h4 v6 h-4 Z M78.5 95 h4 v6 h-4 Z M86 95 h4 v6 h-4 Z M93.5 95 h4 v6 h-4 Z M101 95 h4 v6 h-4 Z M108.5 95 h4 v6 h-4 Z M56 109 h4 v6 h-4 Z M63.5 109 h4 v6 h-4 Z M71 109 h4 v6 h-4 Z M78.5 109 h4 v6 h-4 Z M86 109 h4 v6 h-4 Z M93.5 109 h4 v6 h-4 Z M101 109 h4 v6 h-4 Z M108.5 109 h4 v6 h-4 Z M56 120 h4 v6 h-4 Z M63.5 120 h4 v6 h-4 Z M71 120 h4 v6 h-4 Z M78.5 120 h4 v6 h-4 Z M86 120 h4 v6 h-4 Z M93.5 120 h4 v6 h-4 Z M101 120 h4 v6 h-4 Z M108.5 120 h4 v6 h-4 Z" stroke-width="0.75"/>
+                <path d="M198 76 V134 M284 76 V134" stroke-width="1.2"/>
+                <path d="M196 76 H286" stroke-width="1.8"/>
+                <path d="M198 80 H284" stroke-width="1.0"/>
+                <path d="M198 104 H284" stroke-width="0.8"/>
+                <path d="M200 72 H282" stroke-width="1.0"/>
+                <path d="M202 72 V76 M207 72 V76 M212 72 V76 M217 72 V76 M222 72 V76 M227 72 V76 M232 72 V76 M237 72 V76 M242 72 V76 M247 72 V76 M252 72 V76 M257 72 V76 M262 72 V76 M267 72 V76 M272 72 V76 M277 72 V76" stroke-width="0.7"/>
+                <path d="M218 92 V87.5 A2 2 0 0 1 222 87.5 V92 M225.5 92 V87.5 A2 2 0 0 1 229.5 87.5 V92 M233 92 V87.5 A2 2 0 0 1 237 87.5 V92 M240.5 92 V87.5 A2 2 0 0 1 244.5 87.5 V92 M248 92 V87.5 A2 2 0 0 1 252 87.5 V92 M255.5 92 V87.5 A2 2 0 0 1 259.5 87.5 V92 M263 92 V87.5 A2 2 0 0 1 267 87.5 V92 M218 95 h4 v6 h-4 Z M225.5 95 h4 v6 h-4 Z M233 95 h4 v6 h-4 Z M240.5 95 h4 v6 h-4 Z M248 95 h4 v6 h-4 Z M255.5 95 h4 v6 h-4 Z M263 95 h4 v6 h-4 Z M218 109 h4 v6 h-4 Z M225.5 109 h4 v6 h-4 Z M233 109 h4 v6 h-4 Z M240.5 109 h4 v6 h-4 Z M248 109 h4 v6 h-4 Z M255.5 109 h4 v6 h-4 Z M263 109 h4 v6 h-4 Z M218 120 h4 v6 h-4 Z M225.5 120 h4 v6 h-4 Z M233 120 h4 v6 h-4 Z M240.5 120 h4 v6 h-4 Z M248 120 h4 v6 h-4 Z M255.5 120 h4 v6 h-4 Z M263 120 h4 v6 h-4 Z" stroke-width="0.75"/>
+                <path d="M34 68 V134 M52 68 V134 M32 68 H54 M34 72 H52" stroke-width="1.2"/>
+                <path d="M37 88 V96 M49 88 V96 M37 104 V112 M49 104 V112 M37 120 V128 M49 120 V128" stroke-width="0.8"/>
+                <path d="M36 68 V60 M50 68 V60 M40 68 V60 M46 68 V60 M34 60 H52" stroke-width="0.9"/>
+                <path d="M35 60 C35 50 40 46 43 44 C46 46 51 50 51 60" stroke-width="1.2"/>
+                <path d="M43 44 V38" stroke-width="0.9"/>
+                <path d="M268 68 V134 M286 68 V134 M266 68 H288 M268 72 H286" stroke-width="1.2"/>
+                <path d="M271 88 V96 M283 88 V96 M271 104 V112 M283 104 V112 M271 120 V128 M283 120 V128" stroke-width="0.8"/>
+                <path d="M270 68 V60 M284 68 V60 M274 68 V60 M280 68 V60 M268 60 H286" stroke-width="0.9"/>
+                <path d="M269 60 C269 50 274 46 277 44 C280 46 285 50 285 60" stroke-width="1.2"/>
+                <path d="M277 44 V38" stroke-width="0.9"/>
+                <path d="M118 70 H202 M120 74 H200 M120 80 H200 M120 70 V80 M200 70 V80" stroke-width="1.4"/>
+                <path d="M122 70 Q125 63 128 70 M128 70 Q131 63 134 70 M134 70 Q137 63 140 70 M140 70 Q143 63 146 70 M146 70 Q149 63 152 70 M152 70 Q155 63 158 70 M158 70 Q161 63 164 70 M164 70 Q167 63 170 70 M170 70 Q173 63 176 70 M176 70 Q179 63 182 70 M182 70 Q185 63 188 70 M188 70 Q191 63 194 70 M194 70 Q197 63 200 70" stroke-width="0.9"/>
+                <path d="M120 64 H200" stroke-width="1.0"/>
+                <path d="M124.7 84 V130 M127.3 84 V130 M123.2 80 h5.6 v4 h-5.6 Z M123.2 130 h5.6 v4 h-5.6 Z M132.7 84 V130 M135.3 84 V130 M131.2 80 h5.6 v4 h-5.6 Z M131.2 130 h5.6 v4 h-5.6 Z M140.7 84 V130 M143.3 84 V130 M139.2 80 h5.6 v4 h-5.6 Z M139.2 130 h5.6 v4 h-5.6 Z M148.7 84 V130 M151.3 84 V130 M147.2 80 h5.6 v4 h-5.6 Z M147.2 130 h5.6 v4 h-5.6 Z M168.7 84 V130 M171.3 84 V130 M167.2 80 h5.6 v4 h-5.6 Z M167.2 130 h5.6 v4 h-5.6 Z M176.7 84 V130 M179.3 84 V130 M175.2 80 h5.6 v4 h-5.6 Z M175.2 130 h5.6 v4 h-5.6 Z M184.7 84 V130 M187.3 84 V130 M183.2 80 h5.6 v4 h-5.6 Z M183.2 130 h5.6 v4 h-5.6 Z M192.7 84 V130 M195.3 84 V130 M191.2 80 h5.6 v4 h-5.6 Z M191.2 130 h5.6 v4 h-5.6 Z" stroke-width="0.85"/>
+                <path d="M154 134 V112 Q160 102 166 112 V134" stroke-width="1.0"/>
+                <path d="M134 64 V56 H186 V64" stroke-width="1.2"/>
+                <path d="M138 56 V44 H182 V56 M136 44 H184" stroke-width="1.2"/>
+                <path d="M142 54 V49 A2 2 0 0 1 146 49 V54 M149.5 54 V49 A2 2 0 0 1 153.5 49 V54 M157 54 V49 A2 2 0 0 1 161 49 V54 M164.5 54 V49 A2 2 0 0 1 168.5 49 V54 M172 54 V49 A2 2 0 0 1 176 49 V54 M179.5 54 V49 A2 2 0 0 1 183.5 49 V54" stroke-width="0.8"/>
+                <path d="M140 44 C140 26 152 18 160 15 C168 18 180 26 180 44" stroke-width="1.6"/>
+                <path d="M160 15 V44 M150 19 C147 28 147 36 148 44 M170 19 C173 28 173 36 172 44" stroke-width="0.8"/>
+                <path d="M160 15 V9 M157 9 H163 M157.5 9 L158.5 5 H161.5 L162.5 9" stroke-width="1.0"/>
+                <path d="M160 5 V2" stroke-width="1.0"/>
+              </g>
+              <rect x="20" y="182" width="300" height="48" fill="#8C3B12" stroke="none"/>
+              <text x="170.0" y="206" text-anchor="middle" font-size="17" letter-spacing="6" fill="#F5E1D3" stroke="none">BANGALORE</text>
+              <text class="s" x="170.0" y="220" text-anchor="middle" font-size="7.5" letter-spacing="3" fill="#F5E1D3" stroke="none">VIDHANA SOUDHA</text>
+              <g stroke="#2A2E3E" fill="none"><g class="pm" filter="url(#ink)">
+                <defs><path id="pmB" d="M326,128 m-25,0 a25,25 0 1,1 50,0 a25,25 0 1,1 -50,0"/></defs>
+                <circle cx="326" cy="128" r="34" stroke-width="2.2"/>
+                <circle cx="326" cy="128" r="18" stroke-width="1"/>
+                <text class="s" font-size="7.5" letter-spacing="1.2" stroke="none" fill="#2A2E3E"><textPath href="#pmB" textLength="150.8" lengthAdjust="spacing">BANGALORE ★ 2019 ★</textPath></text>
+                <text x="326" y="132" text-anchor="middle" font-size="11" stroke="none" fill="#2A2E3E">★</text>
+                <path d="M364 113 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 M364 123 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 M364 133 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 M364 143 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 " stroke-width="1.6"/>
+              </g></g>
+            </g></svg>
+          </a>
+          <!-- Kempten: Basilika St. Lorenz -->
+          <a class="stamp" href="#ch-kempten" data-pin-target="kem" tabindex="-1" aria-hidden="true" style="--x:55%;--y:4%;--w:38%;--r:4deg;--d:.55s">
+            <svg viewBox="0 0 240 330"><g fill="none" stroke="#2E3556" stroke-linecap="round" stroke-linejoin="round">
+              <path class="paper" d="M0 0 H3.3 A4.2 4.2 0 0 0 11.7 0 H15.8 A4.2 4.2 0 0 0 24.2 0 H28.3 A4.2 4.2 0 0 0 36.7 0 H40.8 A4.2 4.2 0 0 0 49.2 0 H53.3 A4.2 4.2 0 0 0 61.7 0 H65.8 A4.2 4.2 0 0 0 74.2 0 H78.3 A4.2 4.2 0 0 0 86.7 0 H90.8 A4.2 4.2 0 0 0 99.2 0 H103.3 A4.2 4.2 0 0 0 111.7 0 H115.8 A4.2 4.2 0 0 0 124.2 0 H128.3 A4.2 4.2 0 0 0 136.7 0 H140.8 A4.2 4.2 0 0 0 149.2 0 H153.3 A4.2 4.2 0 0 0 161.7 0 H165.8 A4.2 4.2 0 0 0 174.2 0 H178.3 A4.2 4.2 0 0 0 186.7 0 H190.8 A4.2 4.2 0 0 0 199.2 0 H203.3 A4.2 4.2 0 0 0 211.7 0 H215.8 A4.2 4.2 0 0 0 224.2 0 H228.3 A4.2 4.2 0 0 0 236.7 0 H240 V4.5 A4.2 4.2 0 0 0 240 12.9 V17.1 A4.2 4.2 0 0 0 240 25.4 V29.6 A4.2 4.2 0 0 0 240 38 V42 A4.2 4.2 0 0 0 240 50.5 V54.5 A4.2 4.2 0 0 0 240 63 V67 A4.2 4.2 0 0 0 240 75.5 V79.5 A4.2 4.2 0 0 0 240 88 V92 A4.2 4.2 0 0 0 240 100.5 V104.5 A4.2 4.2 0 0 0 240 113 V117 A4.2 4.2 0 0 0 240 125.5 V129.6 A4.2 4.2 0 0 0 240 137.9 V142.1 A4.2 4.2 0 0 0 240 150.4 V154.6 A4.2 4.2 0 0 0 240 162.9 V167.1 A4.2 4.2 0 0 0 240 175.4 V179.6 A4.2 4.2 0 0 0 240 187.9 V192.1 A4.2 4.2 0 0 0 240 200.4 V204.6 A4.2 4.2 0 0 0 240 212.9 V217.1 A4.2 4.2 0 0 0 240 225.4 V229.6 A4.2 4.2 0 0 0 240 237.9 V242.1 A4.2 4.2 0 0 0 240 250.4 V254.6 A4.2 4.2 0 0 0 240 262.9 V267.1 A4.2 4.2 0 0 0 240 275.4 V279.6 A4.2 4.2 0 0 0 240 287.9 V292.1 A4.2 4.2 0 0 0 240 300.4 V304.6 A4.2 4.2 0 0 0 240 312.9 V317.1 A4.2 4.2 0 0 0 240 325.4 V330 H236.7 A4.2 4.2 0 0 0 228.3 330 H224.2 A4.2 4.2 0 0 0 215.8 330 H211.7 A4.2 4.2 0 0 0 203.3 330 H199.2 A4.2 4.2 0 0 0 190.8 330 H186.7 A4.2 4.2 0 0 0 178.3 330 H174.2 A4.2 4.2 0 0 0 165.8 330 H161.7 A4.2 4.2 0 0 0 153.3 330 H149.2 A4.2 4.2 0 0 0 140.8 330 H136.7 A4.2 4.2 0 0 0 128.3 330 H124.2 A4.2 4.2 0 0 0 115.8 330 H111.7 A4.2 4.2 0 0 0 103.3 330 H99.2 A4.2 4.2 0 0 0 90.8 330 H86.7 A4.2 4.2 0 0 0 78.3 330 H74.2 A4.2 4.2 0 0 0 65.8 330 H61.7 A4.2 4.2 0 0 0 53.3 330 H49.2 A4.2 4.2 0 0 0 40.8 330 H36.7 A4.2 4.2 0 0 0 28.3 330 H24.2 A4.2 4.2 0 0 0 15.8 330 H11.7 A4.2 4.2 0 0 0 3.3 330 H0 V325.4 A4.2 4.2 0 0 0 0 317.1 V312.9 A4.2 4.2 0 0 0 0 304.6 V300.4 A4.2 4.2 0 0 0 0 292.1 V287.9 A4.2 4.2 0 0 0 0 279.6 V275.4 A4.2 4.2 0 0 0 0 267.1 V262.9 A4.2 4.2 0 0 0 0 254.6 V250.4 A4.2 4.2 0 0 0 0 242.1 V237.9 A4.2 4.2 0 0 0 0 229.6 V225.4 A4.2 4.2 0 0 0 0 217.1 V212.9 A4.2 4.2 0 0 0 0 204.6 V200.4 A4.2 4.2 0 0 0 0 192.1 V187.9 A4.2 4.2 0 0 0 0 179.6 V175.4 A4.2 4.2 0 0 0 0 167.1 V162.9 A4.2 4.2 0 0 0 0 154.6 V150.4 A4.2 4.2 0 0 0 0 142.1 V137.9 A4.2 4.2 0 0 0 0 129.6 V125.5 A4.2 4.2 0 0 0 0 117 V113 A4.2 4.2 0 0 0 0 104.5 V100.5 A4.2 4.2 0 0 0 0 92 V88 A4.2 4.2 0 0 0 0 79.5 V75.5 A4.2 4.2 0 0 0 0 67 V63 A4.2 4.2 0 0 0 0 54.5 V50.5 A4.2 4.2 0 0 0 0 42 V38 A4.2 4.2 0 0 0 0 29.6 V25.4 A4.2 4.2 0 0 0 0 17.1 V12.9 A4.2 4.2 0 0 0 0 4.5 Z" fill="#FFFDF8" stroke="rgba(20,22,31,.12)" stroke-width=".8"/>
+              <rect x="14" y="14" width="212" height="302" fill="#E4E7F0" stroke-width="1.6"/>
+              <rect x="20" y="20" width="200" height="290" stroke-width=".8"/>
+              <text class="s" x="30" y="38" font-size="9" letter-spacing="3.5" fill="#2E3556" stroke="none" data-i18n="pp.c.de">DEUTSCHLAND</text>
+              <text x="212" y="42" text-anchor="end" font-size="22" fill="#2E3556" stroke="none">2019</text>
+              <g transform="translate(120 258) scale(.98) translate(-110 -238)">
+                <path d="M52 238 V166 H80 V238" stroke-width="1.3"/>
+                <path d="M56 238 V170 M76 238 V170" stroke-width="0.7"/>
+                <path d="M62 212 V200 A4 4 0 0 1 70 200 V212" stroke-width="0.9"/>
+                <path d="M50 166 H82 M51 163 H81" stroke-width="1.2"/>
+                <path d="M54 163 V124 M78 163 V124" stroke-width="1.2"/>
+                <path d="M62 160 V146 A4 4 0 0 1 70 146 V160" stroke-width="0.9"/>
+                <path d="M66 134 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M66 134 V130.5 M66 134 H69" stroke-width="0.8"/>
+                <path d="M52 124 H80 M53 121 H79" stroke-width="1.2"/>
+                <path d="M56 121 V92 M76 121 V92" stroke-width="1.2"/>
+                <path d="M61.5 116 V102 A4.5 4.5 0 0 1 70.5 102 V116 M61.5 107 H70.5 M61.5 111 H70.5" stroke-width="0.8"/>
+                <path d="M54 92 H78 M55 89 H77" stroke-width="1.1"/>
+                <path d="M58 89 V78 M74 89 V78 M66 89 V80" stroke-width="0.9"/>
+                <path d="M57 78 H75" stroke-width="1.0"/>
+                <path d="M57 78 C55 70 61 66 66 60 C71 66 77 70 75 78" stroke-width="1.3"/>
+                <path d="M63 60 V53 H69 V60" stroke-width="0.9"/>
+                <path d="M62.5 53 Q66 47 69.5 53" stroke-width="0.9"/>
+                <path d="M66 48 V40 M63 43 H69" stroke-width="0.9"/>
+                <path d="M140 238 V166 H168 V238" stroke-width="1.3"/>
+                <path d="M144 238 V170 M164 238 V170" stroke-width="0.7"/>
+                <path d="M150 212 V200 A4 4 0 0 1 158 200 V212" stroke-width="0.9"/>
+                <path d="M138 166 H170 M139 163 H169" stroke-width="1.2"/>
+                <path d="M142 163 V124 M166 163 V124" stroke-width="1.2"/>
+                <path d="M150 160 V146 A4 4 0 0 1 158 146 V160" stroke-width="0.9"/>
+                <path d="M154 134 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M154 134 V130.5 M154 134 H157" stroke-width="0.8"/>
+                <path d="M140 124 H168 M141 121 H167" stroke-width="1.2"/>
+                <path d="M144 121 V92 M164 121 V92" stroke-width="1.2"/>
+                <path d="M149.5 116 V102 A4.5 4.5 0 0 1 158.5 102 V116 M149.5 107 H158.5 M149.5 111 H158.5" stroke-width="0.8"/>
+                <path d="M142 92 H166 M143 89 H165" stroke-width="1.1"/>
+                <path d="M146 89 V78 M162 89 V78 M154 89 V80" stroke-width="0.9"/>
+                <path d="M145 78 H163" stroke-width="1.0"/>
+                <path d="M145 78 C143 70 149 66 154 60 C159 66 165 70 163 78" stroke-width="1.3"/>
+                <path d="M151 60 V53 H157 V60" stroke-width="0.9"/>
+                <path d="M150.5 53 Q154 47 157.5 53" stroke-width="0.9"/>
+                <path d="M154 48 V40 M151 43 H157" stroke-width="0.9"/>
+                <path d="M80 238 V156 M140 238 V156" stroke-width="1.2"/>
+                <path d="M78 156 H142 M79 159 H141" stroke-width="1.4"/>
+                <path d="M100 238 V214 A10 10 0 0 1 120 214 V238" stroke-width="1.1"/>
+                <path d="M96 238 V208 M124 238 V208 M93 206 H127 M94 208 H126" stroke-width="0.9"/>
+                <path d="M103 196 V178 A7 7 0 0 1 117 178 V196 M110 171 V196" stroke-width="0.9"/>
+                <path d="M86 192 V180 A3 3 0 0 1 92 180 V192 M89 180.5 m-1.3 0 a1.3 1.3 0 1 0 2.6 0 a1.3 1.3 0 1 0 -2.6 0 M89 182 V190" stroke-width="0.75"/>
+                <path d="M128 192 V180 A3 3 0 0 1 134 180 V192 M131 180.5 m-1.3 0 a1.3 1.3 0 1 0 2.6 0 a1.3 1.3 0 1 0 -2.6 0 M131 182 V190" stroke-width="0.75"/>
+                <path d="M84 238 V162 M136 238 V162" stroke-width="0.6"/>
+                <path d="M82 156 C88 152 92 146 96 138 M138 156 C132 152 128 146 124 138" stroke-width="1.2"/>
+                <path d="M85 152 m-3 0 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 M135 152 m-3 0 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0" stroke-width="0.8"/>
+                <path d="M96 156 V126 M124 156 V126 M93 126 Q110 114 127 126" stroke-width="1.2"/>
+                <path d="M110 140 m0 -7 a5 7 0 1 0 0.01 0 Z" stroke-width="0.9"/>
+                <path d="M110 118 m-1.6 0 a1.6 1.6 0 1 0 3.2 0 a1.6 1.6 0 1 0 -3.2 0" stroke-width="0.9"/>
+                <path d="M96 106 V96 H124 V106 Z" stroke-width="1.0"/>
+                <path d="M96 106 V126 M124 106 V126" stroke-width="0.9"/>
+                <path d="M100 104 V99 M104 104 V99 M108 104 V99 M112 104 V99 M116 104 V99 M120 104 V99" stroke-width="0.6"/>
+                <path d="M94 96 Q110 70 126 96" stroke-width="1.3"/>
+                <path d="M110 77 V96 M102 82 Q100 89 101 96 M118 82 Q120 89 119 96" stroke-width="0.6"/>
+                <path d="M106 77 V68 H114 V77 M105 68 Q110 61 115 68 M110 63 V56 M107.5 59 H112.5" stroke-width="0.9"/>
+                <path d="M40 238 H180" stroke-width="1.4"/>
+              </g>
+              <rect x="20" y="262" width="200" height="48" fill="#2E3556" stroke="none"/>
+              <text x="120.0" y="286" text-anchor="middle" font-size="17" letter-spacing="6" fill="#E4E7F0" stroke="none">KEMPTEN</text>
+              <text class="s" x="120.0" y="300" text-anchor="middle" font-size="7.5" letter-spacing="3" fill="#E4E7F0" stroke="none">BASILIKA ST. LORENZ</text>
+              <g stroke="#2A2E3E" fill="none"><g class="pm" filter="url(#ink)">
+                <defs><path id="pmK" d="M226,214 m-25,0 a25,25 0 1,1 50,0 a25,25 0 1,1 -50,0"/></defs>
+                <circle cx="226" cy="214" r="34" stroke-width="2.2"/>
+                <circle cx="226" cy="214" r="18" stroke-width="1"/>
+                <text class="s" font-size="7.5" letter-spacing="1.2" stroke="none" fill="#2A2E3E"><textPath href="#pmK" textLength="150.8" lengthAdjust="spacing">KEMPTEN ★ 2019 ★</textPath></text>
+                <text x="226" y="218" text-anchor="middle" font-size="11" stroke="none" fill="#2A2E3E">★</text>
+                <path d="M264 199 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 M264 209 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 M264 219 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 M264 229 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 q6 -5 12 0 t12 0 " stroke-width="1.6"/>
+              </g></g>
+            </g></svg>
+          </a>
+          <!-- Ingolstadt: Kreuztor -->
+          <a class="stamp" href="#ch-ingolstadt" data-pin-target="in" tabindex="-1" aria-hidden="true" style="--x:6%;--y:6%;--w:38%;--r:-5deg;--d:1.05s">
+            <svg viewBox="0 0 240 320"><g fill="none" stroke="#A85A0C" stroke-linecap="round" stroke-linejoin="round">
+              <path class="paper" d="M0 0 H3.3 A4.2 4.2 0 0 0 11.7 0 H15.8 A4.2 4.2 0 0 0 24.2 0 H28.3 A4.2 4.2 0 0 0 36.7 0 H40.8 A4.2 4.2 0 0 0 49.2 0 H53.3 A4.2 4.2 0 0 0 61.7 0 H65.8 A4.2 4.2 0 0 0 74.2 0 H78.3 A4.2 4.2 0 0 0 86.7 0 H90.8 A4.2 4.2 0 0 0 99.2 0 H103.3 A4.2 4.2 0 0 0 111.7 0 H115.8 A4.2 4.2 0 0 0 124.2 0 H128.3 A4.2 4.2 0 0 0 136.7 0 H140.8 A4.2 4.2 0 0 0 149.2 0 H153.3 A4.2 4.2 0 0 0 161.7 0 H165.8 A4.2 4.2 0 0 0 174.2 0 H178.3 A4.2 4.2 0 0 0 186.7 0 H190.8 A4.2 4.2 0 0 0 199.2 0 H203.3 A4.2 4.2 0 0 0 211.7 0 H215.8 A4.2 4.2 0 0 0 224.2 0 H228.3 A4.2 4.2 0 0 0 236.7 0 H240 V5.8 A4.2 4.2 0 0 0 240 14.2 V18.3 A4.2 4.2 0 0 0 240 26.7 V30.8 A4.2 4.2 0 0 0 240 39.2 V43.3 A4.2 4.2 0 0 0 240 51.7 V55.8 A4.2 4.2 0 0 0 240 64.2 V68.3 A4.2 4.2 0 0 0 240 76.7 V80.8 A4.2 4.2 0 0 0 240 89.2 V93.3 A4.2 4.2 0 0 0 240 101.7 V105.8 A4.2 4.2 0 0 0 240 114.2 V118.3 A4.2 4.2 0 0 0 240 126.7 V130.8 A4.2 4.2 0 0 0 240 139.2 V143.3 A4.2 4.2 0 0 0 240 151.7 V155.8 A4.2 4.2 0 0 0 240 164.2 V168.3 A4.2 4.2 0 0 0 240 176.7 V180.8 A4.2 4.2 0 0 0 240 189.2 V193.3 A4.2 4.2 0 0 0 240 201.7 V205.8 A4.2 4.2 0 0 0 240 214.2 V218.3 A4.2 4.2 0 0 0 240 226.7 V230.8 A4.2 4.2 0 0 0 240 239.2 V243.3 A4.2 4.2 0 0 0 240 251.7 V255.8 A4.2 4.2 0 0 0 240 264.2 V268.3 A4.2 4.2 0 0 0 240 276.7 V280.8 A4.2 4.2 0 0 0 240 289.2 V293.3 A4.2 4.2 0 0 0 240 301.7 V305.8 A4.2 4.2 0 0 0 240 314.2 V320 H236.7 A4.2 4.2 0 0 0 228.3 320 H224.2 A4.2 4.2 0 0 0 215.8 320 H211.7 A4.2 4.2 0 0 0 203.3 320 H199.2 A4.2 4.2 0 0 0 190.8 320 H186.7 A4.2 4.2 0 0 0 178.3 320 H174.2 A4.2 4.2 0 0 0 165.8 320 H161.7 A4.2 4.2 0 0 0 153.3 320 H149.2 A4.2 4.2 0 0 0 140.8 320 H136.7 A4.2 4.2 0 0 0 128.3 320 H124.2 A4.2 4.2 0 0 0 115.8 320 H111.7 A4.2 4.2 0 0 0 103.3 320 H99.2 A4.2 4.2 0 0 0 90.8 320 H86.7 A4.2 4.2 0 0 0 78.3 320 H74.2 A4.2 4.2 0 0 0 65.8 320 H61.7 A4.2 4.2 0 0 0 53.3 320 H49.2 A4.2 4.2 0 0 0 40.8 320 H36.7 A4.2 4.2 0 0 0 28.3 320 H24.2 A4.2 4.2 0 0 0 15.8 320 H11.7 A4.2 4.2 0 0 0 3.3 320 H0 V314.2 A4.2 4.2 0 0 0 0 305.8 V301.7 A4.2 4.2 0 0 0 0 293.3 V289.2 A4.2 4.2 0 0 0 0 280.8 V276.7 A4.2 4.2 0 0 0 0 268.3 V264.2 A4.2 4.2 0 0 0 0 255.8 V251.7 A4.2 4.2 0 0 0 0 243.3 V239.2 A4.2 4.2 0 0 0 0 230.8 V226.7 A4.2 4.2 0 0 0 0 218.3 V214.2 A4.2 4.2 0 0 0 0 205.8 V201.7 A4.2 4.2 0 0 0 0 193.3 V189.2 A4.2 4.2 0 0 0 0 180.8 V176.7 A4.2 4.2 0 0 0 0 168.3 V164.2 A4.2 4.2 0 0 0 0 155.8 V151.7 A4.2 4.2 0 0 0 0 143.3 V139.2 A4.2 4.2 0 0 0 0 130.8 V126.7 A4.2 4.2 0 0 0 0 118.3 V114.2 A4.2 4.2 0 0 0 0 105.8 V101.7 A4.2 4.2 0 0 0 0 93.3 V89.2 A4.2 4.2 0 0 0 0 80.8 V76.7 A4.2 4.2 0 0 0 0 68.3 V64.2 A4.2 4.2 0 0 0 0 55.8 V51.7 A4.2 4.2 0 0 0 0 43.3 V39.2 A4.2 4.2 0 0 0 0 30.8 V26.7 A4.2 4.2 0 0 0 0 18.3 V14.2 A4.2 4.2 0 0 0 0 5.8 Z" fill="#FFFDF8" stroke="rgba(20,22,31,.12)" stroke-width=".8"/>
+              <rect x="14" y="14" width="212" height="292" fill="#F7E7C9" stroke-width="1.6"/>
+              <rect x="20" y="20" width="200" height="280" stroke-width=".8"/>
+              <text class="s" x="30" y="38" font-size="9" letter-spacing="3.5" fill="#A85A0C" stroke="none" data-i18n="pp.c.de">DEUTSCHLAND</text>
+              <text x="212" y="42" text-anchor="end" font-size="22" fill="#A85A0C" stroke="none">2025</text>
+              <g transform="translate(120 244) scale(1.12) translate(-120 -186)">
+                <path d="M66 186 V112 M84 186 V112" stroke-width="1.2"/>
+                <path d="M63 112 H87 M64 116 H86" stroke-width="1.0"/>
+                <path d="M63 112 L75 70 L87 112" stroke-width="1.3"/>
+                <path d="M75 70 V63" stroke-width="0.9"/>
+                <path d="M75 124 V134 M75 146 V156 M66 162 H84 M71 170 V178 M79 170 V178" stroke-width="0.8"/>
+                <path d="M156 186 V112 M174 186 V112" stroke-width="1.2"/>
+                <path d="M153 112 H177 M154 116 H176" stroke-width="1.0"/>
+                <path d="M153 112 L165 70 L177 112" stroke-width="1.3"/>
+                <path d="M165 70 V63" stroke-width="0.9"/>
+                <path d="M165 124 V134 M165 146 V156 M156 162 H174 M161 170 V178 M169 170 V178" stroke-width="0.8"/>
+                <path d="M84 140 H85.5 V136 H87.5 V140 H89.5 V136 H91.5 V140 H93.5 V136 H95.5 V140 H98" stroke-width="0.9"/>
+                <path d="M84 140 V186 M98 140 V186" stroke-width="0.6"/>
+                <path d="M142 140 H143.5 V136 H145.5 V140 H147.5 V136 H149.5 V140 H151.5 V136 H153.5 V140 H156" stroke-width="0.9"/>
+                <path d="M142 140 V186 M156 140 V186" stroke-width="0.6"/>
+                <path d="M98 186 V84 H142 V186" stroke-width="1.4"/>
+                <path d="M94 84 H146 M97 88 H143" stroke-width="1.1"/>
+                <path d="M95 84 V72 M105 84 V72 M94 72 H106" stroke-width="1.0"/>
+                <path d="M94 72 L100 50 L106 72 M100 50 V45" stroke-width="1.1"/>
+                <path d="M100 76 V81" stroke-width="0.7"/>
+                <path d="M135 84 V72 M145 84 V72 M134 72 H146" stroke-width="1.0"/>
+                <path d="M134 72 L140 50 L146 72 M140 50 V45" stroke-width="1.1"/>
+                <path d="M140 76 V81" stroke-width="0.7"/>
+                <path d="M105 84 L120 34 L135 84" stroke-width="1.5"/>
+                <path d="M117 72 L120 64 L123 72 Z" stroke-width="0.8"/>
+                <path d="M120 34 V26 M117 29 H123" stroke-width="1.0"/>
+                <path d="M102 108 V98 Q105.5 90 109 98 V108 M111 108 V98 Q114.5 90 118 98 V108 M120 108 V98 Q123.5 90 127 98 V108 M129 108 V98 Q132.5 90 136 98 V108" stroke-width="0.9"/>
+                <path d="M100 116 L102 113 L106 119 L110 113 L114 119 L118 113 L122 119 L126 113 L130 119 L134 113 L138 119 L142 116" stroke-width="0.8"/>
+                <path d="M98 112 H142 M98 120 H142" stroke-width="0.8"/>
+                <path d="M104 146 V132 Q111 120 118 132 V146 M111 146 V128 M122 146 V132 Q129 120 136 132 V146 M129 146 V128" stroke-width="0.9"/>
+                <path d="M98 150 H142" stroke-width="1.0"/>
+                <path d="M108 186 V166 Q120 146 132 166 V186" stroke-width="1.3"/>
+                <path d="M103 186 V165 Q120 138 137 165 V186" stroke-width="0.8"/>
+                <path d="M114 186 V176 H126 V186" stroke-width="0.6"/>
+                <path d="M56 186 H184" stroke-width="1.5"/>
+              </g>
+              <rect x="20" y="252" width="200" height="48" fill="#A85A0C" stroke="none"/>
+              <text x="120.0" y="276" text-anchor="middle" font-size="17" letter-spacing="6" fill="#F7E7C9" stroke="none">INGOLSTADT</text>
+              <text class="s" x="120.0" y="290" text-anchor="middle" font-size="7.5" letter-spacing="3" fill="#F7E7C9" stroke="none">KREUZTOR</text>
+              <g stroke="#2A2E3E" fill="none"><g class="pm" filter="url(#ink)">
+                <defs><path id="pmI" d="M14,196 m-25,0 a25,25 0 1,1 50,0 a25,25 0 1,1 -50,0"/></defs>
+                <circle cx="14" cy="196" r="34" stroke-width="2.2"/>
+                <circle cx="14" cy="196" r="18" stroke-width="1"/>
+                <text class="s" font-size="7.5" letter-spacing="1.2" stroke="none" fill="#2A2E3E"><textPath href="#pmI" textLength="150.8" lengthAdjust="spacing">INGOLSTADT ★ 2025 ★</textPath></text>
+                <text x="14" y="200" text-anchor="middle" font-size="11" stroke="none" fill="#2A2E3E">★</text>
+                <path d="M-24 181 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 M-24 191 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 M-24 201 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 M-24 211 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 q-6 -5 -12 0 t-12 0 " stroke-width="1.6"/>
+              </g></g>
+            </g></svg>
+          </a>
+        </div>
         </div>
       </div>
     </div>
-    <div class="chapters" id="chapters"></div>
+    <div class="tabbar" id="tabbar">
+      <div class="wrap">
+        <div class="tabs" role="tablist" aria-label="Ansicht" data-i18n-aria="tabs.aria" id="tabs"></div>
+      </div>
+    </div>
+    <div class="chapters" id="chapters" role="tabpanel"></div>
+    <div class="collection" id="collection" role="tabpanel" hidden>
+      <div class="wrap">
+        <div class="c-head"><h3 id="c-title"></h3><p id="c-count"></p></div>
+        <ul class="entries" id="c-list"></ul>
+      </div>
+    </div>
   </section>
 
   <!-- ============ LANGUAGES ============ -->
@@ -346,6 +585,7 @@
     <div class="wrap">
       <h2 data-i18n="h.languages">Sprachen &amp; Kenntnisse</h2>
       <div>
+        <p class="intro-text" data-i18n="lang.intro">…</p>
         <ul class="tiles" id="tiles"></ul>
         <div class="digital" id="digital"><h3 data-i18n="h.digital">Digitalkompetenz</h3></div>
       </div>
@@ -356,7 +596,10 @@
   <section class="section" id="certificates">
     <div class="wrap">
       <h2 data-i18n="h.certificates">Zertifikate</h2>
-      <ul class="certs" id="certs"></ul>
+      <div>
+        <p class="intro-text" data-i18n="cert.intro">…</p>
+        <ul class="certs" id="certs"></ul>
+      </div>
     </div>
   </section>
 
@@ -372,7 +615,7 @@
   <section class="contact dark" id="contact">
     <div class="wrap">
       <p class="eyebrow" data-i18n="h.contact">Kontakt</p>
-      <p class="lead" data-i18n="contact.lead">Am schnellsten erreichen Sie mich per E-Mail oder über LinkedIn.</p>
+      <p class="lead" data-i18n="contact.lead">Das nächste Kapitel schreibe ich gerade. Schreiben Sie mir per E-Mail oder über LinkedIn.</p>
       <div class="actions">
         <a class="btn primary" href="mailto:dhanushreddy05@icloud.com">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
@@ -395,6 +638,8 @@
 /* =========================================================
    CONTENT: edit everything here. Each text has a DE and EN version.
    Dates are "YYYY-MM". end: null means "ongoing".
+   Logos: "mark" is the monogram badge. To show a real logo instead,
+   add  logo: "logos/thi.png"  to the entry and upload the file.
    ========================================================= */
 const TAGS = {
   school: { de: "Schule", en: "School" },
@@ -403,84 +648,101 @@ const TAGS = {
   team:   { de: "Hochschulteam", en: "University team" },
   mentor: { de: "Mentoring", en: "Mentoring" },
   lang:   { de: "Sprache", en: "Language" },
-  award:  { de: "Auszeichnung", en: "Award" }
+  award:  { de: "Preis", en: "Award" },
+  intern: { de: "Praktikum", en: "Internship" }
 };
 
 const JOURNEY = [
-  { city: "Bangalore", num: "01",
-    meta:  { de: "Indien · bis 2019", en: "India · until 2019" },
-    intro: { de: "Aufgewachsen in Bangalore: Schule, Karate und Basketball.",
-             en: "Grew up in Bangalore: school, karate and basketball." },
-    items: [
-      { type: "school", start: "2006-06", end: "2018-03",
-        title: { de: "Secondary School Leaving Certificate (SSLC), ICSE Board", en: "Secondary School Leaving Certificate (SSLC), ICSE Board" },
-        org: "Sarvodaya National Public School, Bangalore" },
-      { type: "award", year: 2013,
-        title: { de: "Schwarzer Gürtel, Shodan (Karate)", en: "Black belt, Shodan (karate)" }, org: "Bangalore" },
-      { type: "award", year: 2016,
-        title: { de: "2. Platz, Basketball U15", en: "2nd place, Basketball U15" }, org: "Bangalore" }
-    ] },
-
-  { city: "Kempten", num: "02",
-    meta:  { de: "Allgäu · 2019–2025", en: "Allgäu, Germany · 2019–2025" },
-    intro: { de: "Deutsch gelernt, Fachabitur in Technik gemacht und nebenher gearbeitet.",
-             en: "Learned German, earned a technical Fachabitur and worked alongside." },
-    items: [
-      { type: "lang", start: "2020-08", end: "2021-08",
-        title: { de: "Deutsch B1 und B2, freiwillig erlernt", en: "German B1 and B2, learned voluntarily" }, org: "Kempten" },
-      { type: "school", start: "2022-09", end: "2025-07",
-        title: { de: "Fachabitur, Fachrichtung Technik", en: "Fachabitur (Advanced Technical College Entrance Qualification), Technology" },
-        org: "Staatliche Fachoberschule Kempten",
-        note: { de: "Inklusive fachpraktischer Ausbildung in Metall und Elektro", en: "Including practical workshop training in metalworking and electrical engineering" } },
-      { type: "work", start: "2023-03", end: "2025-03",
-        title: { de: "Verkaufsberater", en: "Sales Advisor" },
-        org: "Christ Juweliere und Uhrmacher, Kempten",
-        desc: { de: "Beratung und Verkauf von Schmuck und Uhren sowie Betreuung von Stammkundinnen und -kunden.",
-                en: "Advising customers and selling jewellery and watches, and looking after regular clients." } },
-      { type: "work", start: "2024-06", end: "2024-09",
-        title: { de: "Service und Lager", en: "Service and Warehouse" },
-        org: "HPCHO GmbH und Ace Micromatic, Nesselwang",
-        desc: { de: "Versand und Service von Werkzeugrevolvern (Turrets) für CNC-Maschinen, dazu Wareneingang und Lagerorganisation.",
-                en: "Shipping and servicing CNC turrets, plus goods receipt and warehouse organisation." } },
-      { minor: true,
-        label: { de: "Praktika", en: "Internships" },
-        text:  { de: "Institut für Fahrerassistenz und vernetzte Mobilität, Benningen (2023) · Bayerische Polizei, Königsbrunn (2025)",
-                 en: "Institute for Driver Assistance and Connected Mobility, Benningen (2023) · Bavarian Police, Königsbrunn (2025)" } },
-      { minor: true,
-        label: { de: "Frühere Jobs", en: "Earlier jobs" },
-        text:  { de: "Online-Auftragsabwicklung bei tePAS Allround Service / Zara, Kempten (2021–2022)",
-                 en: "Online order fulfilment at tePAS Allround Service / Zara, Kempten (2021–2022)" } }
-    ] },
-
   { city: "Ingolstadt", num: "03",
-    meta:  { de: "Bayern · seit 2025", en: "Bavaria, Germany · since 2025" },
-    intro: { de: "Studium an der THI, dazu Praxis in Motorsport, B2B-SaaS und an der Hochschule.",
-             en: "Studying at THI, with hands-on work in motorsport, B2B SaaS and at the university." },
+    label: { de: "Vollgas", en: "Full throttle" },
+    meta:  { de: "Bayern, Deutschland · seit 2025", en: "Bavaria, Germany · since 2025" },
+    story: { de: "Seit Oktober 2025 studiere ich Engineering and Management an der THI, also genau die Verbindung aus Technik und Wirtschaft, die mich antreibt. Seit November 2025 bin ich Business Analyst bei Schanzer Racing Electric, dem Formula-Student-Team der THI, und arbeite an Cost Report, Business Plan Presentation und Sponsoring. Bei FDI Digital Business habe ich den Vertrieb einer B2B-SaaS-Lösung für Industriekunden unterstützt und dabei KI eingesetzt. Und an der Hochschule gebe ich inzwischen selbst etwas weiter: als Mentor für drei Studierende.",
+             en: "Since October 2025 I've been studying Engineering and Management at THI, exactly the mix of engineering and business that drives me. Since November 2025 I've been Business Analyst at Schanzer Racing Electric, THI's Formula Student team, working on the Cost Report, the Business Plan Presentation and sponsoring. At FDI Digital Business I supported sales of a B2B SaaS product for industrial clients, using AI along the way. And at university I'm now passing things on myself, as a mentor to three students." },
     items: [
       { type: "study", start: "2025-10", end: null,
         title: { de: "Bachelor of Engineering, Engineering and Management", en: "Bachelor of Engineering, Engineering and Management" },
-        org: "Technische Hochschule Ingolstadt",
+        org: "Technische Hochschule Ingolstadt", logo: "logos/thi.png",
         note: { de: "Fakultät Wirtschaftsingenieurwesen", en: "Faculty of Industrial Engineering" } },
-      { type: "team", start: "2025-11", end: "2026-10",
+      { type: "team", start: "2025-11", end: null,
         title: { de: "Business Analyst", en: "Business Analyst" },
-        org: "Schanzer Racing Electric, Ingolstadt",
-        desc: { de: "Formula-Student-Elektroteam der THI: Cost Report, Business Plan Presentation und Sponsoring.",
-                en: "THI's Formula Student electric racing team: Cost Report, Business Plan Presentation and sponsoring." } },
+        org: "Schanzer Racing Electric, Ingolstadt", logo: "logos/sre.png",
+        desc: { de: "Ich arbeite im Formula-Student-Elektroteam der THI an Cost Report, Business Plan Presentation und Sponsoring.",
+                en: "I work on the Cost Report, the Business Plan Presentation and sponsoring for THI's Formula Student electric racing team." } },
       { type: "work", start: "2026-03", end: null,
         title: { de: "Datenmanagement", en: "Data Management" },
-        org: "Technische Hochschule Ingolstadt",
-        desc: { de: "Pflege und Dokumentation von Daten in Excel, Organisation von Hochschulveranstaltungen und Mitarbeit am Career Track für Studierende.",
-                en: "Maintaining and documenting data in Excel, organising university events and helping update the student career track." } },
+        org: "Technische Hochschule Ingolstadt", logo: "logos/thi.png",
+        desc: { de: "Ich pflege und dokumentiere Daten in Excel, organisiere Hochschulveranstaltungen und arbeite am Career Track für Studierende mit.",
+                en: "I maintain and document data in Excel, organise university events and help update the student career track." } },
       { type: "work", start: "2026-04", end: "2026-11",
         title: { de: "Vertrieb, KI & Prozessoptimierung", en: "Sales, AI & Process Optimisation" },
-        org: "FDI Digital Business, Kempten",
-        desc: { de: "Unterstützung von Vertrieb und Marketing für GÉNIE, eine B2B-SaaS-Lösung für Industriekunden in der DACH-Region. Einsatz von KI-Werkzeugen, um Vertriebs- und Content-Prozesse zu beschleunigen.",
-                en: "Supporting sales and marketing for GÉNIE, a B2B SaaS product for industrial clients in the DACH region. Using AI tools to speed up sales and content workflows." } },
+        org: "FDI Digital Business, Kempten", logo: "logos/fdi.png",
+        desc: { de: "Ich habe Vertrieb und Marketing für GÉNIE unterstützt, eine B2B-SaaS-Lösung für Industriekunden in der DACH-Region, und KI-Werkzeuge genutzt, um Vertriebs- und Content-Prozesse zu beschleunigen.",
+                en: "I supported sales and marketing for GÉNIE, a B2B SaaS product for industrial clients in the DACH region, and used AI tools to speed up sales and content workflows." } },
       { type: "mentor", start: "2026-08", end: null,
         title: { de: "Mentor für Studierende", en: "Student Mentor" },
-        org: "Technische Hochschule Ingolstadt",
-        desc: { de: "Begleitung von drei Studierenden bei Studienorganisation, Prüfungsvorbereitung und dem Ankommen an der Hochschule.",
-                en: "Mentoring three students on study organisation, exam preparation and settling in at university." } }
+        org: "Technische Hochschule Ingolstadt", logo: "logos/thi.png",
+        desc: { de: "Ich begleite drei Studierende bei Studienorganisation, Prüfungsvorbereitung und dem Ankommen an der Hochschule.",
+                en: "I mentor three students on study organisation, exam preparation and settling in at university." } }
+    ] },
+
+  { city: "Kempten", num: "02",
+    label: { de: "Neue Sprache, neue Perspektive", en: "New language, new perspective" },
+    meta:  { de: "Allgäu, Deutschland · 2019–2025", en: "Allgäu, Germany · 2019–2025" },
+    story: { de: "2019 kam ich nach Kempten, zuerst als Gastschüler am Hildegardis-Gymnasium. Deutsch habe ich freiwillig gelernt, bis B2, und danach an der Fachoberschule mein Fachabitur in Technik gemacht, mit Werkstattausbildung in Metall und Elektro. Nebenher habe ich gearbeitet: zwei Jahre im Verkauf bei Christ Juwelier und Uhrmacher und einen Sommer bei Ace Micromatic, wo ich CNC-Werkzeugrevolver versendet und gewartet habe. Seitdem kenne ich die Maschinen nicht nur aus Tabellen.",
+             en: "In 2019 I came to Kempten, first as a guest student at Hildegardis-Gymnasium. I learned German voluntarily, up to B2, then earned my technical Fachabitur at the Fachoberschule, including workshop training in metalworking and electrical engineering. I worked alongside: two years in sales at Christ Jewellers and Watches, and a summer at Ace Micromatic shipping and servicing CNC turrets. Since then I've known the machines, not just the spreadsheets." },
+    items: [
+      { type: "lang", start: "2020-08", end: "2021-08",
+        title: { de: "Deutsch B1 und B2, freiwillig erlernt", en: "German B1 and B2, learned voluntarily" }, org: "Kempten", logo: "logos/telc.png" },
+      { type: "school", start: "2022-09", end: "2025-07",
+        title: { de: "Fachabitur, Fachrichtung Technik", en: "Fachabitur (Advanced Technical College Entrance Qualification), Technology" },
+        org: "Staatliche Fachoberschule Kempten", logo: "logos/fos.png",
+        note: { de: "Inklusive fachpraktischer Ausbildung in Metall und Elektro", en: "Including practical workshop training in metalworking and electrical engineering" } },
+      { type: "work", start: "2023-03", end: "2025-03",
+        title: { de: "Verkaufsberater", en: "Sales Advisor" },
+        org: { de: "Christ Juwelier und Uhrmacher, Kempten", en: "Christ Jewellers and Watches, Kempten" }, logo: "logos/christ.png",
+        desc: { de: "Ich habe Kundinnen und Kunden zu Schmuck und Uhren beraten, verkauft und Stammkunden betreut.",
+                en: "I advised customers on jewellery and watches, sold them and looked after regular clients." } },
+      { type: "work", start: "2024-06", end: "2024-09",
+        title: { de: "Service und Lagerist", en: "Service and Warehouse Assistant" },
+        org: "HPCHO GmbH und Ace Micromatic, Nesselwang", logo: "logos/ace.png",
+        desc: { de: "Ich habe Werkzeugrevolver (Turrets) für CNC-Maschinen versendet und gewartet und mich um Wareneingang und Lager gekümmert.",
+                en: "I shipped and serviced CNC turrets and handled goods receipt and the warehouse." } },
+      { type: "intern", start: "2025-04", end: "2025-04",
+        title: { de: "Bayerische Polizei", en: "Bavarian Police" },
+        org: "Königsbrunn", logo: "logos/polizei.png" },
+      { type: "intern", start: "2023-05", end: "2023-06",
+        title: { de: "Institut für Fahrerassistenz und vernetzte Mobilität", en: "Institute for Driver Assistance and Connected Mobility" },
+        org: "Benningen", logo: "logos/ifm.png",
+        desc: { de: "Ich habe Einblicke in die Forschung zu Fahrerassistenzsystemen und vernetzter Mobilität bekommen.",
+                en: "I gained insight into research on driver assistance systems and connected mobility." } },
+      { type: "work", start: "2021-03", end: "2022-08",
+        title: { de: "Online-Dienstleister", en: "Online Order Fulfilment" },
+        org: "tePAS Allround Service / Zara, Kempten", logo: "logos/zara.png",
+        desc: { de: "Ich habe Online-Bestellungen bearbeitet: Kommissionierung, Verpackung und Retourenabwicklung.",
+                en: "I processed online orders: picking, packing and handling returns." } }
+    ] },
+
+  { city: "Bangalore", num: "01",
+    label: { de: "Die Wurzeln", en: "The roots" },
+    meta:  { de: "Karnataka, Indien · bis 2019", en: "Karnataka, India · until 2019" },
+    story: { de: "Aufgewachsen bin ich in Bangalore, mit Kannada und Telugu als Muttersprachen. Ich bin auf eine ICSE-Schule gegangen, habe 2013 den schwarzen Gürtel in Karate gemacht und Basketball gespielt: 2016 wurden wir Zweite in der U15. 2019 habe ich meine Koffer gepackt.",
+             en: "I grew up in Bangalore, with Kannada and Telugu as my mother tongues. I went to an ICSE school, earned my black belt in karate in 2013 and played basketball: in 2016 we came second in the U15. In 2019 I packed my bags." },
+    items: [
+      { type: "school", start: "2006-06", end: "2018-03",
+        title: { de: "Secondary School Leaving Certificate (SSLC), ICSE Board", en: "Secondary School Leaving Certificate (SSLC), ICSE Board" },
+        org: "Sarvodaya National Public School, Bangalore", logo: "logos/snps.png", pin: true },
+      { type: "award", start: "2016-08",
+        title: { de: "2. Preis, Basketball U15", en: "2nd prize, Basketball U15" }, org: "Bangalore", logo: "logos/basketball.png" },
+      { type: "award", start: "2013-10",
+        title: { de: "Schwarzer Gürtel II, Shodan", en: "Black belt II, Shodan" }, org: "Bangalore", logo: "logos/karate.png" },
+      { type: "award", start: "2013-01",
+        title: { de: "Teilnahme, International Top Talents Awards", en: "Participant, International Top Talents Awards" }, org: "Bangalore", logo: "logos/ita.png" },
+      { type: "award", start: "2011-12",
+        title: { de: "Teilnahme, All India Kumite und Kata Championship", en: "Participant, All India Kumite and Kata Championship" }, org: "Bangalore", logo: "logos/karate.png" },
+      { type: "award", start: "2011-08",
+        title: { de: "2. Preis, Kata-Meisterschaft auf Bezirksebene", en: "2nd prize, district-level Kata Championship" }, org: "Bangalore", logo: "logos/karate.png" },
+      { type: "award", start: "2010-12",
+        title: { de: "Teilnahme, Kumite-Meisterschaft auf Landesebene", en: "Participant, state-level Kumite Championship" }, org: "Bangalore", logo: "logos/karate.png" }
     ] }
 ];
 
@@ -515,42 +777,50 @@ const NAME_STEPS = [
   { de: "Telugu", en: "Telugu" },
   { de: "Hindi", en: "Hindi" },
   { de: "Tamil", en: "Tamil" },
-  { de: "Sieben Sprachen, ein Name", en: "Seven languages, one name" }
+  { de: "", en: "" }
 ];
 
 const TEXT = {
   de: {
-    "nav.journey": "Werdegang", "nav.languages": "Sprachen", "nav.certificates": "Zertifikate", "nav.contact": "Kontakt",
-    "hero.cv": "Lebenslauf herunterladen (PDF)", "hero.contact": "Kontakt aufnehmen",
-    "hero.lede": "Student im Studiengang Engineering and Management an der Technischen Hochschule Ingolstadt.",
-    "hero.status": "Offen für Praktikumsstellen",
-    "journey.title": "Drei Stationen, <em>rund 7.400 km</em>.",
-    "map.aria": "Karte: Bangalore (bis 2019), Kempten (2019–2025), Ingolstadt (seit 2025)",
-    "map.bavaria": "Bayern",
-    "route.blr": "Indien · bis 2019", "route.in": "seit 2025",
-    "h.profile": "Profil", "h.languages": "Sprachen & Kenntnisse", "h.digital": "Digitalkompetenz",
-    "h.certificates": "Zertifikate", "h.beyond": "Außerhalb des Studiums", "h.contact": "Kontakt",
-    "profile": "Ich verbinde technisches Verständnis mit betriebswirtschaftlichem Denken und setze beides gern direkt in der Praxis ein: derzeit im B2B-SaaS-Vertrieb bei FDI Digital Business und im Datenmanagement der THI. Aufgewachsen bin ich in Bangalore, seit 2019 lebe ich in Deutschland, und ich spreche sieben Sprachen.",
-    "hobbies": "Reisen, Fotografie, Wandern, Fahren, Musik, Kochen und Kunst.",
-    "contact.lead": "Am schnellsten erreichen Sie mich per E-Mail oder über LinkedIn.",
+    "nav.journey": "Geschichte", "nav.languages": "Sprachen", "nav.certificates": "Zertifikate", "nav.contact": "Kontakt",
+    "hero.contact": "Kontakt aufnehmen",
+    "hero.lede": "Ich bin Dhanush und studiere Engineering and Management an der THI. Hier erzähle ich meine Geschichte: drei Städte, sieben Sprachen und was ich unterwegs gelernt habe.",
+    "journey.title": "Meine Geschichte in drei Kapiteln:",
+    "facts": "Die Stationen im Detail",
+    "scripts.aria": "Mein Name in fünf Schriften", "tabs.aria": "Ansicht wählen", "c.count": "{n} Einträge aus allen drei Städten",
+    "ch.in": "Vollgas", "ch.kem": "Neue Sprache, neue Perspektive", "ch.blr": "Die Wurzeln",
+    "lang.intro": "Sieben Sprachen, sieben Arten, Hallo zu sagen. Zwei davon habe ich mit auf die Welt gebracht, Deutsch habe ich mir selbst erarbeitet.",
+    "cert.intro": "Was ich nebenbei gelernt habe, vor allem rund um KI, Cloud und Daten.",
+    "pp.title": "Reisestempel", "pp.page": "Seite 07", "pp.c.in": "INDIEN", "pp.c.de": "DEUTSCHLAND",
+    "pp.aria": "Briefmarken: Bangalore bis 2019, Kempten 2019–2025, Ingolstadt seit 2025",
+    "route.blr": "bis 2019", "route.in": "seit 2025",
+    "h.profile": "Prolog", "h.languages": "Sprachen & Kenntnisse", "h.digital": "Digitalkompetenz",
+    "h.certificates": "Zertifikate", "h.beyond": "Abseits davon", "h.contact": "Das nächste Kapitel",
+    "profile": "Ich verbinde technisches Verständnis mit betriebswirtschaftlichem Denken und setze beides am liebsten direkt in der Praxis ein. Das habe ich in der Werkstatt, im Verkauf und im B2B-Vertrieb getan, und heute tue ich es im Rennteam. Meine Geschichte beginnt in Bangalore und führt über Kempten nach Ingolstadt. Ich erzähle sie von heute aus rückwärts.",
+    "hobbies": "Wenn ich nicht studiere oder arbeite: Reisen, Fotografie, Wandern, Fahren, Musik, Kochen und Kunst.",
+    "contact.lead": "Das nächste Kapitel schreibe ich gerade. Schreiben Sie mir per E-Mail oder über LinkedIn.",
     "contact.mail": "E-Mail schreiben", "contact.linkedin": "LinkedIn-Profil",
     since: "seit", locale: "de-DE",
     title: "Dhanush Satish Reddy – Engineering and Management, THI"
   },
   en: {
-    "nav.journey": "Journey", "nav.languages": "Languages", "nav.certificates": "Certificates", "nav.contact": "Contact",
-    "hero.cv": "Download CV (PDF)", "hero.contact": "Get in touch",
-    "hero.lede": "Engineering and Management student at Technische Hochschule Ingolstadt.",
-    "hero.status": "Open to working student jobs and internships",
-    "journey.title": "Three stops, <em>about 7,400 km</em>.",
-    "map.aria": "Map: Bangalore (until 2019), Kempten (2019–2025), Ingolstadt (since 2025)",
-    "map.bavaria": "Bavaria",
-    "route.blr": "India · until 2019", "route.in": "since 2025",
-    "h.profile": "Profile", "h.languages": "Languages & Skills", "h.digital": "Digital skills",
-    "h.certificates": "Certificates", "h.beyond": "Beyond university", "h.contact": "Contact",
-    "profile": "I combine technical understanding with business thinking and like putting both to work in practice: currently in B2B SaaS sales at FDI Digital Business and in data management at THI. I grew up in Bangalore, have lived in Germany since 2019, and speak seven languages.",
-    "hobbies": "Travel, photography, hiking, driving, music, cooking and art.",
-    "contact.lead": "The quickest way to reach me is by email or on LinkedIn.",
+    "nav.journey": "Story", "nav.languages": "Languages", "nav.certificates": "Certificates", "nav.contact": "Contact",
+    "hero.contact": "Get in touch",
+    "hero.lede": "I'm Dhanush, an Engineering and Management student at THI. This is my story: three cities, seven languages and what I've learned along the way.",
+    "journey.title": "My story in three chapters:",
+    "facts": "The details",
+    "scripts.aria": "My name in five scripts", "tabs.aria": "Choose a view", "c.count": "{n} entries from all three cities",
+    "ch.in": "Full throttle", "ch.kem": "New language, new perspective", "ch.blr": "The roots",
+    "lang.intro": "Seven languages, seven ways to say hello. Two I was born with; German I earned myself.",
+    "cert.intro": "What I've learned on the side, mostly around AI, cloud and data.",
+    "pp.title": "Travel stamps", "pp.page": "Page 07", "pp.c.in": "INDIA", "pp.c.de": "GERMANY",
+    "pp.aria": "Postage stamps: Bangalore until 2019, Kempten 2019–2025, Ingolstadt since 2025",
+    "route.blr": "until 2019", "route.in": "since 2025",
+    "h.profile": "Prologue", "h.languages": "Languages & Skills", "h.digital": "Digital skills",
+    "h.certificates": "Certificates", "h.beyond": "Off the clock", "h.contact": "The next chapter",
+    "profile": "I combine technical understanding with business thinking, and I like putting both to work in practice. I've done that in the workshop, on the shop floor of a jeweller and in B2B sales, and today I do it in a racing team. My story starts in Bangalore and leads via Kempten to Ingolstadt. I'll tell it backwards, starting with today.",
+    "hobbies": "When I'm not studying or working: travel, photography, hiking, driving, music, cooking and art.",
+    "contact.lead": "I'm writing the next chapter right now. Write to me by email or on LinkedIn.",
     "contact.mail": "Send an email", "contact.linkedin": "LinkedIn profile",
     since: "since", locale: "en-GB",
     title: "Dhanush Satish Reddy – Engineering and Management, THI"
@@ -576,28 +846,99 @@ function fmtRange(item, lang) {
   return `${fmtMonth(item.start, lang)} – ${fmtMonth(item.end, lang)}`;
 }
 
+function entryEl(item, lang, city) {
+  if (item.minor) {
+    const li = el("li", "entry minor"); const p = el("p");
+    p.append(el("b", null, item.label[lang]), document.createTextNode(item.text[lang]));
+    li.append(p); return li;
+  }
+  const li = el("li", "entry");
+  const badge = el("span", "badge" + (item.mark || item.logo ? "" : " empty"));
+  badge.setAttribute("aria-hidden", "true");
+  if (item.logo) { const img = el("img"); img.src = item.logo; img.alt = ""; img.loading = "lazy"; badge.append(img); }
+  else if (item.mark) { badge.textContent = item.mark; badge.dataset.len = item.mark.length; }
+  const body = el("div");
+  const tagRow = el("div");
+  tagRow.append(el("span", "tag", item.tag ? item.tag[lang] : TAGS[item.type][lang]));
+  if (city) tagRow.append(el("span", "city", city));
+  body.append(tagRow, el("h4", null, typeof item.title === "string" ? item.title : item.title[lang]), el("p", "org", typeof item.org === "string" ? item.org : item.org[lang]));
+  if (item.note) body.append(el("p", "note", item.note[lang]));
+  if (item.desc) body.append(el("p", "desc", item.desc[lang]));
+  li.append(badge, body, el("span", "when", fmtRange(item, lang)));
+  return li;
+}
+
+/* ===================== Tabs ===================== */
+const VIEWS = [
+  { id: "story",  label: { de: "Geschichte", en: "Story" } },
+  { id: "work",   label: { de: "Arbeit", en: "Work" },           types: ["work", "team", "mentor"], minor: "earlier" },
+  { id: "intern", label: { de: "Praktika", en: "Internships" },   types: ["intern"] },
+  { id: "edu",    label: { de: "Bildung", en: "Education" },      types: ["study", "school", "lang"] },
+  { id: "cert",   label: { de: "Zertifikate", en: "Certificates" } },
+  { id: "award",  label: { de: "Preise", en: "Awards" },  types: ["award"] }
+];
+let view = "story";
+const sortKey = it => it.year ? String(it.year) : it.start;
+
+function viewItems(v) {
+  if (v.id === "cert") return CERTIFICATES.map(c => ({ type: "cert", tag: { de: "Zertifikat", en: "Certificate" }, start: c.start, title: c.title, org: c.org, logo: c.logo }));
+  const out = [];
+  JOURNEY.forEach(ch => ch.items.forEach(it => { if (!it.minor && v.types.includes(it.type)) out.push({ ...it, _city: ch.city }); }));
+  out.sort((a, b) => sortKey(b).localeCompare(sortKey(a)));
+  if (v.minor) JOURNEY.forEach(ch => ch.items.forEach(it => { if (it.minor && it.kind === v.minor) out.push(it); }));
+  return out;
+}
+
+function renderTabs(lang) {
+  const box = document.getElementById("tabs");
+  box.replaceChildren(...VIEWS.map(v => {
+    const b = el("button", "tab"); b.type = "button"; b.setAttribute("role", "tab");
+    b.setAttribute("aria-selected", String(v.id === view)); b.dataset.view = v.id;
+    b.append(document.createTextNode(v.label[lang]));
+    if (v.id !== "story") b.append(el("span", "ct", String(viewItems(v).filter(i => !i.minor).length)));
+    b.addEventListener("click", () => setView(v.id, true));
+    return b;
+  }));
+}
+
+function renderCollection(lang) {
+  const v = VIEWS.find(x => x.id === view);
+  if (v.id === "story") return;
+  const items = viewItems(v);
+  document.getElementById("c-title").textContent = v.label[lang];
+  const n = items.filter(i => !i.minor).length;
+  document.getElementById("c-count").textContent = v.id === "cert" ? "" : TEXT[lang]["c.count"].replace("{n}", n);
+  document.getElementById("c-list").replaceChildren(...items.map(it => entryEl(it, lang, it._city)));
+}
+
+function setView(id, scroll) {
+  view = id;
+  const story = id === "story";
+  document.getElementById("chapters").hidden = !story;
+  document.getElementById("collection").hidden = story;
+  document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", String(b.dataset.view === id)));
+  renderCollection(current);
+  if (scroll) {
+    const top = document.getElementById("tabbar").getBoundingClientRect().top;
+    if (top > 90 || top < 0) document.getElementById("tabbar").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+  }
+}
+
 function renderChapters(lang) {
   document.getElementById("chapters").replaceChildren(...JOURNEY.map(ch => {
-    const art = el("article", "chapter");
+    const art = el("article", "chapter"); art.id = "ch-" + ch.city.toLowerCase();
     const wrap = el("div", "wrap");
     const place = el("div", "place");
-    place.append(el("span", "num", ch.num), el("h3", null, ch.city), el("p", "meta", ch.meta[lang]), el("p", "intro", ch.intro[lang]));
+    place.append(el("span", "num", ch.label[lang]), el("h3", null, ch.city), el("p", "meta", ch.meta[lang]));
+    const right = el("div");
+    right.append(el("p", "story", ch.story[lang]), el("p", "facts", TEXT[lang]["facts"]));
     const list = el("ul", "entries");
-    ch.items.forEach(item => {
-      if (item.minor) {
-        const li = el("li", "entry minor"); const p = el("p");
-        p.append(el("b", null, item.label[lang]), document.createTextNode(item.text[lang]));
-        li.append(p); list.append(li); return;
-      }
-      const li = el("li", "entry");
-      const body = el("div");
-      body.append(el("span", "tag", TAGS[item.type][lang]), el("h4", null, item.title[lang]), el("p", "org", item.org));
-      if (item.note) body.append(el("p", "note", item.note[lang]));
-      if (item.desc) body.append(el("p", "desc", item.desc[lang]));
-      li.append(body, el("span", "when", fmtRange(item, lang)));
-      list.append(li);
+    const key = it => it.year ? String(it.year) : it.start;
+    const items = [...ch.items.filter(it => !it.minor).sort((a, b) => (b.pin ? 1 : 0) - (a.pin ? 1 : 0) || key(b).localeCompare(key(a))), ...ch.items.filter(it => it.minor)];
+    items.forEach(item => {
+      list.append(entryEl(item, lang));
     });
-    wrap.append(place, list); art.append(wrap);
+    right.append(list); wrap.append(place, right); art.append(wrap);
     return art;
   }));
 }
@@ -613,6 +954,7 @@ function render(lang) {
   document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
 
   renderChapters(lang);
+  if (typeof renderTabs === "function") { renderTabs(lang); renderCollection(lang); }
 
   document.getElementById("tiles").replaceChildren(...LANGUAGES.map(l => {
     const li = el("li", "tile"); li.dataset.tier = l.tier;
@@ -639,24 +981,23 @@ function render(lang) {
 /* ===================== Name animation ===================== */
 const words = [...document.querySelectorAll(".name .first .w")];
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const chips = [...document.querySelectorAll(".chip")];
 let nameStep = NAME_STEPS.length - 1, timer = null;
 
 function showStep(i) {
   nameStep = i;
-  words.forEach((w, j) => { w.classList.toggle("on", j === i); w.classList.toggle("off", j < i); });
+  words.forEach((w, j) => { w.classList.toggle("on", j === i); w.classList.toggle("off", j !== i && j < i); });
+  chips.forEach((c, j) => { c.classList.toggle("on", j === i); c.setAttribute("aria-pressed", String(j === i)); });
   document.getElementById("cycle-label").textContent = NAME_STEPS[i][current];
 }
 function playName() {
   clearTimeout(timer);
-  const replay = document.getElementById("replay");
-  replay.classList.remove("ready");
   if (reduced) { showStep(NAME_STEPS.length - 1); return; }
   words.forEach(w => w.classList.remove("on", "off"));
   let i = 0;
   const tick = () => {
     showStep(i);
     if (i < NAME_STEPS.length - 1) { i++; timer = setTimeout(tick, 950); }
-    else { replay.classList.add("ready"); replay.removeAttribute("tabindex"); }
   };
   timer = setTimeout(tick, 250);
 }
@@ -685,14 +1026,25 @@ else {
   showStep(0);
   Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 1200))]).then(playName);
 }
-document.getElementById("replay").addEventListener("click", playName);
+/* Clicking a script shows the name in that script */
+chips.forEach((c, j) => c.addEventListener("click", () => { clearTimeout(timer); showStep(j); }));
 
-/* Draw the map when it scrolls into view */
-const map = document.getElementById("map");
+/* ===================== Passport stamps ===================== */
+const passport = document.getElementById("passport");
 if ("IntersectionObserver" in window && !reduced) {
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { map.classList.add("drawn"); io.disconnect(); } }), { threshold: .35 });
-  io.observe(map);
-} else map.classList.add("drawn");
+  const po = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { passport.classList.add("stamped"); po.disconnect(); } }), { threshold: .45 });
+  po.observe(passport);
+} else passport.classList.add("stamped");
+
+/* City links and stamps always lead back to the story view */
+document.querySelectorAll('.stop, .stamp').forEach(a => a.addEventListener("click", () => { if (view !== "story") setView("story", false); }));
+
+/* Hovering a city in the list lifts its stamp */
+document.querySelectorAll(".stop").forEach(s => {
+  const on = v => document.querySelectorAll(`[data-pin-target="${s.dataset.pin}"]`).forEach(x => x.classList.toggle("hot", v));
+  s.addEventListener("mouseenter", () => on(true)); s.addEventListener("mouseleave", () => on(false));
+  s.addEventListener("focus", () => on(true)); s.addEventListener("blur", () => on(false));
+});
 
 const header = document.getElementById("top");
 addEventListener("scroll", () => header.classList.toggle("scrolled", scrollY > 8), { passive: true });
