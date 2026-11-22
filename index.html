@@ -186,6 +186,7 @@
   .facts { display: flex; align-items: center; gap: 12px; font: 600 .78rem/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 22px; }
   .facts::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
   .intro-text { font-size: 1.1rem; margin: 0 0 24px; max-width: 58ch; }
+  .project h3 { font: 700 1.3rem/1.2 var(--display); letter-spacing: -.01em; margin: 0 0 10px; }
   .entries { list-style: none; margin: 0; padding: 0; display: grid; gap: 30px; }
   .entry { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; column-gap: 18px; align-items: start; }
   .badge { align-self: center; width: 52px; height: 52px; border-radius: 12px; background: var(--card); border: 1px solid var(--rule); display: grid; place-items: center; font: 700 .9rem/1 var(--display); letter-spacing: -.01em; color: var(--accent-ink); box-shadow: 0 6px 14px -10px rgba(20, 22, 31, .35); overflow: hidden; }
@@ -281,6 +282,7 @@
       <a href="#journey" data-i18n="nav.journey">Geschichte</a>
       <a href="#languages" data-i18n="nav.languages">Sprachen</a>
       <a href="#certificates" data-i18n="nav.certificates">Zertifikate</a>
+      <a href="#projects" data-i18n="nav.projects">Projekte</a>
       <a href="#contact" data-i18n="nav.contact">Kontakt</a>
     </nav>
     <div class="lang" role="group" aria-label="Sprache / Language">
@@ -603,6 +605,21 @@
     </div>
   </section>
 
+  <!-- ============ PROJECTS ============ -->
+  <section class="section" id="projects">
+    <div class="wrap">
+      <h2 data-i18n="h.projects">Projekte</h2>
+      <div class="project">
+        <h3>Recruiter-Me</h3>
+        <p class="intro-text" data-i18n="proj.rm.desc">…</p>
+        <a class="btn primary" href="https://dhanush-satish-reddy.github.io/recruiter-me/" target="_blank" rel="noopener">
+          <span data-i18n="proj.rm.try">Ausprobieren</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ BEYOND ============ -->
   <section class="section" id="beyond">
     <div class="wrap">
@@ -782,7 +799,7 @@ const NAME_STEPS = [
 
 const TEXT = {
   de: {
-    "nav.journey": "Geschichte", "nav.languages": "Sprachen", "nav.certificates": "Zertifikate", "nav.contact": "Kontakt",
+    "nav.journey": "Geschichte", "nav.languages": "Sprachen", "nav.certificates": "Zertifikate", "nav.projects": "Projekte", "nav.contact": "Kontakt",
     "hero.contact": "Kontakt aufnehmen",
     "hero.lede": "Ich bin Dhanush und studiere Engineering and Management an der THI. Hier erzähle ich meine Geschichte: drei Städte, sieben Sprachen und was ich unterwegs gelernt habe.",
     "journey.title": "Meine Geschichte in drei Kapiteln:",
@@ -798,13 +815,16 @@ const TEXT = {
     "h.certificates": "Zertifikate", "h.beyond": "Abseits davon", "h.contact": "Das nächste Kapitel",
     "profile": "Ich verbinde technisches Verständnis mit betriebswirtschaftlichem Denken und setze beides am liebsten direkt in der Praxis ein. Das habe ich in der Werkstatt, im Verkauf und im B2B-Vertrieb getan, und heute tue ich es im Rennteam. Meine Geschichte beginnt in Bangalore und führt über Kempten nach Ingolstadt. Ich erzähle sie von heute aus rückwärts.",
     "hobbies": "Wenn ich nicht studiere oder arbeite: Reisen, Fotografie, Wandern, Fahren, Musik, Kochen und Kunst.",
+    "h.projects": "Projekte",
+    "proj.rm.desc": "Ein KI-Recruiter, mit dem jeder kostenlos Vorstellungsgespräche üben kann: eine Frage nach der anderen, in der eigenen Sprache, mit ehrlichem Feedback am Ende. Gebaut mit 0 € Budget.",
+    "proj.rm.try": "Ausprobieren",
     "contact.lead": "Das nächste Kapitel schreibe ich gerade. Schreiben Sie mir per E-Mail oder über LinkedIn.",
     "contact.mail": "E-Mail schreiben", "contact.linkedin": "LinkedIn-Profil",
     since: "seit", locale: "de-DE",
     title: "Dhanush Satish Reddy – Engineering and Management, THI"
   },
   en: {
-    "nav.journey": "Story", "nav.languages": "Languages", "nav.certificates": "Certificates", "nav.contact": "Contact",
+    "nav.journey": "Story", "nav.languages": "Languages", "nav.certificates": "Certificates", "nav.projects": "Projects", "nav.contact": "Contact",
     "hero.contact": "Get in touch",
     "hero.lede": "I'm Dhanush, an Engineering and Management student at THI. This is my story: three cities, seven languages and what I've learned along the way.",
     "journey.title": "My story in three chapters:",
@@ -820,6 +840,9 @@ const TEXT = {
     "h.certificates": "Certificates", "h.beyond": "Off the clock", "h.contact": "The next chapter",
     "profile": "I combine technical understanding with business thinking, and I like putting both to work in practice. I've done that in the workshop, on the shop floor of a jeweller and in B2B sales, and today I do it in a racing team. My story starts in Bangalore and leads via Kempten to Ingolstadt. I'll tell it backwards, starting with today.",
     "hobbies": "When I'm not studying or working: travel, photography, hiking, driving, music, cooking and art.",
+    "h.projects": "Projects",
+    "proj.rm.desc": "An AI recruiter anyone can use to practise job interviews for free: one question at a time, in their own language, with an honest scorecard at the end. Built on a €0 budget.",
+    "proj.rm.try": "Try it",
     "contact.lead": "I'm writing the next chapter right now. Write to me by email or on LinkedIn.",
     "contact.mail": "Send an email", "contact.linkedin": "LinkedIn profile",
     since: "since", locale: "en-GB",
